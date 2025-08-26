@@ -6,7 +6,7 @@ public class BigNumber
     public int Exponent;
         
     
-    public BigNumber(float baseValue, int exponent)
+    public BigNumber(double baseValue, int exponent)
     {
         Base = baseValue;
         Exponent = exponent;
