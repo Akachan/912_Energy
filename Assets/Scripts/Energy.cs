@@ -27,6 +27,10 @@ public class Energy : MonoBehaviour
       
    }
 
+   public BigNumber GetCurrentEnergy()
+   {
+      return _currentEnergy;
+   }
    private void AddNewEnergy()
    {
       var newEnergy = CalculateNewEnergy();

@@ -3,15 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnergySource : MonoBehaviour
 {
+    [Header("Data")]
     [SerializeField] private EnergySourceSo energySource;
+    
+    [Header("Settings")]
+    [SerializeField] private int currentLevel = 1; 
+    [SerializeField] private float timeToRecalculate = 3;
+        
+    [Header("References")]
     [SerializeField] private TextMeshProUGUI title;
     [SerializeField] private TextMeshProUGUI eps;
     [SerializeField] private TextMeshProUGUI cost;
-    [SerializeField] private int currentLevel = 1;
+    [SerializeField] private Button upgradeButton;
     
+    private float _currentTime;
     private Energy _energy;
 
     private void Awake()
@@ -23,6 +32,26 @@ public class EnergySource : MonoBehaviour
     {
         SetTitle();
         _energy.UpdateSource(energySource.EnergySourceName, energySource.GetEps(currentLevel));
+    }
+
+
+    private void Update()
+    {
+        _currentTime += Time.deltaTime;
+        
+        if (!(_currentTime >= timeToRecalculate)) return;
+        
+        UpdateUpgradeButton();
+
+        _currentTime = 0f;
+        
+    }
+
+    private void UpdateUpgradeButton()
+    {
+        Calculator.CompareBigNumbers(_energy.GetCurrentEnergy(), energySource.GetCost(currentLevel), out var result);
+        upgradeButton.interactable = result is ComparisonResult.Bigger or ComparisonResult.Equal;
+        
         
     }
 
@@ -44,6 +73,8 @@ public class EnergySource : MonoBehaviour
             currentLevel++;
             SetTitle();
             _energy.UpdateSource(energySource.EnergySourceName, energySource.GetEps(currentLevel));
+            
+            UpdateUpgradeButton();
         }
         else
         {

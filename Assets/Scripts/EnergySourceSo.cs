@@ -19,7 +19,7 @@ public struct LevelData
     public BigNumber Cost;
 }
 
-
+[CreateAssetMenu(fileName = "New EnergySource", menuName = "EnergySource")]
 public partial class EnergySourceSo : ScriptableObject
 {
     [SerializeField] private string energySourceName;
