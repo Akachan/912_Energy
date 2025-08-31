@@ -5,15 +5,27 @@ using UnityEngine;
 
 public class Energy : MonoBehaviour
 {
+   [SerializeField] private BigNumber debugEnergy = new BigNumber(1, 2);
+   
    private BigNumber _currentEnergy;
    private Dictionary<string, BigNumber> _energySources;
    private float _currentTime = 0f;
+   private BigNumber _energyToAdd;
 
+   private EnergyUI _energyUi;
+
+   private void Awake()
+   {
+      _energyUi = GetComponent<EnergyUI>();
+      _currentEnergy = new BigNumber(0, 0);
+      _energyToAdd = new BigNumber(0, 0);
+   }
 
    private void Start()
    {
-      _energySources = new Dictionary<string, BigNumber>();
-      _currentEnergy = new BigNumber(0, 0);
+     
+      
+      
    }
 
    private void Update()
@@ -23,6 +35,8 @@ public class Energy : MonoBehaviour
       {
          _currentTime = 0f;
          AddNewEnergy();
+         _energyUi.SetEnergyValue(_currentEnergy);
+         
       }
       
    }
@@ -33,8 +47,7 @@ public class Energy : MonoBehaviour
    }
    private void AddNewEnergy()
    {
-      var newEnergy = CalculateNewEnergy();
-      _currentEnergy = Calculator.AddBigNumbers(_currentEnergy, newEnergy);
+      _currentEnergy = Calculator.AddBigNumbers(_currentEnergy, _energyToAdd);
    }
 
    public bool RemoveEnergy(BigNumber value)
@@ -56,20 +69,41 @@ public class Energy : MonoBehaviour
       {
          newEnergy = Calculator.AddBigNumbers(newEnergy, source.Value);
       }
+      
+      _energyUi.SetEpsValue(newEnergy);
       return newEnergy;
    }
-   
+
    public void UpdateSource(string sourceName, BigNumber Eps)
    {
-      
+      if (_energySources == null)
+      {
+         _energySources = new Dictionary<string, BigNumber>();
+      }
+
       _energySources[sourceName] = new BigNumber(Eps.Base, Eps.Exponent);
-      
-      Debug.Log($"Energy: {_energySources.ContainsKey(sourceName)}");
+
+      _energyToAdd = CalculateNewEnergy();
    }
+
+
    
    private void RemoveSource(string name)
    {
       
+   }
+
+
+   [ContextMenu("Add Energy")]
+   public void AddEnergy()
+   {
+      _currentEnergy = Calculator.AddBigNumbers(_currentEnergy, debugEnergy);
+   }
+   
+   [ContextMenu("Remove Energy")]
+   public void RemoveEnergy()
+   {
+      _currentEnergy = Calculator.SubtractBigNumbers(_currentEnergy, debugEnergy);
    }
    
    

@@ -72,7 +72,6 @@ public abstract class Calculator
 
         var result = new BigNumber(num1.Base + num2.Base, num1.Exponent);
         
-        Debug.Log($"Num1: {num1.Base:#.############} Num2: {num2.Base:#.############} Result: {result.Base:#.############}");
         return NormalizeBigNumber(result);
     }
 

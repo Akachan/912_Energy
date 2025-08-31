@@ -23,6 +23,8 @@ public struct LevelData
 public partial class EnergySourceSo : ScriptableObject
 {
     [SerializeField] private string energySourceName;
+    [SerializeField] private BigNumber costToUnlock;
+    
     [Header("Importación CSV")]
     [Tooltip("URL pública del CSV para este tipo de Energy Source (por ejemplo, .../pub?output=csv).")]
     [SerializeField] private string csvUrl;
@@ -49,6 +51,11 @@ public partial class EnergySourceSo : ScriptableObject
     public BigNumber GetCost(int level)
     {
         return TryGetLevelData(level, out var data) ? data.Cost : new BigNumber(0, 0);
+    }
+    
+    public BigNumber GetCostToUnlock()
+    {
+        return costToUnlock;
     }
 
     public string EnergySourceName => energySourceName;
