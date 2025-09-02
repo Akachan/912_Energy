@@ -13,6 +13,8 @@ public class EnergySourcesController : MonoBehaviour
     [SerializeField] private Transform energySourceParent;
     
     private int _energySourceIndex = 0;
+    
+    public event Action OnUpgradeEnergySource;
 
 
   
@@ -29,10 +31,7 @@ public class EnergySourcesController : MonoBehaviour
         var instance = Instantiate(energySourcePrefab, energySourceParent).GetComponent<EnergySource>(); 
         instance.SetEnergySource(energySources[_energySourceIndex]);
         _energySourceIndex++;
-        instance.SetFirstUnlocked();  //El primero está siempre desbloqueado
-        
-        
-        
+        instance.UnlockEnergySource(true);  //El primero está siempre desbloqueado
     }
 
     public void CreateNewEnergySource()
@@ -41,8 +40,14 @@ public class EnergySourcesController : MonoBehaviour
         var instance = Instantiate(energySourcePrefab, energySourceParent).GetComponent<EnergySource>(); 
         instance.SetEnergySource(energySources[_energySourceIndex]);
         _energySourceIndex++;
-        
     }
+
+    public void UpgradeAllRatios()
+    {
+        OnUpgradeEnergySource?.Invoke();
+    }
+    
+    
     
 
 }

@@ -20,14 +20,7 @@ public class Energy : MonoBehaviour
       _currentEnergy = new BigNumber(0, 0);
       _energyToAdd = new BigNumber(0, 0);
    }
-
-   private void Start()
-   {
-     
-      
-      
-   }
-
+   
    private void Update()
    {
       _currentTime += Time.deltaTime;
@@ -36,14 +29,17 @@ public class Energy : MonoBehaviour
          _currentTime = 0f;
          AddNewEnergy();
          _energyUi.SetEnergyValue(_currentEnergy);
-         
       }
-      
    }
 
    public BigNumber GetCurrentEnergy()
    {
       return _currentEnergy;
+   }
+
+   public BigNumber GetEps()
+   {
+      return _energyToAdd;
    }
    private void AddNewEnergy()
    {
@@ -74,26 +70,32 @@ public class Energy : MonoBehaviour
       return newEnergy;
    }
 
-   public void UpdateSource(string sourceName, BigNumber Eps)
+   public BigNumber UpdateSourceAndReturnRatio(string sourceName, BigNumber eps)
    {
       if (_energySources == null)
       {
          _energySources = new Dictionary<string, BigNumber>();
       }
 
-      _energySources[sourceName] = new BigNumber(Eps.Base, Eps.Exponent);
+      _energySources[sourceName] = new BigNumber(eps.Base, eps.Exponent);
 
       _energyToAdd = CalculateNewEnergy();
+      
+      var ratio = Calculator.DivideBigNumbers(eps, _energyToAdd);
+      return ratio;
    }
 
+   public BigNumber GetRatio(string sourceName)
+   {
+      if (_energySources == null) return null;
+      if (!_energySources.TryGetValue(sourceName, out var eps)) return null;
+      var ratio = Calculator.DivideBigNumbers(eps, _energyToAdd);
+      return ratio;
+   }
+   
+   
 
    
-   private void RemoveSource(string name)
-   {
-      
-   }
-
-
    [ContextMenu("Add Energy")]
    public void AddEnergy()
    {

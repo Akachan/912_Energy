@@ -5,8 +5,14 @@ using UnityEngine;
 
 public class EnergyUI : MonoBehaviour
 {
+    [Header("TopPanel")]
     [SerializeField] private TextMeshProUGUI energyValue;
     [SerializeField] private TextMeshProUGUI epsValue;
+    
+    
+    
+    
+    
 
     public void SetEnergyValue(BigNumber value)
     {

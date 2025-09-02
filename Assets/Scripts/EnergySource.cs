@@ -3,105 +3,133 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class EnergySource : MonoBehaviour
 {
-    
-    
-    
-    [Header("Settings")]
-    [SerializeField] private int currentLevel = 1; 
+
+
+
+    [Header("Settings")] [SerializeField] private int currentLevel = 1;
     [SerializeField] private float timeToRecalculate = 3;
-        
-    [Header("References")]
-    [SerializeField] private TextMeshProUGUI title;
-    [SerializeField] private TextMeshProUGUI level;
-    [SerializeField] private TextMeshProUGUI eps;
-    [SerializeField] private TextMeshProUGUI unlockCost;
-    [SerializeField] private TextMeshProUGUI upgradeCost;
-    [SerializeField] private Button unlockButton;
-    [SerializeField] private Button upgradeButton;
-    
+
+
+
+
+
     private float _currentTime;
     private Energy _energy;
     private bool _isLocked = true;
     private EnergySourceSo _energySource;
+    private EnergySourceUI _ui;
+    private EnergySourcesController _controller;
 
     private void Awake()
     {
         _energy = FindObjectOfType<Energy>();
+        _ui = GetComponent<EnergySourceUI>();
+        _controller = GetComponentInParent<EnergySourcesController>();
+
+    }
+
+    private void OnEnable()
+    {
+        _controller.OnUpgradeEnergySource += UpdateRatio;
+    }
+    private void OnDisable()
+    {
+        _controller.OnUpgradeEnergySource -= UpdateRatio;
     }
 
 
     private void Update()
     {
         _currentTime += Time.deltaTime;
-        
+
         if (!(_currentTime >= timeToRecalculate)) return;
-        
+
         UpdateUpgradeButton();
         UpdateUnlockButton();
 
         _currentTime = 0f;
-        
+
     }
 
     public void SetEnergySource(EnergySourceSo energySource)
     {
         _energySource = energySource;
-        SetTitle();
-        //_energy.UpdateSource(_energySource.EnergySourceName, _energySource.GetEps(currentLevel));
+
+        if (!GetLevelData(currentLevel, out var dataLevel)) return;
+
+        _ui.SetLockedEnergySourceData(dataLevel.EPS, _energySource.GetCostToUnlock());
+        ;
+
     }
 
-    public void SetFirstUnlocked()
+    private bool GetLevelData(int level, out LevelData dataLevel)
     {
-        print("NewEnergySource Unlocked");
+        if (_energySource.TryGetLevelData(level, out dataLevel)) return true;
+        Debug.LogError("No se han encontrado los datos del energySource");
+        return false;
+
+    }
+
+
+    //la acción del botón
+    public void UnlockEnergySource(bool isFirst = false)
+    {
+        if (!isFirst)
+        {
+            if (!_energy.RemoveEnergy(_energySource.GetCostToUnlock())) return;
+        }
+
+        print($"NewEnergySource: {_energySource.EnergySourceName} Unlocked");
         _isLocked = false;
-        SetTitle();
-        //Ocultar UnlockButton
-        unlockButton.gameObject.SetActive(false);
-        //aparecer UpgradeButton
-        upgradeButton.gameObject.SetActive(true);
 
-        FindFirstObjectByType<EnergySourcesController>().CreateNewEnergySource();
-        _energy.UpdateSource(_energySource.EnergySourceName, _energySource.GetEps(currentLevel));
+        //primero seteo el nuevo desbloqueo para que pueda calcular la primera vez con un valor de eps válido
+        _controller.CreateNewEnergySource();
+        var ratio = _energy.UpdateSourceAndReturnRatio(_energySource.EnergySourceName,
+            _energySource.GetEps(currentLevel));
+
+
+        if (!GetLevelData(currentLevel, out var dataLevel)) return;
+        var difference = GetDifferenceWithNextLevel(dataLevel.EPS);
+        _ui.SetUnlockedEnergySourceData(_energySource.EnergySourceName, currentLevel, dataLevel.EPS, ratio, difference,
+            dataLevel.Cost);
+
+        if (isFirst) return;
+        _controller.UpgradeAllRatios();
+
+
     }
-    private void UpdateUpgradeButton()
+
+    private BigNumber GetDifferenceWithNextLevel(BigNumber eps)
     {
-        if(_isLocked) return;
-        Calculator.CompareBigNumbers(_energy.GetCurrentEnergy(), _energySource.GetCost(currentLevel), out var result);
-        upgradeButton.interactable = result is ComparisonResult.Bigger or ComparisonResult.Equal;
-        
-        
+        if (!GetLevelData(currentLevel + 1, out var nextDataLevel)) return null;
+        var difference = Calculator.SubtractBigNumbers( nextDataLevel.EPS,eps);
+        return difference;
     }
+
 
     private void UpdateUnlockButton()
     {
-        if(!_isLocked) return;
+        if (!_isLocked) return;
         Calculator.CompareBigNumbers(_energy.GetCurrentEnergy(), _energySource.GetCostToUnlock(), out var result);
-        unlockButton.interactable = result is ComparisonResult.Bigger or ComparisonResult.Equal;
+        _ui.SetUnlockButtonState(result is ComparisonResult.Bigger or ComparisonResult.Equal);
     }
 
-   
-
-    public void UnlockEnergySource()
+    private void UpdateUpgradeButton()
     {
-        if (!_energy.RemoveEnergy(_energySource.GetCostToUnlock())) return;
-        
-        print("NewEnergySource Unlocked");
-        _isLocked = false;
-        SetTitle();
-        
-        //Ocultar UnlockButton
-        unlockButton.gameObject.SetActive(false);
-        //aparecer UpgradeButton
-        upgradeButton.gameObject.SetActive(true);
+        if (_isLocked) return;
+        Calculator.CompareBigNumbers(_energy.GetCurrentEnergy(), _energySource.GetCost(currentLevel), out var result);
 
-        GetComponentInParent<EnergySourcesController>().CreateNewEnergySource();
-        _energy.UpdateSource(_energySource.EnergySourceName, _energySource.GetEps(currentLevel));
-
+        _ui.SetUpgradeButtonState(result is ComparisonResult.Bigger or ComparisonResult.Equal);
     }
+
+
+
+
     //Al hacer Click en el Botón
     public void BuyUpgrade()
     {
@@ -109,49 +137,34 @@ public class EnergySource : MonoBehaviour
         {
             Debug.Log("Buy Upgrade");
             currentLevel++;
-            
-            SetTitle();
-            _energy.UpdateSource(_energySource.EnergySourceName, _energySource.GetEps(currentLevel));
-            
+
+            var ratio = _energy.UpdateSourceAndReturnRatio(_energySource.EnergySourceName,
+                _energySource.GetEps(currentLevel));
+
+            if (!GetLevelData(currentLevel, out var dataLevel)) return;
+            _ui.UpdateEnergySourceData(currentLevel, dataLevel.EPS, ratio, GetDifferenceWithNextLevel(dataLevel.EPS),
+                dataLevel.Cost);
+
             UpdateUpgradeButton();
+            _controller.UpgradeAllRatios();
         }
         else
         {
-              Debug.Log("Don't buy Upgrade");
+            Debug.Log("Don't buy Upgrade");
         }
-      
-    
+
+
     }
-    private void SetTitle()
+
+    public void UpdateRatio()
     {
-
-        if(!_energySource.TryGetLevelData(currentLevel, out var dataLevel)) return;
-
-        title.text = _isLocked ? $"???" : $"{_energySource.EnergySourceName}";
-
-        level.text = $"Level: {currentLevel}";
-        eps.text = $"EPS: {dataLevel.EPS.Base:#.########}e{dataLevel.EPS.Exponent}";
-        if (_isLocked)
-        {
-            unlockCost.text = $"Unlock: {_energySource.GetCostToUnlock().Base}e{_energySource.GetCostToUnlock().Exponent}";
-        }
-        else
-        {
-            upgradeCost.text = $"Upgrade: {dataLevel.Cost.Base:#.########}e{dataLevel.Cost.Exponent}";
-        }
-        
-        
-        
+        var ratio =_energy.GetRatio(_energySource.EnergySourceName);
+        _ui.UpdateRatioText(ratio);
     }
-    
-    
-    
-    /*
-    private void OnValidate()
-    {
-        
-        SetTitle();
-    }
-    */
+
+
+
+
+
     
 }

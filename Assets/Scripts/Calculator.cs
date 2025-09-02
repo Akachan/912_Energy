@@ -128,6 +128,19 @@ public abstract class Calculator
         var result = new BigNumber(num1.Base * num2, num1.Exponent);
         return NormalizeBigNumber(result);
     }
+    
+
+    public static BigNumber DivideBigNumbers(BigNumber num1, BigNumber num2)
+    {
+        if (num1 == null || num2 == null) return null;
+        if (num2.Base == 0.0) return null;
+
+        num1 = NormalizeBigNumber(new BigNumber(num1.Base, num1.Exponent));
+        num2 = NormalizeBigNumber(new BigNumber(num2.Base, num2.Exponent));
+
+        var result = new BigNumber(num1.Base / num2.Base, num1.Exponent - num2.Exponent);
+        return NormalizeBigNumber(result);
+    }
 
     public static BigNumber TransformToBigNumber(string value)
     {
