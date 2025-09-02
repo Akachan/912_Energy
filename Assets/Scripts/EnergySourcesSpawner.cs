@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnergySourcesController : MonoBehaviour
+public class EnergySourcesSpawner : MonoBehaviour
 {
     [SerializeField] private EnergySourceSo[] energySources;
 
@@ -14,7 +14,7 @@ public class EnergySourcesController : MonoBehaviour
     
     private int _energySourceIndex = 0;
     
-    public event Action OnUpgradeEnergySource;
+
 
 
   
@@ -42,10 +42,7 @@ public class EnergySourcesController : MonoBehaviour
         _energySourceIndex++;
     }
 
-    public void UpgradeAllRatios()
-    {
-        OnUpgradeEnergySource?.Invoke();
-    }
+ 
     
     
     

@@ -18,6 +18,7 @@ public class EnergySourceUI : MonoBehaviour
     [SerializeField] private Button upgradeButton;
 
     private Energy _energy;
+    
     private void Awake()
     {
         _energy = FindObjectOfType<Energy>();
@@ -37,24 +38,31 @@ public class EnergySourceUI : MonoBehaviour
         upgradeButton.gameObject.SetActive(false);
     }
 
-    public void SetUnlockedEnergySourceData(string energySourceName, int level, BigNumber eps, BigNumber ratio, BigNumber nextLevelEps, BigNumber upgradeCost)
+    public void SetUnlockedEnergySourceData(string energySourceName, int level, BigNumber eps, BigNumber nextLevelEps, BigNumber upgradeCost)
     {
         
         titleText.text = energySourceName;
-        UpdateEnergySourceData(level, eps, ratio, nextLevelEps, upgradeCost);
+        UpdateEnergySourceData(level, eps, nextLevelEps, upgradeCost);
         unlockButton.gameObject.SetActive(false);
         upgradeButton.gameObject.SetActive(true);
     }
 
-    public void UpdateEnergySourceData(int level, BigNumber eps, BigNumber ratio, BigNumber nextLevelEps, BigNumber upgradeCost)
+    public void UpdateEnergySourceData(int level, BigNumber eps, BigNumber nextLevelEps, BigNumber upgradeCost)
     {
         levelText.text = $"Level: {level}";
         epsText.text = $"EPS: {eps.Base:#.########}e{eps.Exponent}";
-        
-        var newRatio = GetFloatRatio(ratio);
-        ratioText.text = $"Ratio: {newRatio*100:0.00}%";
         nextLevelEpsText.text = $"NextEPS: +{nextLevelEps.Base:#.####}e{nextLevelEps.Exponent}";
         upgradeCostText.text = $"Upgrade: {upgradeCost.Base:#.########}e{upgradeCost.Exponent}";
+  
+    }
+
+    public void UpdateLastLevelEnergySourceData(int level, BigNumber eps)
+    {
+        levelText.text = $"Level: {level}";
+        epsText.text = $"EPS: {eps.Base:#.########}e{eps.Exponent}";
+        nextLevelEpsText.text = "";
+        upgradeCostText.text = "MAX LEVEL";
+        SetUpgradeButtonState(false);
     }
 
     public void UpdateRatioText(BigNumber ratio)

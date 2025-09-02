@@ -7,6 +7,7 @@ public class Energy : MonoBehaviour
 {
    [SerializeField] private BigNumber debugEnergy = new BigNumber(1, 2);
    
+   public event Action<BigNumber> OnEnergySourceChange; 
    private BigNumber _currentEnergy;
    private Dictionary<string, BigNumber> _energySources;
    private float _currentTime = 0f;
@@ -41,6 +42,7 @@ public class Energy : MonoBehaviour
    {
       return _energyToAdd;
    }
+   
    private void AddNewEnergy()
    {
       _currentEnergy = Calculator.AddBigNumbers(_currentEnergy, _energyToAdd);
@@ -70,7 +72,7 @@ public class Energy : MonoBehaviour
       return newEnergy;
    }
 
-   public BigNumber UpdateSourceAndReturnRatio(string sourceName, BigNumber eps)
+   public void UpdateSource(string sourceName, BigNumber eps)
    {
       if (_energySources == null)
       {
@@ -80,20 +82,9 @@ public class Energy : MonoBehaviour
       _energySources[sourceName] = new BigNumber(eps.Base, eps.Exponent);
 
       _energyToAdd = CalculateNewEnergy();
-      
-      var ratio = Calculator.DivideBigNumbers(eps, _energyToAdd);
-      return ratio;
-   }
 
-   public BigNumber GetRatio(string sourceName)
-   {
-      if (_energySources == null) return null;
-      if (!_energySources.TryGetValue(sourceName, out var eps)) return null;
-      var ratio = Calculator.DivideBigNumbers(eps, _energyToAdd);
-      return ratio;
+      OnEnergySourceChange?.Invoke(_energyToAdd);
    }
-   
-   
 
    
    [ContextMenu("Add Energy")]

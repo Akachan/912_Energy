@@ -43,6 +43,10 @@ public partial class EnergySourceSo : ScriptableObject
     //Esto devuelve las filas... será necesario?
     public IReadOnlyList<LevelRow> Rows => rows;
 
+    public int GetMaxLevel()
+    {
+        return rows.Count > 0 ? rows[rows.Count - 1].Level : 0;
+    }
     public BigNumber GetEps(int level)
     {
         return TryGetLevelData(level, out var data) ? data.EPS : new BigNumber(0, 0);
