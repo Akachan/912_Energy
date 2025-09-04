@@ -9,36 +9,50 @@ public abstract class Calculator
         return Math.Pow(10.0, e);
     }
 
-    private static BigNumber NormalizeBigNumber(BigNumber number)
+    public static BigNumber NormalizeBigNumber(BigNumber value)
     {
-        if (number == null) return null;
+        if (value == null) return new BigNumber(0d, 0);
 
-        double b = number.Base;
-        if (b == 0.0)
+        double b = value.Base;
+        int e = value.Exponent;
+
+        // Caso cero: 0 × 10^0
+        if (b == 0d || double.IsNaN(b) || double.IsInfinity(b))
+            return new BigNumber(0d, 0);
+
+        const double eps = 1e-12;
+
+        // Signo y magnitud
+        double sign = Math.Sign(b);
+        double a = Math.Abs(b);
+
+        // Desplazamiento usando log10
+        // k dice cuántas potencias de 10 hay que mover
+        int k = (int)Math.Floor(Math.Log10(a) + eps);
+
+        // Mantisa preliminar y exponente acumulado
+        double m = a / Math.Pow(10d, k);
+        int newExp = e + k;
+
+        // Ajuste único por arrastre numérico en los bordes
+        if (m >= 10d - eps)
         {
-            number.Exponent = 0;
-            return number;
+            m /= 10d;
+            newExp++;
+        }
+        else if (m < 1d - eps)
+        {
+            m *= 10d;
+            newExp--;
         }
 
-        // Calculo cuanto 10^x necesito para llevar a la base a #.##
-        int shift = (int)Math.Floor(Math.Log10(Math.Abs(b)));
-        number.Base = b / Pow10(shift);
-        number.Exponent += shift;
+        m *= sign;
 
-        // Correcciones por posibles errores de redondeo
-        double ab = Math.Abs(number.Base);
-        if (ab >= 10.0)
-        {
-            number.Base /= 10.0;
-            number.Exponent += 1;
-        }
-        else if (ab < 1.0)
-        {
-            number.Base *= 10.0;
-            number.Exponent -= 1;
-        }
+        // Evitar -0 y normalizar cero
+        if (Math.Abs(m) < eps)
+            return new BigNumber(0d, 0);
 
-        return number;
+        return new BigNumber(m, newExp);
     }
 
     private static void AdjustToSameExponent(ref BigNumber num1, ref BigNumber num2)

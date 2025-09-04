@@ -94,8 +94,10 @@ public class EnergySource : MonoBehaviour
     private BigNumber GetDifferenceWithNextLevel(BigNumber eps)
     {
         if (!GetLevelData(currentLevel + 1, out var nextDataLevel)) return null;
-        var difference = Calculator.SubtractBigNumbers( nextDataLevel.EPS,eps);
-        return difference;
+        var difference = Calculator.SubtractBigNumbers( nextDataLevel.EPS, eps);
+        Debug.Log($"difference: {difference.Base}e{difference.Exponent}");
+        
+        return  Calculator.NormalizeBigNumber(difference);
     }
 
 

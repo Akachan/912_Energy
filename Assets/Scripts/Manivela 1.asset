@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 995cddd334684934aa016554acce9346, type: 3}
   m_Name: Manivela 1
   m_EditorClassIdentifier: 
-  energySourceName: Manivela
+  energySourceName: OtraManivela
+  costToUnlock:
+    Base: 0
+    Exponent: 0
   csvUrl: https://docs.google.com/spreadsheets/d/e/2PACX-1vSAMKLPsWXZLCIE8phzniFOIZOdrFGjb3Np6yeE1YDkxvOoIjvu_ekJ2A8HliJicAeRIoP0jM6fKoIX/pub?gid=0&single=true&output=csv
   rows:
   - Level: 1

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Utilities;
 
 public class EnergySourceUI : MonoBehaviour
 {   [Header("References")]
@@ -30,8 +31,10 @@ public class EnergySourceUI : MonoBehaviour
         titleText.text = "???";
         epsText.text = "";
         ratioText.text = "";
-        nextLevelEpsText.text = $"NextEPS: +{firstLevelEps.Base:#.####}e{firstLevelEps.Exponent}";
-        unlockCostText.text = $"Unlock: {costToUnlock.Base}e{costToUnlock.Exponent}";
+        //nextLevelEpsText.text = $"NextEPS: +{firstLevelEps.Base:#.####}e{firstLevelEps.Exponent}";
+        nextLevelEpsText.text = $"NextEPS: +{BigNumberFormatter.SetSuffixFormat(firstLevelEps)}";
+        //unlockCostText.text = $"Unlock: {costToUnlock.Base}e{costToUnlock.Exponent}";
+        unlockCostText.text = $"Unlock: {BigNumberFormatter.SetSuffixFormat(costToUnlock)}";
         upgradeCostText.text = "";
         
         unlockButton.gameObject.SetActive(true);
@@ -50,16 +53,20 @@ public class EnergySourceUI : MonoBehaviour
     public void UpdateEnergySourceData(int level, BigNumber eps, BigNumber nextLevelEps, BigNumber upgradeCost)
     {
         levelText.text = $"Level: {level}";
-        epsText.text = $"EPS: {eps.Base:#.########}e{eps.Exponent}";
-        nextLevelEpsText.text = $"NextEPS: +{nextLevelEps.Base:#.####}e{nextLevelEps.Exponent}";
-        upgradeCostText.text = $"Upgrade: {upgradeCost.Base:#.########}e{upgradeCost.Exponent}";
+        //epsText.text = $"EPS: {eps.Base:#.########}e{eps.Exponent}";
+        epsText.text = $"EPS: {BigNumberFormatter.SetSuffixFormat(eps)}";
+        //nextLevelEpsText.text = $"NextEPS: +{nextLevelEps.Base:#.####}e{nextLevelEps.Exponent}";
+        nextLevelEpsText.text = $"NextEPS: +{BigNumberFormatter.SetSuffixFormat(nextLevelEps)}";
+        //upgradeCostText.text = $"Upgrade: {upgradeCost.Base:#.########}e{upgradeCost.Exponent}";
+        upgradeCostText.text = $"{BigNumberFormatter.SetSuffixFormat(upgradeCost)}";
   
     }
 
     public void UpdateLastLevelEnergySourceData(int level, BigNumber eps)
     {
         levelText.text = $"Level: {level}";
-        epsText.text = $"EPS: {eps.Base:#.########}e{eps.Exponent}";
+        //epsText.text = $"EPS: {eps.Base:#.########}e{eps.Exponent}";
+        epsText.text = $"EPS: {BigNumberFormatter.SetSuffixFormat(eps)}";
         nextLevelEpsText.text = "";
         upgradeCostText.text = "MAX LEVEL";
         SetUpgradeButtonState(false);
