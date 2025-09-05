@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Energy;
+using Knowledge;
 using UnityEngine;
 
 public class KnowledgeSource : MonoBehaviour
@@ -9,14 +11,18 @@ public class KnowledgeSource : MonoBehaviour
     [SerializeField] private KnowledgeSo knowledgeSo;
 
     private int _currentKnowledgeLevel = 1;
-    private Knowledge _knowledge;
-    private KnowledgeSourceUI _sourceUI;
-    
+    private KnowledgeManager _knowledgeManager;
+    private KnowledgeSourceUI _ui;
+    private EnergyManager _energy;
+    private bool _isLastLevel;
+    private float _currentTime;
+
 
     private void Awake()
     {
-        _knowledge = FindFirstObjectByType<Knowledge>();
-        _sourceUI = GetComponent<KnowledgeSourceUI>();
+        _knowledgeManager = FindFirstObjectByType<KnowledgeManager>();
+        _ui = GetComponent<KnowledgeSourceUI>();
+        _energy = FindFirstObjectByType<EnergyManager>();
     }
 
     private void Start()
@@ -24,12 +30,23 @@ public class KnowledgeSource : MonoBehaviour
         SetInitialKnowledge();
     }
 
+    private void Update()
+    {
+        _currentTime += Time.deltaTime;
+
+        if (!(_currentTime >= 0.2)) return;
+
+        UpdateUpgradeButton();
+      
+        _currentTime = 0f;
+    }
+
     private void SetInitialKnowledge() 
     {
         if(!GetLevelData(_currentKnowledgeLevel, out var data)) return;
         
-        _knowledge.SetKps(data.KPS);
-        _sourceUI.UpdateKnowledgeData(_currentKnowledgeLevel,
+        _knowledgeManager.SetKps(data.KPS);
+        _ui.UpdateKnowledgeData(_currentKnowledgeLevel,
                                 data.KPS,
                                 GetDifferenceWithNextLevel(data.KPS),
                                 data.Cost);
@@ -57,5 +74,44 @@ public class KnowledgeSource : MonoBehaviour
 
     }
     
-    
+    //Al hacer Click en el Botón
+    public void BuyUpgrade()
+    {
+        if (!_energy.RemoveEnergy(knowledgeSo.GetKnowledgeCost(_currentKnowledgeLevel))) return;
+        Debug.Log("Buy Upgrade");
+        _currentKnowledgeLevel++;
+        
+        if (_currentKnowledgeLevel < knowledgeSo.GetMaxLevel())
+        {
+            if (!GetLevelData(_currentKnowledgeLevel, out var dataLevel)) return;
+            
+            _knowledgeManager.SetKps(dataLevel.KPS);;
+            _ui.UpdateKnowledgeData( _currentKnowledgeLevel,
+                dataLevel.KPS,
+                GetDifferenceWithNextLevel(dataLevel.KPS),
+                dataLevel.Cost);
+            
+            UpdateUpgradeButton();
+        }
+        else
+        {
+            if (!GetLevelData(_currentKnowledgeLevel, out var dataLevel)) return;
+            _knowledgeManager.SetKps(dataLevel.KPS);;
+            _ui.UpdateLastLevelKnowledgeSourceData(_currentKnowledgeLevel, dataLevel.KPS);
+            _isLastLevel = true;
+        }
+
+    }
+
+    private void UpdateUpgradeButton()
+    {
+        
+        if (_isLastLevel) return;
+        Calculator.CompareBigNumbers(_energy.GetCurrentEnergy(),
+            knowledgeSo.GetKnowledgeCost(_currentKnowledgeLevel), 
+            out var result);
+
+        _ui.SetUpgradeButtonState(result is ComparisonResult.Bigger or ComparisonResult.Equal);
+    }
 }
+
