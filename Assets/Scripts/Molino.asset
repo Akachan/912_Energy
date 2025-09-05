@@ -24,438 +24,438 @@ MonoBehaviour:
       Exponent: 0
     Cost:
       Base: 1
-      Exponent: 3
+      Exponent: 2
   - Level: 2
     EPS:
       Base: 1.6
       Exponent: 1
     Cost:
       Base: 1.15
-      Exponent: 3
+      Exponent: 2
   - Level: 3
     EPS:
       Base: 2.4
       Exponent: 1
     Cost:
-      Base: 1.323
-      Exponent: 3
+      Base: 1.32
+      Exponent: 2
   - Level: 4
     EPS:
       Base: 3.2
       Exponent: 1
     Cost:
-      Base: 1.521
-      Exponent: 3
+      Base: 1.52
+      Exponent: 2
   - Level: 5
     EPS:
       Base: 4
       Exponent: 1
     Cost:
-      Base: 1.749
-      Exponent: 3
+      Base: 1.75
+      Exponent: 2
   - Level: 6
     EPS:
       Base: 4.8
       Exponent: 1
     Cost:
-      Base: 2.011
-      Exponent: 3
+      Base: 2.01
+      Exponent: 2
   - Level: 7
     EPS:
       Base: 5.6
       Exponent: 1
     Cost:
-      Base: 2.313
-      Exponent: 3
+      Base: 2.31
+      Exponent: 2
   - Level: 8
     EPS:
       Base: 6.4
       Exponent: 1
     Cost:
       Base: 2.66
-      Exponent: 3
+      Exponent: 2
   - Level: 9
     EPS:
       Base: 7.2
       Exponent: 1
     Cost:
-      Base: 3.059
-      Exponent: 3
+      Base: 3.06
+      Exponent: 2
   - Level: 10
     EPS:
       Base: 8
       Exponent: 1
     Cost:
-      Base: 3.518
-      Exponent: 3
+      Base: 3.52
+      Exponent: 2
   - Level: 11
     EPS:
       Base: 8.8
       Exponent: 1
     Cost:
-      Base: 4.046
-      Exponent: 3
+      Base: 4.05
+      Exponent: 2
   - Level: 12
     EPS:
       Base: 9.6
       Exponent: 1
     Cost:
-      Base: 4.652
-      Exponent: 3
+      Base: 4.65
+      Exponent: 2
   - Level: 13
     EPS:
       Base: 1.04
       Exponent: 2
     Cost:
       Base: 5.35
-      Exponent: 3
+      Exponent: 2
   - Level: 14
     EPS:
       Base: 1.12
       Exponent: 2
     Cost:
-      Base: 6.153
-      Exponent: 3
+      Base: 6.15
+      Exponent: 2
   - Level: 15
     EPS:
       Base: 1.2
       Exponent: 2
     Cost:
-      Base: 7.076
-      Exponent: 3
+      Base: 7.08
+      Exponent: 2
   - Level: 16
     EPS:
       Base: 1.28
       Exponent: 2
     Cost:
-      Base: 8.137
-      Exponent: 3
+      Base: 8.14
+      Exponent: 2
   - Level: 17
     EPS:
       Base: 1.36
       Exponent: 2
     Cost:
-      Base: 9.358
-      Exponent: 3
+      Base: 9.36
+      Exponent: 2
   - Level: 18
     EPS:
       Base: 1.44
       Exponent: 2
     Cost:
-      Base: 1.0761
-      Exponent: 4
+      Base: 1.076
+      Exponent: 3
   - Level: 19
     EPS:
       Base: 1.52
       Exponent: 2
     Cost:
-      Base: 1.2375
-      Exponent: 4
+      Base: 1.238
+      Exponent: 3
   - Level: 20
     EPS:
       Base: 1.6
       Exponent: 2
     Cost:
-      Base: 1.4232
-      Exponent: 4
+      Base: 1.423
+      Exponent: 3
   - Level: 21
     EPS:
       Base: 1.68
       Exponent: 2
     Cost:
-      Base: 1.6367
-      Exponent: 4
+      Base: 1.637
+      Exponent: 3
   - Level: 22
     EPS:
       Base: 1.76
       Exponent: 2
     Cost:
-      Base: 1.8822
-      Exponent: 4
+      Base: 1.882
+      Exponent: 3
   - Level: 23
     EPS:
       Base: 1.84
       Exponent: 2
     Cost:
-      Base: 2.1645
-      Exponent: 4
+      Base: 2.164
+      Exponent: 3
   - Level: 24
     EPS:
       Base: 1.92
       Exponent: 2
     Cost:
-      Base: 2.4891
-      Exponent: 4
+      Base: 2.489
+      Exponent: 3
   - Level: 25
     EPS:
       Base: 2
       Exponent: 2
     Cost:
-      Base: 2.8625
-      Exponent: 4
+      Base: 2.863
+      Exponent: 3
   - Level: 26
     EPS:
       Base: 2.08
       Exponent: 2
     Cost:
-      Base: 3.2919
-      Exponent: 4
+      Base: 3.292
+      Exponent: 3
   - Level: 27
     EPS:
       Base: 2.16
       Exponent: 2
     Cost:
-      Base: 3.7857
-      Exponent: 4
+      Base: 3.786
+      Exponent: 3
   - Level: 28
     EPS:
       Base: 2.24
       Exponent: 2
     Cost:
-      Base: 4.3535
-      Exponent: 4
+      Base: 4.354
+      Exponent: 3
   - Level: 29
     EPS:
       Base: 2.32
       Exponent: 2
     Cost:
-      Base: 5.0066
-      Exponent: 4
+      Base: 5.007
+      Exponent: 3
   - Level: 30
     EPS:
       Base: 2.4
       Exponent: 2
     Cost:
-      Base: 5.7575
-      Exponent: 4
+      Base: 5.758
+      Exponent: 3
   - Level: 31
     EPS:
       Base: 2.48
       Exponent: 2
     Cost:
-      Base: 6.6212
-      Exponent: 4
+      Base: 6.621
+      Exponent: 3
   - Level: 32
     EPS:
       Base: 2.56
       Exponent: 2
     Cost:
-      Base: 7.6144
-      Exponent: 4
+      Base: 7.614
+      Exponent: 3
   - Level: 33
     EPS:
       Base: 2.64
       Exponent: 2
     Cost:
-      Base: 8.7565
-      Exponent: 4
+      Base: 8.757
+      Exponent: 3
   - Level: 34
     EPS:
       Base: 2.72
       Exponent: 2
     Cost:
       Base: 1.007
-      Exponent: 5
+      Exponent: 4
   - Level: 35
     EPS:
       Base: 2.8
       Exponent: 2
     Cost:
-      Base: 1.15805
-      Exponent: 5
+      Base: 1.158
+      Exponent: 4
   - Level: 36
     EPS:
       Base: 2.88
       Exponent: 2
     Cost:
-      Base: 1.33176
-      Exponent: 5
+      Base: 1.3318
+      Exponent: 4
   - Level: 37
     EPS:
       Base: 2.96
       Exponent: 2
     Cost:
-      Base: 1.53152
-      Exponent: 5
+      Base: 1.5315
+      Exponent: 4
   - Level: 38
     EPS:
       Base: 3.04
       Exponent: 2
     Cost:
-      Base: 1.76125
-      Exponent: 5
+      Base: 1.7612
+      Exponent: 4
   - Level: 39
     EPS:
       Base: 3.12
       Exponent: 2
     Cost:
-      Base: 2.02543
-      Exponent: 5
+      Base: 2.0254
+      Exponent: 4
   - Level: 40
     EPS:
       Base: 3.2
       Exponent: 2
     Cost:
-      Base: 2.32925
-      Exponent: 5
+      Base: 2.3292
+      Exponent: 4
   - Level: 41
     EPS:
       Base: 3.28
       Exponent: 2
     Cost:
-      Base: 2.67864
-      Exponent: 5
+      Base: 2.6786
+      Exponent: 4
   - Level: 42
     EPS:
       Base: 3.36
       Exponent: 2
     Cost:
-      Base: 3.08043
-      Exponent: 5
+      Base: 3.0804
+      Exponent: 4
   - Level: 43
     EPS:
       Base: 3.44
       Exponent: 2
     Cost:
       Base: 3.5425
-      Exponent: 5
+      Exponent: 4
   - Level: 44
     EPS:
       Base: 3.52
       Exponent: 2
     Cost:
-      Base: 4.07387
-      Exponent: 5
+      Base: 4.0739
+      Exponent: 4
   - Level: 45
     EPS:
       Base: 3.6
       Exponent: 2
     Cost:
-      Base: 4.68495
-      Exponent: 5
+      Base: 4.685
+      Exponent: 4
   - Level: 46
     EPS:
       Base: 3.68
       Exponent: 2
     Cost:
-      Base: 5.38769
-      Exponent: 5
+      Base: 5.3877
+      Exponent: 4
   - Level: 47
     EPS:
       Base: 3.76
       Exponent: 2
     Cost:
-      Base: 6.19585
-      Exponent: 5
+      Base: 6.1958
+      Exponent: 4
   - Level: 48
     EPS:
       Base: 3.84
       Exponent: 2
     Cost:
-      Base: 7.12522
-      Exponent: 5
+      Base: 7.1252
+      Exponent: 4
   - Level: 49
     EPS:
       Base: 3.92
       Exponent: 2
     Cost:
-      Base: 8.19401
-      Exponent: 5
+      Base: 8.194
+      Exponent: 4
   - Level: 50
     EPS:
       Base: 4
       Exponent: 2
     Cost:
-      Base: 9.42311
-      Exponent: 5
+      Base: 9.4231
+      Exponent: 4
   - Level: 51
     EPS:
       Base: 4.08
       Exponent: 2
     Cost:
-      Base: 1.083657
-      Exponent: 6
+      Base: 1.08366
+      Exponent: 5
   - Level: 52
     EPS:
       Base: 4.16
       Exponent: 2
     Cost:
-      Base: 1.246206
-      Exponent: 6
+      Base: 1.24621
+      Exponent: 5
   - Level: 53
     EPS:
       Base: 4.24
       Exponent: 2
     Cost:
-      Base: 1.433137
-      Exponent: 6
+      Base: 1.43314
+      Exponent: 5
   - Level: 54
     EPS:
       Base: 4.32
       Exponent: 2
     Cost:
-      Base: 1.648108
-      Exponent: 6
+      Base: 1.64811
+      Exponent: 5
   - Level: 55
     EPS:
       Base: 4.4
       Exponent: 2
     Cost:
-      Base: 1.895324
-      Exponent: 6
+      Base: 1.89532
+      Exponent: 5
   - Level: 56
     EPS:
       Base: 4.48
       Exponent: 2
     Cost:
-      Base: 2.179622
-      Exponent: 6
+      Base: 2.17962
+      Exponent: 5
   - Level: 57
     EPS:
       Base: 4.56
       Exponent: 2
     Cost:
-      Base: 2.506566
-      Exponent: 6
+      Base: 2.50657
+      Exponent: 5
   - Level: 58
     EPS:
       Base: 4.64
       Exponent: 2
     Cost:
       Base: 2.88255
-      Exponent: 6
+      Exponent: 5
   - Level: 59
     EPS:
       Base: 4.72
       Exponent: 2
     Cost:
-      Base: 3.314933
-      Exponent: 6
+      Base: 3.31493
+      Exponent: 5
   - Level: 60
     EPS:
       Base: 4.8
       Exponent: 2
     Cost:
-      Base: 3.812173
-      Exponent: 6
+      Base: 3.81217
+      Exponent: 5
   - Level: 61
     EPS:
       Base: 4.88
       Exponent: 2
     Cost:
-      Base: 4.383999
-      Exponent: 6
+      Base: 4.384
+      Exponent: 5
   - Level: 62
     EPS:
       Base: 4.96
       Exponent: 2
     Cost:
-      Base: 5.041599
-      Exponent: 6
+      Base: 5.0416
+      Exponent: 5
   - Level: 63
     EPS:
       Base: 5.04
       Exponent: 2
     Cost:
-      Base: 5.797838
-      Exponent: 6
+      Base: 5.79784
+      Exponent: 5
