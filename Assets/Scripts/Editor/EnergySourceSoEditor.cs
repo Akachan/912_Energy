@@ -12,7 +12,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 [CustomEditor(typeof(EnergySourceSo))]
-public class EnergySourceSoEditor : Editor
+public class EnergySourceSoEditor : UnityEditor.Editor
 {
     public override void OnInspectorGUI()
     {

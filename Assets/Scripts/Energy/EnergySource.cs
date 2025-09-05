@@ -25,12 +25,14 @@ public class EnergySource : MonoBehaviour
     private EnergySourceSo _energySource;
     private EnergySourceUI _ui;
     private EnergySourcesSpawner _spawner;
+    private Knowledge _knowledge;
 
     private void Awake()
     {
         _energy = FindObjectOfType<Energy>();
         _ui = GetComponent<EnergySourceUI>();
         _spawner = GetComponentInParent<EnergySourcesSpawner>();
+        _knowledge = FindObjectOfType<Knowledge>();
 
     }
     
@@ -73,7 +75,7 @@ public class EnergySource : MonoBehaviour
     {
         if (!isFirst)
         {
-            if (!_energy.RemoveEnergy(_energySource.GetCostToUnlock())) return;
+            if (!_knowledge.RemoveKnowledge(_energySource.GetCostToUnlock())) return;
         }
         _isLocked = false;
         
@@ -104,7 +106,7 @@ public class EnergySource : MonoBehaviour
     private void UpdateUnlockButton()
     {
         if (!_isLocked) return;
-        Calculator.CompareBigNumbers(_energy.GetCurrentEnergy(), 
+        Calculator.CompareBigNumbers(_knowledge.GetCurrentEnergy(), 
                                     _energySource.GetCostToUnlock(), 
                                     out var result);
         _ui.SetUnlockButtonState(result is ComparisonResult.Bigger or ComparisonResult.Equal);
