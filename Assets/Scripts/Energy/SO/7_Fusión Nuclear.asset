@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995cddd334684934aa016554acce9346, type: 3}
+  m_Name: "7_Fusi\xF3n Nuclear"
+  m_EditorClassIdentifier: 
+  energySourceName: "FUSI\xD3N NUCLEAR"
+  costToUnlock:
+    Base: 0
+    Exponent: 0
+  illustration: {fileID: 21300000, guid: af0009523d433b44c9b1c127560165fe, type: 3}
+  description: "La fusi\xF3n nuclear es un proceso mediante el cual dos n\xFAcleos
+    ligeros, como los is\xF3topos del hidr\xF3geno (deuterio y tritio), se combinan
+    para formar un n\xFAcleo m\xE1s pesado, liberando una enorme cantidad de energ\xEDa.
+    Es el mismo mecanismo que ocurre en el Sol y en las estrellas. A diferencia de
+    la fisi\xF3n nuclear, no genera residuos radiactivos de larga vida ni riesgos
+    de accidentes a gran escala, lo que la convierte en una fuente de energ\xEDa
+    limpia y pr\xE1cticamente inagotable. Aunque se estudia desde mediados del siglo
+    XX, a\xFAn no se ha logrado su aplicaci\xF3n comercial por su complejidad\_tecnol\xF3gica."
+  csvUrl: 
+  rows: []

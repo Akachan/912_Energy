@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c703de95a0446c7b67377e0885b881f, type: 3}
   m_Name: Knowledge
   m_EditorClassIdentifier: 
-  csvUrl: https://docs.google.com/spreadsheets/d/e/2PACX-1vSAMKLPsWXZLCIE8phzniFOIZOdrFGjb3Np6yeE1YDkxvOoIjvu_ekJ2A8HliJicAeRIoP0jM6fKoIX/pub?gid=1123010576&single=true&output=csv
+  csvUrl: 
   rows:
   - Level: 1
     KPS:
@@ -20,438 +20,3497 @@ MonoBehaviour:
       Exponent: 0
     Cost:
       Base: 1
-      Exponent: 2
+      Exponent: 1
   - Level: 2
     KPS:
       Base: 2
       Exponent: 0
     Cost:
-      Base: 1
-      Exponent: 3
+      Base: 2
+      Exponent: 1
   - Level: 3
     KPS:
       Base: 3
       Exponent: 0
     Cost:
-      Base: 1
-      Exponent: 4
+      Base: 3
+      Exponent: 1
   - Level: 4
     KPS:
       Base: 4
       Exponent: 0
     Cost:
-      Base: 1.15
-      Exponent: 4
+      Base: 4
+      Exponent: 1
   - Level: 5
     KPS:
       Base: 5
       Exponent: 0
     Cost:
-      Base: 1.3225
-      Exponent: 4
+      Base: 5
+      Exponent: 1
   - Level: 6
     KPS:
       Base: 6
       Exponent: 0
     Cost:
-      Base: 1.5209
-      Exponent: 4
+      Base: 6
+      Exponent: 1
   - Level: 7
     KPS:
       Base: 7
       Exponent: 0
     Cost:
-      Base: 1.749
-      Exponent: 4
+      Base: 7
+      Exponent: 1
   - Level: 8
     KPS:
       Base: 8
       Exponent: 0
     Cost:
-      Base: 2.0114
-      Exponent: 4
+      Base: 8
+      Exponent: 1
   - Level: 9
     KPS:
       Base: 9
       Exponent: 0
     Cost:
-      Base: 2.3131
-      Exponent: 4
+      Base: 9
+      Exponent: 1
   - Level: 10
     KPS:
       Base: 1
       Exponent: 1
     Cost:
-      Base: 2.66
-      Exponent: 4
+      Base: 1
+      Exponent: 2
   - Level: 11
-    KPS:
-      Base: 1.1
-      Exponent: 1
-    Cost:
-      Base: 3.059
-      Exponent: 4
-  - Level: 12
     KPS:
       Base: 1.2
       Exponent: 1
     Cost:
-      Base: 3.5179
-      Exponent: 4
-  - Level: 13
-    KPS:
-      Base: 1.3
-      Exponent: 1
-    Cost:
-      Base: 4.0456
-      Exponent: 4
-  - Level: 14
+      Base: 1.2
+      Exponent: 2
+  - Level: 12
     KPS:
       Base: 1.4
       Exponent: 1
     Cost:
-      Base: 4.6524
-      Exponent: 4
-  - Level: 15
-    KPS:
-      Base: 1.5
-      Exponent: 1
-    Cost:
-      Base: 5.3503
-      Exponent: 4
-  - Level: 16
+      Base: 1.4
+      Exponent: 2
+  - Level: 13
     KPS:
       Base: 1.6
       Exponent: 1
     Cost:
-      Base: 6.1528
-      Exponent: 4
-  - Level: 17
-    KPS:
-      Base: 1.7
-      Exponent: 1
-    Cost:
-      Base: 7.0757
-      Exponent: 4
-  - Level: 18
+      Base: 1.6
+      Exponent: 2
+  - Level: 14
     KPS:
       Base: 1.8
       Exponent: 1
     Cost:
-      Base: 8.1371
-      Exponent: 4
-  - Level: 19
-    KPS:
-      Base: 1.9
-      Exponent: 1
-    Cost:
-      Base: 9.3576
-      Exponent: 4
-  - Level: 20
+      Base: 1.8
+      Exponent: 2
+  - Level: 15
     KPS:
       Base: 2
       Exponent: 1
     Cost:
-      Base: 1.07613
-      Exponent: 5
-  - Level: 21
-    KPS:
-      Base: 2.1
-      Exponent: 1
-    Cost:
-      Base: 1.23755
-      Exponent: 5
-  - Level: 22
+      Base: 2
+      Exponent: 2
+  - Level: 16
     KPS:
       Base: 2.2
       Exponent: 1
     Cost:
-      Base: 1.42318
-      Exponent: 5
-  - Level: 23
-    KPS:
-      Base: 2.3
-      Exponent: 1
-    Cost:
-      Base: 1.63665
-      Exponent: 5
-  - Level: 24
+      Base: 2.2
+      Exponent: 2
+  - Level: 17
     KPS:
       Base: 2.4
       Exponent: 1
     Cost:
-      Base: 1.88215
-      Exponent: 5
-  - Level: 25
-    KPS:
-      Base: 2.5
-      Exponent: 1
-    Cost:
-      Base: 2.16447
-      Exponent: 5
-  - Level: 26
+      Base: 2.4
+      Exponent: 2
+  - Level: 18
     KPS:
       Base: 2.6
       Exponent: 1
     Cost:
-      Base: 2.48915
-      Exponent: 5
-  - Level: 27
-    KPS:
-      Base: 2.7
-      Exponent: 1
-    Cost:
-      Base: 2.86252
-      Exponent: 5
-  - Level: 28
+      Base: 2.6
+      Exponent: 2
+  - Level: 19
     KPS:
       Base: 2.8
       Exponent: 1
     Cost:
-      Base: 3.2919
-      Exponent: 5
-  - Level: 29
-    KPS:
-      Base: 2.9
-      Exponent: 1
-    Cost:
-      Base: 3.78568
-      Exponent: 5
-  - Level: 30
+      Base: 2.8
+      Exponent: 2
+  - Level: 20
     KPS:
       Base: 3
       Exponent: 1
     Cost:
-      Base: 4.35353
-      Exponent: 5
-  - Level: 31
-    KPS:
-      Base: 3.1
-      Exponent: 1
-    Cost:
-      Base: 5.00656
-      Exponent: 5
-  - Level: 32
-    KPS:
-      Base: 3.2
-      Exponent: 1
-    Cost:
-      Base: 5.75755
-      Exponent: 5
-  - Level: 33
+      Base: 3
+      Exponent: 2
+  - Level: 21
     KPS:
       Base: 3.3
       Exponent: 1
     Cost:
-      Base: 6.62118
-      Exponent: 5
-  - Level: 34
-    KPS:
-      Base: 3.4
-      Exponent: 1
-    Cost:
-      Base: 7.61435
-      Exponent: 5
-  - Level: 35
-    KPS:
-      Base: 3.5
-      Exponent: 1
-    Cost:
-      Base: 8.75651
-      Exponent: 5
-  - Level: 36
+      Base: 3.3
+      Exponent: 2
+  - Level: 22
     KPS:
       Base: 3.6
       Exponent: 1
     Cost:
-      Base: 1.006998
-      Exponent: 6
-  - Level: 37
-    KPS:
-      Base: 3.7
-      Exponent: 1
-    Cost:
-      Base: 1.158048
-      Exponent: 6
-  - Level: 38
-    KPS:
-      Base: 3.8
-      Exponent: 1
-    Cost:
-      Base: 1.331755
-      Exponent: 6
-  - Level: 39
+      Base: 3.6
+      Exponent: 2
+  - Level: 23
     KPS:
       Base: 3.9
       Exponent: 1
     Cost:
-      Base: 1.531519
-      Exponent: 6
-  - Level: 40
-    KPS:
-      Base: 4
-      Exponent: 1
-    Cost:
-      Base: 1.761246
-      Exponent: 6
-  - Level: 41
-    KPS:
-      Base: 4.1
-      Exponent: 1
-    Cost:
-      Base: 2.025433
-      Exponent: 6
-  - Level: 42
+      Base: 3.9
+      Exponent: 2
+  - Level: 24
     KPS:
       Base: 4.2
       Exponent: 1
     Cost:
-      Base: 2.329248
-      Exponent: 6
-  - Level: 43
-    KPS:
-      Base: 4.3
-      Exponent: 1
-    Cost:
-      Base: 2.678635
-      Exponent: 6
-  - Level: 44
-    KPS:
-      Base: 4.4
-      Exponent: 1
-    Cost:
-      Base: 3.080431
-      Exponent: 6
-  - Level: 45
+      Base: 4.2
+      Exponent: 2
+  - Level: 25
     KPS:
       Base: 4.5
       Exponent: 1
     Cost:
-      Base: 3.542495
-      Exponent: 6
-  - Level: 46
-    KPS:
-      Base: 4.6
-      Exponent: 1
-    Cost:
-      Base: 4.07387
-      Exponent: 6
-  - Level: 47
-    KPS:
-      Base: 4.7
-      Exponent: 1
-    Cost:
-      Base: 4.68495
-      Exponent: 6
-  - Level: 48
+      Base: 4.5
+      Exponent: 2
+  - Level: 26
     KPS:
       Base: 4.8
       Exponent: 1
     Cost:
-      Base: 5.387693
-      Exponent: 6
-  - Level: 49
-    KPS:
-      Base: 4.9
-      Exponent: 1
-    Cost:
-      Base: 6.195847
-      Exponent: 6
-  - Level: 50
-    KPS:
-      Base: 5
-      Exponent: 1
-    Cost:
-      Base: 7.125224
-      Exponent: 6
-  - Level: 51
+      Base: 4.8
+      Exponent: 2
+  - Level: 27
     KPS:
       Base: 5.1
       Exponent: 1
     Cost:
-      Base: 8.194007
-      Exponent: 6
-  - Level: 52
-    KPS:
-      Base: 5.2
-      Exponent: 1
-    Cost:
-      Base: 9.423108
-      Exponent: 6
-  - Level: 53
-    KPS:
-      Base: 5.3
-      Exponent: 1
-    Cost:
-      Base: 1.0836574
-      Exponent: 7
-  - Level: 54
+      Base: 5.1
+      Exponent: 2
+  - Level: 28
     KPS:
       Base: 5.4
       Exponent: 1
     Cost:
-      Base: 1.2462061
-      Exponent: 7
-  - Level: 55
-    KPS:
-      Base: 5.5
-      Exponent: 1
-    Cost:
-      Base: 1.433137
-      Exponent: 7
-  - Level: 56
-    KPS:
-      Base: 5.6
-      Exponent: 1
-    Cost:
-      Base: 1.6481075
-      Exponent: 7
-  - Level: 57
+      Base: 5.4
+      Exponent: 2
+  - Level: 29
     KPS:
       Base: 5.7
       Exponent: 1
     Cost:
-      Base: 1.8953236
-      Exponent: 7
-  - Level: 58
-    KPS:
-      Base: 5.8
-      Exponent: 1
-    Cost:
-      Base: 2.1796222
-      Exponent: 7
-  - Level: 59
-    KPS:
-      Base: 5.9
-      Exponent: 1
-    Cost:
-      Base: 2.5065655
-      Exponent: 7
-  - Level: 60
+      Base: 5.7
+      Exponent: 2
+  - Level: 30
     KPS:
       Base: 6
       Exponent: 1
     Cost:
-      Base: 2.8825503
-      Exponent: 7
+      Base: 6
+      Exponent: 2
+  - Level: 31
+    KPS:
+      Base: 6.4
+      Exponent: 1
+    Cost:
+      Base: 6.4
+      Exponent: 2
+  - Level: 32
+    KPS:
+      Base: 6.8
+      Exponent: 1
+    Cost:
+      Base: 6.8
+      Exponent: 2
+  - Level: 33
+    KPS:
+      Base: 7.2
+      Exponent: 1
+    Cost:
+      Base: 7.2
+      Exponent: 2
+  - Level: 34
+    KPS:
+      Base: 7.6
+      Exponent: 1
+    Cost:
+      Base: 7.6
+      Exponent: 2
+  - Level: 35
+    KPS:
+      Base: 8
+      Exponent: 1
+    Cost:
+      Base: 8
+      Exponent: 2
+  - Level: 36
+    KPS:
+      Base: 8.4
+      Exponent: 1
+    Cost:
+      Base: 8.4
+      Exponent: 2
+  - Level: 37
+    KPS:
+      Base: 8.8
+      Exponent: 1
+    Cost:
+      Base: 8.8
+      Exponent: 2
+  - Level: 38
+    KPS:
+      Base: 9.2
+      Exponent: 1
+    Cost:
+      Base: 9.2
+      Exponent: 2
+  - Level: 39
+    KPS:
+      Base: 9.6
+      Exponent: 1
+    Cost:
+      Base: 9.6
+      Exponent: 2
+  - Level: 40
+    KPS:
+      Base: 1
+      Exponent: 2
+    Cost:
+      Base: 1
+      Exponent: 3
+  - Level: 41
+    KPS:
+      Base: 1.05
+      Exponent: 2
+    Cost:
+      Base: 1.05
+      Exponent: 3
+  - Level: 42
+    KPS:
+      Base: 1.1
+      Exponent: 2
+    Cost:
+      Base: 1.1
+      Exponent: 3
+  - Level: 43
+    KPS:
+      Base: 1.15
+      Exponent: 2
+    Cost:
+      Base: 1.15
+      Exponent: 3
+  - Level: 44
+    KPS:
+      Base: 1.2
+      Exponent: 2
+    Cost:
+      Base: 1.2
+      Exponent: 3
+  - Level: 45
+    KPS:
+      Base: 1.25
+      Exponent: 2
+    Cost:
+      Base: 1.25
+      Exponent: 3
+  - Level: 46
+    KPS:
+      Base: 1.3
+      Exponent: 2
+    Cost:
+      Base: 1.3
+      Exponent: 3
+  - Level: 47
+    KPS:
+      Base: 1.35
+      Exponent: 2
+    Cost:
+      Base: 1.35
+      Exponent: 3
+  - Level: 48
+    KPS:
+      Base: 1.4
+      Exponent: 2
+    Cost:
+      Base: 1.4
+      Exponent: 3
+  - Level: 49
+    KPS:
+      Base: 1.45
+      Exponent: 2
+    Cost:
+      Base: 1.45
+      Exponent: 3
+  - Level: 50
+    KPS:
+      Base: 1.5
+      Exponent: 2
+    Cost:
+      Base: 1.5
+      Exponent: 3
+  - Level: 51
+    KPS:
+      Base: 1.56
+      Exponent: 2
+    Cost:
+      Base: 1.56
+      Exponent: 3
+  - Level: 52
+    KPS:
+      Base: 1.62
+      Exponent: 2
+    Cost:
+      Base: 1.62
+      Exponent: 3
+  - Level: 53
+    KPS:
+      Base: 1.68
+      Exponent: 2
+    Cost:
+      Base: 1.68
+      Exponent: 3
+  - Level: 54
+    KPS:
+      Base: 1.74
+      Exponent: 2
+    Cost:
+      Base: 1.74
+      Exponent: 3
+  - Level: 55
+    KPS:
+      Base: 1.8
+      Exponent: 2
+    Cost:
+      Base: 1.8
+      Exponent: 3
+  - Level: 56
+    KPS:
+      Base: 1.86
+      Exponent: 2
+    Cost:
+      Base: 1.86
+      Exponent: 3
+  - Level: 57
+    KPS:
+      Base: 1.92
+      Exponent: 2
+    Cost:
+      Base: 1.92
+      Exponent: 3
+  - Level: 58
+    KPS:
+      Base: 1.98
+      Exponent: 2
+    Cost:
+      Base: 1.98
+      Exponent: 3
+  - Level: 59
+    KPS:
+      Base: 2.04
+      Exponent: 2
+    Cost:
+      Base: 2.04
+      Exponent: 3
+  - Level: 60
+    KPS:
+      Base: 2.1
+      Exponent: 2
+    Cost:
+      Base: 2.1
+      Exponent: 3
   - Level: 61
     KPS:
-      Base: 6.1
-      Exponent: 1
+      Base: 2.17
+      Exponent: 2
     Cost:
-      Base: 3.3149329
-      Exponent: 7
+      Base: 2.17
+      Exponent: 3
   - Level: 62
     KPS:
-      Base: 6.2
-      Exponent: 1
+      Base: 2.24
+      Exponent: 2
     Cost:
-      Base: 3.8121728
-      Exponent: 7
+      Base: 2.24
+      Exponent: 3
   - Level: 63
     KPS:
-      Base: 6.3
-      Exponent: 1
+      Base: 2.31
+      Exponent: 2
     Cost:
-      Base: 4.3839987
-      Exponent: 7
+      Base: 2.31
+      Exponent: 3
+  - Level: 64
+    KPS:
+      Base: 2.38
+      Exponent: 2
+    Cost:
+      Base: 2.38
+      Exponent: 3
+  - Level: 65
+    KPS:
+      Base: 2.45
+      Exponent: 2
+    Cost:
+      Base: 2.45
+      Exponent: 3
+  - Level: 66
+    KPS:
+      Base: 2.52
+      Exponent: 2
+    Cost:
+      Base: 2.52
+      Exponent: 3
+  - Level: 67
+    KPS:
+      Base: 2.59
+      Exponent: 2
+    Cost:
+      Base: 2.59
+      Exponent: 3
+  - Level: 68
+    KPS:
+      Base: 2.66
+      Exponent: 2
+    Cost:
+      Base: 2.66
+      Exponent: 3
+  - Level: 69
+    KPS:
+      Base: 2.73
+      Exponent: 2
+    Cost:
+      Base: 2.73
+      Exponent: 3
+  - Level: 70
+    KPS:
+      Base: 2.8
+      Exponent: 2
+    Cost:
+      Base: 2.8
+      Exponent: 3
+  - Level: 71
+    KPS:
+      Base: 2.88
+      Exponent: 2
+    Cost:
+      Base: 2.88
+      Exponent: 3
+  - Level: 72
+    KPS:
+      Base: 2.96
+      Exponent: 2
+    Cost:
+      Base: 2.96
+      Exponent: 3
+  - Level: 73
+    KPS:
+      Base: 3.04
+      Exponent: 2
+    Cost:
+      Base: 3.04
+      Exponent: 3
+  - Level: 74
+    KPS:
+      Base: 3.12
+      Exponent: 2
+    Cost:
+      Base: 3.12
+      Exponent: 3
+  - Level: 75
+    KPS:
+      Base: 3.2
+      Exponent: 2
+    Cost:
+      Base: 3.2
+      Exponent: 3
+  - Level: 76
+    KPS:
+      Base: 3.28
+      Exponent: 2
+    Cost:
+      Base: 3.28
+      Exponent: 3
+  - Level: 77
+    KPS:
+      Base: 3.36
+      Exponent: 2
+    Cost:
+      Base: 3.36
+      Exponent: 3
+  - Level: 78
+    KPS:
+      Base: 3.44
+      Exponent: 2
+    Cost:
+      Base: 3.44
+      Exponent: 3
+  - Level: 79
+    KPS:
+      Base: 3.52
+      Exponent: 2
+    Cost:
+      Base: 3.52
+      Exponent: 3
+  - Level: 80
+    KPS:
+      Base: 3.6
+      Exponent: 2
+    Cost:
+      Base: 3.6
+      Exponent: 3
+  - Level: 81
+    KPS:
+      Base: 3.69
+      Exponent: 2
+    Cost:
+      Base: 3.69
+      Exponent: 3
+  - Level: 82
+    KPS:
+      Base: 3.78
+      Exponent: 2
+    Cost:
+      Base: 3.78
+      Exponent: 3
+  - Level: 83
+    KPS:
+      Base: 3.87
+      Exponent: 2
+    Cost:
+      Base: 3.87
+      Exponent: 3
+  - Level: 84
+    KPS:
+      Base: 3.96
+      Exponent: 2
+    Cost:
+      Base: 3.96
+      Exponent: 3
+  - Level: 85
+    KPS:
+      Base: 4.05
+      Exponent: 2
+    Cost:
+      Base: 4.05
+      Exponent: 3
+  - Level: 86
+    KPS:
+      Base: 4.14
+      Exponent: 2
+    Cost:
+      Base: 4.14
+      Exponent: 3
+  - Level: 87
+    KPS:
+      Base: 4.23
+      Exponent: 2
+    Cost:
+      Base: 4.23
+      Exponent: 3
+  - Level: 88
+    KPS:
+      Base: 4.32
+      Exponent: 2
+    Cost:
+      Base: 4.32
+      Exponent: 3
+  - Level: 89
+    KPS:
+      Base: 4.41
+      Exponent: 2
+    Cost:
+      Base: 4.41
+      Exponent: 3
+  - Level: 90
+    KPS:
+      Base: 4.5
+      Exponent: 2
+    Cost:
+      Base: 4.5
+      Exponent: 3
+  - Level: 91
+    KPS:
+      Base: 4.6
+      Exponent: 2
+    Cost:
+      Base: 4.6
+      Exponent: 3
+  - Level: 92
+    KPS:
+      Base: 4.7
+      Exponent: 2
+    Cost:
+      Base: 4.7
+      Exponent: 3
+  - Level: 93
+    KPS:
+      Base: 4.8
+      Exponent: 2
+    Cost:
+      Base: 4.8
+      Exponent: 3
+  - Level: 94
+    KPS:
+      Base: 4.9
+      Exponent: 2
+    Cost:
+      Base: 4.9
+      Exponent: 3
+  - Level: 95
+    KPS:
+      Base: 5
+      Exponent: 2
+    Cost:
+      Base: 5
+      Exponent: 3
+  - Level: 96
+    KPS:
+      Base: 5.1
+      Exponent: 2
+    Cost:
+      Base: 5.1
+      Exponent: 3
+  - Level: 97
+    KPS:
+      Base: 5.2
+      Exponent: 2
+    Cost:
+      Base: 5.2
+      Exponent: 3
+  - Level: 98
+    KPS:
+      Base: 5.3
+      Exponent: 2
+    Cost:
+      Base: 5.3
+      Exponent: 3
+  - Level: 99
+    KPS:
+      Base: 5.4
+      Exponent: 2
+    Cost:
+      Base: 5.4
+      Exponent: 3
+  - Level: 100
+    KPS:
+      Base: 5.5
+      Exponent: 2
+    Cost:
+      Base: 5.5
+      Exponent: 3
+  - Level: 101
+    KPS:
+      Base: 5.61
+      Exponent: 2
+    Cost:
+      Base: 5.61
+      Exponent: 3
+  - Level: 102
+    KPS:
+      Base: 5.72
+      Exponent: 2
+    Cost:
+      Base: 5.72
+      Exponent: 3
+  - Level: 103
+    KPS:
+      Base: 5.83
+      Exponent: 2
+    Cost:
+      Base: 5.83
+      Exponent: 3
+  - Level: 104
+    KPS:
+      Base: 5.94
+      Exponent: 2
+    Cost:
+      Base: 5.94
+      Exponent: 3
+  - Level: 105
+    KPS:
+      Base: 6.05
+      Exponent: 2
+    Cost:
+      Base: 6.05
+      Exponent: 3
+  - Level: 106
+    KPS:
+      Base: 6.16
+      Exponent: 2
+    Cost:
+      Base: 6.16
+      Exponent: 3
+  - Level: 107
+    KPS:
+      Base: 6.27
+      Exponent: 2
+    Cost:
+      Base: 6.27
+      Exponent: 3
+  - Level: 108
+    KPS:
+      Base: 6.38
+      Exponent: 2
+    Cost:
+      Base: 6.38
+      Exponent: 3
+  - Level: 109
+    KPS:
+      Base: 6.49
+      Exponent: 2
+    Cost:
+      Base: 6.49
+      Exponent: 3
+  - Level: 110
+    KPS:
+      Base: 6.6
+      Exponent: 2
+    Cost:
+      Base: 6.6
+      Exponent: 3
+  - Level: 111
+    KPS:
+      Base: 6.72
+      Exponent: 2
+    Cost:
+      Base: 6.72
+      Exponent: 3
+  - Level: 112
+    KPS:
+      Base: 6.84
+      Exponent: 2
+    Cost:
+      Base: 6.84
+      Exponent: 3
+  - Level: 113
+    KPS:
+      Base: 6.96
+      Exponent: 2
+    Cost:
+      Base: 6.96
+      Exponent: 3
+  - Level: 114
+    KPS:
+      Base: 7.08
+      Exponent: 2
+    Cost:
+      Base: 7.08
+      Exponent: 3
+  - Level: 115
+    KPS:
+      Base: 7.2
+      Exponent: 2
+    Cost:
+      Base: 7.2
+      Exponent: 3
+  - Level: 116
+    KPS:
+      Base: 7.32
+      Exponent: 2
+    Cost:
+      Base: 7.32
+      Exponent: 3
+  - Level: 117
+    KPS:
+      Base: 7.44
+      Exponent: 2
+    Cost:
+      Base: 7.44
+      Exponent: 3
+  - Level: 118
+    KPS:
+      Base: 7.56
+      Exponent: 2
+    Cost:
+      Base: 7.56
+      Exponent: 3
+  - Level: 119
+    KPS:
+      Base: 7.68
+      Exponent: 2
+    Cost:
+      Base: 7.68
+      Exponent: 3
+  - Level: 120
+    KPS:
+      Base: 7.8
+      Exponent: 2
+    Cost:
+      Base: 7.8
+      Exponent: 3
+  - Level: 121
+    KPS:
+      Base: 7.93
+      Exponent: 2
+    Cost:
+      Base: 7.93
+      Exponent: 3
+  - Level: 122
+    KPS:
+      Base: 8.06
+      Exponent: 2
+    Cost:
+      Base: 8.06
+      Exponent: 3
+  - Level: 123
+    KPS:
+      Base: 8.19
+      Exponent: 2
+    Cost:
+      Base: 8.19
+      Exponent: 3
+  - Level: 124
+    KPS:
+      Base: 8.32
+      Exponent: 2
+    Cost:
+      Base: 8.32
+      Exponent: 3
+  - Level: 125
+    KPS:
+      Base: 8.45
+      Exponent: 2
+    Cost:
+      Base: 8.45
+      Exponent: 3
+  - Level: 126
+    KPS:
+      Base: 8.58
+      Exponent: 2
+    Cost:
+      Base: 8.58
+      Exponent: 3
+  - Level: 127
+    KPS:
+      Base: 8.71
+      Exponent: 2
+    Cost:
+      Base: 8.71
+      Exponent: 3
+  - Level: 128
+    KPS:
+      Base: 8.84
+      Exponent: 2
+    Cost:
+      Base: 8.84
+      Exponent: 3
+  - Level: 129
+    KPS:
+      Base: 8.97
+      Exponent: 2
+    Cost:
+      Base: 8.97
+      Exponent: 3
+  - Level: 130
+    KPS:
+      Base: 9.1
+      Exponent: 2
+    Cost:
+      Base: 9.1
+      Exponent: 3
+  - Level: 131
+    KPS:
+      Base: 9.24
+      Exponent: 2
+    Cost:
+      Base: 9.24
+      Exponent: 3
+  - Level: 132
+    KPS:
+      Base: 9.38
+      Exponent: 2
+    Cost:
+      Base: 9.38
+      Exponent: 3
+  - Level: 133
+    KPS:
+      Base: 9.52
+      Exponent: 2
+    Cost:
+      Base: 9.52
+      Exponent: 3
+  - Level: 134
+    KPS:
+      Base: 9.66
+      Exponent: 2
+    Cost:
+      Base: 9.66
+      Exponent: 3
+  - Level: 135
+    KPS:
+      Base: 9.8
+      Exponent: 2
+    Cost:
+      Base: 9.8
+      Exponent: 3
+  - Level: 136
+    KPS:
+      Base: 9.94
+      Exponent: 2
+    Cost:
+      Base: 9.94
+      Exponent: 3
+  - Level: 137
+    KPS:
+      Base: 1.008
+      Exponent: 3
+    Cost:
+      Base: 1.008
+      Exponent: 4
+  - Level: 138
+    KPS:
+      Base: 1.022
+      Exponent: 3
+    Cost:
+      Base: 1.022
+      Exponent: 4
+  - Level: 139
+    KPS:
+      Base: 1.036
+      Exponent: 3
+    Cost:
+      Base: 1.036
+      Exponent: 4
+  - Level: 140
+    KPS:
+      Base: 1.05
+      Exponent: 3
+    Cost:
+      Base: 1.05
+      Exponent: 4
+  - Level: 141
+    KPS:
+      Base: 1.065
+      Exponent: 3
+    Cost:
+      Base: 1.065
+      Exponent: 4
+  - Level: 142
+    KPS:
+      Base: 1.08
+      Exponent: 3
+    Cost:
+      Base: 1.08
+      Exponent: 4
+  - Level: 143
+    KPS:
+      Base: 1.095
+      Exponent: 3
+    Cost:
+      Base: 1.095
+      Exponent: 4
+  - Level: 144
+    KPS:
+      Base: 1.11
+      Exponent: 3
+    Cost:
+      Base: 1.11
+      Exponent: 4
+  - Level: 145
+    KPS:
+      Base: 1.125
+      Exponent: 3
+    Cost:
+      Base: 1.125
+      Exponent: 4
+  - Level: 146
+    KPS:
+      Base: 1.14
+      Exponent: 3
+    Cost:
+      Base: 1.14
+      Exponent: 4
+  - Level: 147
+    KPS:
+      Base: 1.155
+      Exponent: 3
+    Cost:
+      Base: 1.155
+      Exponent: 4
+  - Level: 148
+    KPS:
+      Base: 1.17
+      Exponent: 3
+    Cost:
+      Base: 1.17
+      Exponent: 4
+  - Level: 149
+    KPS:
+      Base: 1.185
+      Exponent: 3
+    Cost:
+      Base: 1.185
+      Exponent: 4
+  - Level: 150
+    KPS:
+      Base: 1.2
+      Exponent: 3
+    Cost:
+      Base: 1.2
+      Exponent: 4
+  - Level: 151
+    KPS:
+      Base: 1.216
+      Exponent: 3
+    Cost:
+      Base: 1.216
+      Exponent: 4
+  - Level: 152
+    KPS:
+      Base: 1.232
+      Exponent: 3
+    Cost:
+      Base: 1.232
+      Exponent: 4
+  - Level: 153
+    KPS:
+      Base: 1.248
+      Exponent: 3
+    Cost:
+      Base: 1.248
+      Exponent: 4
+  - Level: 154
+    KPS:
+      Base: 1.264
+      Exponent: 3
+    Cost:
+      Base: 1.264
+      Exponent: 4
+  - Level: 155
+    KPS:
+      Base: 1.28
+      Exponent: 3
+    Cost:
+      Base: 1.28
+      Exponent: 4
+  - Level: 156
+    KPS:
+      Base: 1.296
+      Exponent: 3
+    Cost:
+      Base: 1.296
+      Exponent: 4
+  - Level: 157
+    KPS:
+      Base: 1.312
+      Exponent: 3
+    Cost:
+      Base: 1.312
+      Exponent: 4
+  - Level: 158
+    KPS:
+      Base: 1.328
+      Exponent: 3
+    Cost:
+      Base: 1.328
+      Exponent: 4
+  - Level: 159
+    KPS:
+      Base: 1.344
+      Exponent: 3
+    Cost:
+      Base: 1.344
+      Exponent: 4
+  - Level: 160
+    KPS:
+      Base: 1.36
+      Exponent: 3
+    Cost:
+      Base: 1.36
+      Exponent: 4
+  - Level: 161
+    KPS:
+      Base: 1.377
+      Exponent: 3
+    Cost:
+      Base: 1.377
+      Exponent: 4
+  - Level: 162
+    KPS:
+      Base: 1.394
+      Exponent: 3
+    Cost:
+      Base: 1.394
+      Exponent: 4
+  - Level: 163
+    KPS:
+      Base: 1.411
+      Exponent: 3
+    Cost:
+      Base: 1.411
+      Exponent: 4
+  - Level: 164
+    KPS:
+      Base: 1.428
+      Exponent: 3
+    Cost:
+      Base: 1.428
+      Exponent: 4
+  - Level: 165
+    KPS:
+      Base: 1.445
+      Exponent: 3
+    Cost:
+      Base: 1.445
+      Exponent: 4
+  - Level: 166
+    KPS:
+      Base: 1.462
+      Exponent: 3
+    Cost:
+      Base: 1.462
+      Exponent: 4
+  - Level: 167
+    KPS:
+      Base: 1.479
+      Exponent: 3
+    Cost:
+      Base: 1.479
+      Exponent: 4
+  - Level: 168
+    KPS:
+      Base: 1.496
+      Exponent: 3
+    Cost:
+      Base: 1.496
+      Exponent: 4
+  - Level: 169
+    KPS:
+      Base: 1.513
+      Exponent: 3
+    Cost:
+      Base: 1.513
+      Exponent: 4
+  - Level: 170
+    KPS:
+      Base: 1.53
+      Exponent: 3
+    Cost:
+      Base: 1.53
+      Exponent: 4
+  - Level: 171
+    KPS:
+      Base: 1.548
+      Exponent: 3
+    Cost:
+      Base: 1.548
+      Exponent: 4
+  - Level: 172
+    KPS:
+      Base: 1.566
+      Exponent: 3
+    Cost:
+      Base: 1.566
+      Exponent: 4
+  - Level: 173
+    KPS:
+      Base: 1.584
+      Exponent: 3
+    Cost:
+      Base: 1.584
+      Exponent: 4
+  - Level: 174
+    KPS:
+      Base: 1.602
+      Exponent: 3
+    Cost:
+      Base: 1.602
+      Exponent: 4
+  - Level: 175
+    KPS:
+      Base: 1.62
+      Exponent: 3
+    Cost:
+      Base: 1.62
+      Exponent: 4
+  - Level: 176
+    KPS:
+      Base: 1.638
+      Exponent: 3
+    Cost:
+      Base: 1.638
+      Exponent: 4
+  - Level: 177
+    KPS:
+      Base: 1.656
+      Exponent: 3
+    Cost:
+      Base: 1.656
+      Exponent: 4
+  - Level: 178
+    KPS:
+      Base: 1.674
+      Exponent: 3
+    Cost:
+      Base: 1.674
+      Exponent: 4
+  - Level: 179
+    KPS:
+      Base: 1.692
+      Exponent: 3
+    Cost:
+      Base: 1.692
+      Exponent: 4
+  - Level: 180
+    KPS:
+      Base: 1.71
+      Exponent: 3
+    Cost:
+      Base: 1.71
+      Exponent: 4
+  - Level: 181
+    KPS:
+      Base: 1.729
+      Exponent: 3
+    Cost:
+      Base: 1.729
+      Exponent: 4
+  - Level: 182
+    KPS:
+      Base: 1.748
+      Exponent: 3
+    Cost:
+      Base: 1.748
+      Exponent: 4
+  - Level: 183
+    KPS:
+      Base: 1.767
+      Exponent: 3
+    Cost:
+      Base: 1.767
+      Exponent: 4
+  - Level: 184
+    KPS:
+      Base: 1.786
+      Exponent: 3
+    Cost:
+      Base: 1.786
+      Exponent: 4
+  - Level: 185
+    KPS:
+      Base: 1.805
+      Exponent: 3
+    Cost:
+      Base: 1.805
+      Exponent: 4
+  - Level: 186
+    KPS:
+      Base: 1.824
+      Exponent: 3
+    Cost:
+      Base: 1.824
+      Exponent: 4
+  - Level: 187
+    KPS:
+      Base: 1.843
+      Exponent: 3
+    Cost:
+      Base: 1.843
+      Exponent: 4
+  - Level: 188
+    KPS:
+      Base: 1.862
+      Exponent: 3
+    Cost:
+      Base: 1.862
+      Exponent: 4
+  - Level: 189
+    KPS:
+      Base: 1.881
+      Exponent: 3
+    Cost:
+      Base: 1.881
+      Exponent: 4
+  - Level: 190
+    KPS:
+      Base: 1.9
+      Exponent: 3
+    Cost:
+      Base: 1.9
+      Exponent: 4
+  - Level: 191
+    KPS:
+      Base: 1.92
+      Exponent: 3
+    Cost:
+      Base: 1.92
+      Exponent: 4
+  - Level: 192
+    KPS:
+      Base: 1.94
+      Exponent: 3
+    Cost:
+      Base: 1.94
+      Exponent: 4
+  - Level: 193
+    KPS:
+      Base: 1.96
+      Exponent: 3
+    Cost:
+      Base: 1.96
+      Exponent: 4
+  - Level: 194
+    KPS:
+      Base: 1.98
+      Exponent: 3
+    Cost:
+      Base: 1.98
+      Exponent: 4
+  - Level: 195
+    KPS:
+      Base: 2
+      Exponent: 3
+    Cost:
+      Base: 2
+      Exponent: 4
+  - Level: 196
+    KPS:
+      Base: 2.02
+      Exponent: 3
+    Cost:
+      Base: 2.02
+      Exponent: 4
+  - Level: 197
+    KPS:
+      Base: 2.04
+      Exponent: 3
+    Cost:
+      Base: 2.04
+      Exponent: 4
+  - Level: 198
+    KPS:
+      Base: 2.06
+      Exponent: 3
+    Cost:
+      Base: 2.06
+      Exponent: 4
+  - Level: 199
+    KPS:
+      Base: 2.08
+      Exponent: 3
+    Cost:
+      Base: 2.08
+      Exponent: 4
+  - Level: 200
+    KPS:
+      Base: 2.1
+      Exponent: 3
+    Cost:
+      Base: 2.1
+      Exponent: 4
+  - Level: 201
+    KPS:
+      Base: 2.121
+      Exponent: 3
+    Cost:
+      Base: 2.121
+      Exponent: 4
+  - Level: 202
+    KPS:
+      Base: 2.142
+      Exponent: 3
+    Cost:
+      Base: 2.142
+      Exponent: 4
+  - Level: 203
+    KPS:
+      Base: 2.163
+      Exponent: 3
+    Cost:
+      Base: 2.163
+      Exponent: 4
+  - Level: 204
+    KPS:
+      Base: 2.184
+      Exponent: 3
+    Cost:
+      Base: 2.184
+      Exponent: 4
+  - Level: 205
+    KPS:
+      Base: 2.205
+      Exponent: 3
+    Cost:
+      Base: 2.205
+      Exponent: 4
+  - Level: 206
+    KPS:
+      Base: 2.226
+      Exponent: 3
+    Cost:
+      Base: 2.226
+      Exponent: 4
+  - Level: 207
+    KPS:
+      Base: 2.247
+      Exponent: 3
+    Cost:
+      Base: 2.247
+      Exponent: 4
+  - Level: 208
+    KPS:
+      Base: 2.268
+      Exponent: 3
+    Cost:
+      Base: 2.268
+      Exponent: 4
+  - Level: 209
+    KPS:
+      Base: 2.289
+      Exponent: 3
+    Cost:
+      Base: 2.289
+      Exponent: 4
+  - Level: 210
+    KPS:
+      Base: 2.31
+      Exponent: 3
+    Cost:
+      Base: 2.31
+      Exponent: 4
+  - Level: 211
+    KPS:
+      Base: 2.332
+      Exponent: 3
+    Cost:
+      Base: 2.332
+      Exponent: 4
+  - Level: 212
+    KPS:
+      Base: 2.354
+      Exponent: 3
+    Cost:
+      Base: 2.354
+      Exponent: 4
+  - Level: 213
+    KPS:
+      Base: 2.376
+      Exponent: 3
+    Cost:
+      Base: 2.376
+      Exponent: 4
+  - Level: 214
+    KPS:
+      Base: 2.398
+      Exponent: 3
+    Cost:
+      Base: 2.398
+      Exponent: 4
+  - Level: 215
+    KPS:
+      Base: 2.42
+      Exponent: 3
+    Cost:
+      Base: 2.42
+      Exponent: 4
+  - Level: 216
+    KPS:
+      Base: 2.442
+      Exponent: 3
+    Cost:
+      Base: 2.442
+      Exponent: 4
+  - Level: 217
+    KPS:
+      Base: 2.464
+      Exponent: 3
+    Cost:
+      Base: 2.464
+      Exponent: 4
+  - Level: 218
+    KPS:
+      Base: 2.486
+      Exponent: 3
+    Cost:
+      Base: 2.486
+      Exponent: 4
+  - Level: 219
+    KPS:
+      Base: 2.508
+      Exponent: 3
+    Cost:
+      Base: 2.508
+      Exponent: 4
+  - Level: 220
+    KPS:
+      Base: 2.53
+      Exponent: 3
+    Cost:
+      Base: 2.53
+      Exponent: 4
+  - Level: 221
+    KPS:
+      Base: 2.553
+      Exponent: 3
+    Cost:
+      Base: 2.553
+      Exponent: 4
+  - Level: 222
+    KPS:
+      Base: 2.576
+      Exponent: 3
+    Cost:
+      Base: 2.576
+      Exponent: 4
+  - Level: 223
+    KPS:
+      Base: 2.599
+      Exponent: 3
+    Cost:
+      Base: 2.599
+      Exponent: 4
+  - Level: 224
+    KPS:
+      Base: 2.622
+      Exponent: 3
+    Cost:
+      Base: 2.622
+      Exponent: 4
+  - Level: 225
+    KPS:
+      Base: 2.645
+      Exponent: 3
+    Cost:
+      Base: 2.645
+      Exponent: 4
+  - Level: 226
+    KPS:
+      Base: 2.668
+      Exponent: 3
+    Cost:
+      Base: 2.668
+      Exponent: 4
+  - Level: 227
+    KPS:
+      Base: 2.691
+      Exponent: 3
+    Cost:
+      Base: 2.691
+      Exponent: 4
+  - Level: 228
+    KPS:
+      Base: 2.714
+      Exponent: 3
+    Cost:
+      Base: 2.714
+      Exponent: 4
+  - Level: 229
+    KPS:
+      Base: 2.737
+      Exponent: 3
+    Cost:
+      Base: 2.737
+      Exponent: 4
+  - Level: 230
+    KPS:
+      Base: 2.76
+      Exponent: 3
+    Cost:
+      Base: 2.76
+      Exponent: 4
+  - Level: 231
+    KPS:
+      Base: 2.784
+      Exponent: 3
+    Cost:
+      Base: 2.784
+      Exponent: 4
+  - Level: 232
+    KPS:
+      Base: 2.808
+      Exponent: 3
+    Cost:
+      Base: 2.808
+      Exponent: 4
+  - Level: 233
+    KPS:
+      Base: 2.832
+      Exponent: 3
+    Cost:
+      Base: 2.832
+      Exponent: 4
+  - Level: 234
+    KPS:
+      Base: 2.856
+      Exponent: 3
+    Cost:
+      Base: 2.856
+      Exponent: 4
+  - Level: 235
+    KPS:
+      Base: 2.88
+      Exponent: 3
+    Cost:
+      Base: 2.88
+      Exponent: 4
+  - Level: 236
+    KPS:
+      Base: 2.904
+      Exponent: 3
+    Cost:
+      Base: 2.904
+      Exponent: 4
+  - Level: 237
+    KPS:
+      Base: 2.928
+      Exponent: 3
+    Cost:
+      Base: 2.928
+      Exponent: 4
+  - Level: 238
+    KPS:
+      Base: 2.952
+      Exponent: 3
+    Cost:
+      Base: 2.952
+      Exponent: 4
+  - Level: 239
+    KPS:
+      Base: 2.976
+      Exponent: 3
+    Cost:
+      Base: 2.976
+      Exponent: 4
+  - Level: 240
+    KPS:
+      Base: 3
+      Exponent: 3
+    Cost:
+      Base: 3
+      Exponent: 4
+  - Level: 241
+    KPS:
+      Base: 3.025
+      Exponent: 3
+    Cost:
+      Base: 3.025
+      Exponent: 4
+  - Level: 242
+    KPS:
+      Base: 3.05
+      Exponent: 3
+    Cost:
+      Base: 3.05
+      Exponent: 4
+  - Level: 243
+    KPS:
+      Base: 3.075
+      Exponent: 3
+    Cost:
+      Base: 3.075
+      Exponent: 4
+  - Level: 244
+    KPS:
+      Base: 3.1
+      Exponent: 3
+    Cost:
+      Base: 3.1
+      Exponent: 4
+  - Level: 245
+    KPS:
+      Base: 3.125
+      Exponent: 3
+    Cost:
+      Base: 3.125
+      Exponent: 4
+  - Level: 246
+    KPS:
+      Base: 3.15
+      Exponent: 3
+    Cost:
+      Base: 3.15
+      Exponent: 4
+  - Level: 247
+    KPS:
+      Base: 3.175
+      Exponent: 3
+    Cost:
+      Base: 3.175
+      Exponent: 4
+  - Level: 248
+    KPS:
+      Base: 3.2
+      Exponent: 3
+    Cost:
+      Base: 3.2
+      Exponent: 4
+  - Level: 249
+    KPS:
+      Base: 3.225
+      Exponent: 3
+    Cost:
+      Base: 3.225
+      Exponent: 4
+  - Level: 250
+    KPS:
+      Base: 3.25
+      Exponent: 3
+    Cost:
+      Base: 3.25
+      Exponent: 4
+  - Level: 251
+    KPS:
+      Base: 3.276
+      Exponent: 3
+    Cost:
+      Base: 3.276
+      Exponent: 4
+  - Level: 252
+    KPS:
+      Base: 3.302
+      Exponent: 3
+    Cost:
+      Base: 3.302
+      Exponent: 4
+  - Level: 253
+    KPS:
+      Base: 3.328
+      Exponent: 3
+    Cost:
+      Base: 3.328
+      Exponent: 4
+  - Level: 254
+    KPS:
+      Base: 3.354
+      Exponent: 3
+    Cost:
+      Base: 3.354
+      Exponent: 4
+  - Level: 255
+    KPS:
+      Base: 3.38
+      Exponent: 3
+    Cost:
+      Base: 3.38
+      Exponent: 4
+  - Level: 256
+    KPS:
+      Base: 3.406
+      Exponent: 3
+    Cost:
+      Base: 3.406
+      Exponent: 4
+  - Level: 257
+    KPS:
+      Base: 3.432
+      Exponent: 3
+    Cost:
+      Base: 3.432
+      Exponent: 4
+  - Level: 258
+    KPS:
+      Base: 3.458
+      Exponent: 3
+    Cost:
+      Base: 3.458
+      Exponent: 4
+  - Level: 259
+    KPS:
+      Base: 3.484
+      Exponent: 3
+    Cost:
+      Base: 3.484
+      Exponent: 4
+  - Level: 260
+    KPS:
+      Base: 3.51
+      Exponent: 3
+    Cost:
+      Base: 3.51
+      Exponent: 4
+  - Level: 261
+    KPS:
+      Base: 3.537
+      Exponent: 3
+    Cost:
+      Base: 3.537
+      Exponent: 4
+  - Level: 262
+    KPS:
+      Base: 3.564
+      Exponent: 3
+    Cost:
+      Base: 3.564
+      Exponent: 4
+  - Level: 263
+    KPS:
+      Base: 3.591
+      Exponent: 3
+    Cost:
+      Base: 3.591
+      Exponent: 4
+  - Level: 264
+    KPS:
+      Base: 3.618
+      Exponent: 3
+    Cost:
+      Base: 3.618
+      Exponent: 4
+  - Level: 265
+    KPS:
+      Base: 3.645
+      Exponent: 3
+    Cost:
+      Base: 3.645
+      Exponent: 4
+  - Level: 266
+    KPS:
+      Base: 3.672
+      Exponent: 3
+    Cost:
+      Base: 3.672
+      Exponent: 4
+  - Level: 267
+    KPS:
+      Base: 3.699
+      Exponent: 3
+    Cost:
+      Base: 3.699
+      Exponent: 4
+  - Level: 268
+    KPS:
+      Base: 3.726
+      Exponent: 3
+    Cost:
+      Base: 3.726
+      Exponent: 4
+  - Level: 269
+    KPS:
+      Base: 3.753
+      Exponent: 3
+    Cost:
+      Base: 3.753
+      Exponent: 4
+  - Level: 270
+    KPS:
+      Base: 3.78
+      Exponent: 3
+    Cost:
+      Base: 3.78
+      Exponent: 4
+  - Level: 271
+    KPS:
+      Base: 3.808
+      Exponent: 3
+    Cost:
+      Base: 3.808
+      Exponent: 4
+  - Level: 272
+    KPS:
+      Base: 3.836
+      Exponent: 3
+    Cost:
+      Base: 3.836
+      Exponent: 4
+  - Level: 273
+    KPS:
+      Base: 3.864
+      Exponent: 3
+    Cost:
+      Base: 3.864
+      Exponent: 4
+  - Level: 274
+    KPS:
+      Base: 3.892
+      Exponent: 3
+    Cost:
+      Base: 3.892
+      Exponent: 4
+  - Level: 275
+    KPS:
+      Base: 3.92
+      Exponent: 3
+    Cost:
+      Base: 3.92
+      Exponent: 4
+  - Level: 276
+    KPS:
+      Base: 3.948
+      Exponent: 3
+    Cost:
+      Base: 3.948
+      Exponent: 4
+  - Level: 277
+    KPS:
+      Base: 3.976
+      Exponent: 3
+    Cost:
+      Base: 3.976
+      Exponent: 4
+  - Level: 278
+    KPS:
+      Base: 4.004
+      Exponent: 3
+    Cost:
+      Base: 4.004
+      Exponent: 4
+  - Level: 279
+    KPS:
+      Base: 4.032
+      Exponent: 3
+    Cost:
+      Base: 4.032
+      Exponent: 4
+  - Level: 280
+    KPS:
+      Base: 4.06
+      Exponent: 3
+    Cost:
+      Base: 4.06
+      Exponent: 4
+  - Level: 281
+    KPS:
+      Base: 4.089
+      Exponent: 3
+    Cost:
+      Base: 4.089
+      Exponent: 4
+  - Level: 282
+    KPS:
+      Base: 4.118
+      Exponent: 3
+    Cost:
+      Base: 4.118
+      Exponent: 4
+  - Level: 283
+    KPS:
+      Base: 4.147
+      Exponent: 3
+    Cost:
+      Base: 4.147
+      Exponent: 4
+  - Level: 284
+    KPS:
+      Base: 4.176
+      Exponent: 3
+    Cost:
+      Base: 4.176
+      Exponent: 4
+  - Level: 285
+    KPS:
+      Base: 4.205
+      Exponent: 3
+    Cost:
+      Base: 4.205
+      Exponent: 4
+  - Level: 286
+    KPS:
+      Base: 4.234
+      Exponent: 3
+    Cost:
+      Base: 4.234
+      Exponent: 4
+  - Level: 287
+    KPS:
+      Base: 4.263
+      Exponent: 3
+    Cost:
+      Base: 4.263
+      Exponent: 4
+  - Level: 288
+    KPS:
+      Base: 4.292
+      Exponent: 3
+    Cost:
+      Base: 4.292
+      Exponent: 4
+  - Level: 289
+    KPS:
+      Base: 4.321
+      Exponent: 3
+    Cost:
+      Base: 4.321
+      Exponent: 4
+  - Level: 290
+    KPS:
+      Base: 4.35
+      Exponent: 3
+    Cost:
+      Base: 4.35
+      Exponent: 4
+  - Level: 291
+    KPS:
+      Base: 4.38
+      Exponent: 3
+    Cost:
+      Base: 4.38
+      Exponent: 4
+  - Level: 292
+    KPS:
+      Base: 4.41
+      Exponent: 3
+    Cost:
+      Base: 4.41
+      Exponent: 4
+  - Level: 293
+    KPS:
+      Base: 4.44
+      Exponent: 3
+    Cost:
+      Base: 4.44
+      Exponent: 4
+  - Level: 294
+    KPS:
+      Base: 4.47
+      Exponent: 3
+    Cost:
+      Base: 4.47
+      Exponent: 4
+  - Level: 295
+    KPS:
+      Base: 4.5
+      Exponent: 3
+    Cost:
+      Base: 4.5
+      Exponent: 4
+  - Level: 296
+    KPS:
+      Base: 4.53
+      Exponent: 3
+    Cost:
+      Base: 4.53
+      Exponent: 4
+  - Level: 297
+    KPS:
+      Base: 4.56
+      Exponent: 3
+    Cost:
+      Base: 4.56
+      Exponent: 4
+  - Level: 298
+    KPS:
+      Base: 4.59
+      Exponent: 3
+    Cost:
+      Base: 4.59
+      Exponent: 4
+  - Level: 299
+    KPS:
+      Base: 4.62
+      Exponent: 3
+    Cost:
+      Base: 4.62
+      Exponent: 4
+  - Level: 300
+    KPS:
+      Base: 4.65
+      Exponent: 3
+    Cost:
+      Base: 4.65
+      Exponent: 4
+  - Level: 301
+    KPS:
+      Base: 4.681
+      Exponent: 3
+    Cost:
+      Base: 4.681
+      Exponent: 4
+  - Level: 302
+    KPS:
+      Base: 4.712
+      Exponent: 3
+    Cost:
+      Base: 4.712
+      Exponent: 4
+  - Level: 303
+    KPS:
+      Base: 4.743
+      Exponent: 3
+    Cost:
+      Base: 4.743
+      Exponent: 4
+  - Level: 304
+    KPS:
+      Base: 4.774
+      Exponent: 3
+    Cost:
+      Base: 4.774
+      Exponent: 4
+  - Level: 305
+    KPS:
+      Base: 4.805
+      Exponent: 3
+    Cost:
+      Base: 4.805
+      Exponent: 4
+  - Level: 306
+    KPS:
+      Base: 4.836
+      Exponent: 3
+    Cost:
+      Base: 4.836
+      Exponent: 4
+  - Level: 307
+    KPS:
+      Base: 4.867
+      Exponent: 3
+    Cost:
+      Base: 4.867
+      Exponent: 4
+  - Level: 308
+    KPS:
+      Base: 4.898
+      Exponent: 3
+    Cost:
+      Base: 4.898
+      Exponent: 4
+  - Level: 309
+    KPS:
+      Base: 4.929
+      Exponent: 3
+    Cost:
+      Base: 4.929
+      Exponent: 4
+  - Level: 310
+    KPS:
+      Base: 4.96
+      Exponent: 3
+    Cost:
+      Base: 4.96
+      Exponent: 4
+  - Level: 311
+    KPS:
+      Base: 4.992
+      Exponent: 3
+    Cost:
+      Base: 4.992
+      Exponent: 4
+  - Level: 312
+    KPS:
+      Base: 5.024
+      Exponent: 3
+    Cost:
+      Base: 5.024
+      Exponent: 4
+  - Level: 313
+    KPS:
+      Base: 5.056
+      Exponent: 3
+    Cost:
+      Base: 5.056
+      Exponent: 4
+  - Level: 314
+    KPS:
+      Base: 5.088
+      Exponent: 3
+    Cost:
+      Base: 5.088
+      Exponent: 4
+  - Level: 315
+    KPS:
+      Base: 5.12
+      Exponent: 3
+    Cost:
+      Base: 5.12
+      Exponent: 4
+  - Level: 316
+    KPS:
+      Base: 5.152
+      Exponent: 3
+    Cost:
+      Base: 5.152
+      Exponent: 4
+  - Level: 317
+    KPS:
+      Base: 5.184
+      Exponent: 3
+    Cost:
+      Base: 5.184
+      Exponent: 4
+  - Level: 318
+    KPS:
+      Base: 5.216
+      Exponent: 3
+    Cost:
+      Base: 5.216
+      Exponent: 4
+  - Level: 319
+    KPS:
+      Base: 5.248
+      Exponent: 3
+    Cost:
+      Base: 5.248
+      Exponent: 4
+  - Level: 320
+    KPS:
+      Base: 5.28
+      Exponent: 3
+    Cost:
+      Base: 5.28
+      Exponent: 4
+  - Level: 321
+    KPS:
+      Base: 5.313
+      Exponent: 3
+    Cost:
+      Base: 5.313
+      Exponent: 4
+  - Level: 322
+    KPS:
+      Base: 5.346
+      Exponent: 3
+    Cost:
+      Base: 5.346
+      Exponent: 4
+  - Level: 323
+    KPS:
+      Base: 5.379
+      Exponent: 3
+    Cost:
+      Base: 5.379
+      Exponent: 4
+  - Level: 324
+    KPS:
+      Base: 5.412
+      Exponent: 3
+    Cost:
+      Base: 5.412
+      Exponent: 4
+  - Level: 325
+    KPS:
+      Base: 5.445
+      Exponent: 3
+    Cost:
+      Base: 5.445
+      Exponent: 4
+  - Level: 326
+    KPS:
+      Base: 5.478
+      Exponent: 3
+    Cost:
+      Base: 5.478
+      Exponent: 4
+  - Level: 327
+    KPS:
+      Base: 5.511
+      Exponent: 3
+    Cost:
+      Base: 5.511
+      Exponent: 4
+  - Level: 328
+    KPS:
+      Base: 5.544
+      Exponent: 3
+    Cost:
+      Base: 5.544
+      Exponent: 4
+  - Level: 329
+    KPS:
+      Base: 5.577
+      Exponent: 3
+    Cost:
+      Base: 5.577
+      Exponent: 4
+  - Level: 330
+    KPS:
+      Base: 5.61
+      Exponent: 3
+    Cost:
+      Base: 5.61
+      Exponent: 4
+  - Level: 331
+    KPS:
+      Base: 5.644
+      Exponent: 3
+    Cost:
+      Base: 5.644
+      Exponent: 4
+  - Level: 332
+    KPS:
+      Base: 5.678
+      Exponent: 3
+    Cost:
+      Base: 5.678
+      Exponent: 4
+  - Level: 333
+    KPS:
+      Base: 5.712
+      Exponent: 3
+    Cost:
+      Base: 5.712
+      Exponent: 4
+  - Level: 334
+    KPS:
+      Base: 5.746
+      Exponent: 3
+    Cost:
+      Base: 5.746
+      Exponent: 4
+  - Level: 335
+    KPS:
+      Base: 5.78
+      Exponent: 3
+    Cost:
+      Base: 5.78
+      Exponent: 4
+  - Level: 336
+    KPS:
+      Base: 5.814
+      Exponent: 3
+    Cost:
+      Base: 5.814
+      Exponent: 4
+  - Level: 337
+    KPS:
+      Base: 5.848
+      Exponent: 3
+    Cost:
+      Base: 5.848
+      Exponent: 4
+  - Level: 338
+    KPS:
+      Base: 5.882
+      Exponent: 3
+    Cost:
+      Base: 5.882
+      Exponent: 4
+  - Level: 339
+    KPS:
+      Base: 5.916
+      Exponent: 3
+    Cost:
+      Base: 5.916
+      Exponent: 4
+  - Level: 340
+    KPS:
+      Base: 5.95
+      Exponent: 3
+    Cost:
+      Base: 5.95
+      Exponent: 4
+  - Level: 341
+    KPS:
+      Base: 5.985
+      Exponent: 3
+    Cost:
+      Base: 5.985
+      Exponent: 4
+  - Level: 342
+    KPS:
+      Base: 6.02
+      Exponent: 3
+    Cost:
+      Base: 6.02
+      Exponent: 4
+  - Level: 343
+    KPS:
+      Base: 6.055
+      Exponent: 3
+    Cost:
+      Base: 6.055
+      Exponent: 4
+  - Level: 344
+    KPS:
+      Base: 6.09
+      Exponent: 3
+    Cost:
+      Base: 6.09
+      Exponent: 4
+  - Level: 345
+    KPS:
+      Base: 6.125
+      Exponent: 3
+    Cost:
+      Base: 6.125
+      Exponent: 4
+  - Level: 346
+    KPS:
+      Base: 6.16
+      Exponent: 3
+    Cost:
+      Base: 6.16
+      Exponent: 4
+  - Level: 347
+    KPS:
+      Base: 6.195
+      Exponent: 3
+    Cost:
+      Base: 6.195
+      Exponent: 4
+  - Level: 348
+    KPS:
+      Base: 6.23
+      Exponent: 3
+    Cost:
+      Base: 6.23
+      Exponent: 4
+  - Level: 349
+    KPS:
+      Base: 6.265
+      Exponent: 3
+    Cost:
+      Base: 6.265
+      Exponent: 4
+  - Level: 350
+    KPS:
+      Base: 6.3
+      Exponent: 3
+    Cost:
+      Base: 6.3
+      Exponent: 4
+  - Level: 351
+    KPS:
+      Base: 6.336
+      Exponent: 3
+    Cost:
+      Base: 6.336
+      Exponent: 4
+  - Level: 352
+    KPS:
+      Base: 6.372
+      Exponent: 3
+    Cost:
+      Base: 6.372
+      Exponent: 4
+  - Level: 353
+    KPS:
+      Base: 6.408
+      Exponent: 3
+    Cost:
+      Base: 6.408
+      Exponent: 4
+  - Level: 354
+    KPS:
+      Base: 6.444
+      Exponent: 3
+    Cost:
+      Base: 6.444
+      Exponent: 4
+  - Level: 355
+    KPS:
+      Base: 6.48
+      Exponent: 3
+    Cost:
+      Base: 6.48
+      Exponent: 4
+  - Level: 356
+    KPS:
+      Base: 6.516
+      Exponent: 3
+    Cost:
+      Base: 6.516
+      Exponent: 4
+  - Level: 357
+    KPS:
+      Base: 6.552
+      Exponent: 3
+    Cost:
+      Base: 6.552
+      Exponent: 4
+  - Level: 358
+    KPS:
+      Base: 6.588
+      Exponent: 3
+    Cost:
+      Base: 6.588
+      Exponent: 4
+  - Level: 359
+    KPS:
+      Base: 6.624
+      Exponent: 3
+    Cost:
+      Base: 6.624
+      Exponent: 4
+  - Level: 360
+    KPS:
+      Base: 6.66
+      Exponent: 3
+    Cost:
+      Base: 6.66
+      Exponent: 4
+  - Level: 361
+    KPS:
+      Base: 6.697
+      Exponent: 3
+    Cost:
+      Base: 6.697
+      Exponent: 4
+  - Level: 362
+    KPS:
+      Base: 6.734
+      Exponent: 3
+    Cost:
+      Base: 6.734
+      Exponent: 4
+  - Level: 363
+    KPS:
+      Base: 6.771
+      Exponent: 3
+    Cost:
+      Base: 6.771
+      Exponent: 4
+  - Level: 364
+    KPS:
+      Base: 6.808
+      Exponent: 3
+    Cost:
+      Base: 6.808
+      Exponent: 4
+  - Level: 365
+    KPS:
+      Base: 6.845
+      Exponent: 3
+    Cost:
+      Base: 6.845
+      Exponent: 4
+  - Level: 366
+    KPS:
+      Base: 6.882
+      Exponent: 3
+    Cost:
+      Base: 6.882
+      Exponent: 4
+  - Level: 367
+    KPS:
+      Base: 6.919
+      Exponent: 3
+    Cost:
+      Base: 6.919
+      Exponent: 4
+  - Level: 368
+    KPS:
+      Base: 6.956
+      Exponent: 3
+    Cost:
+      Base: 6.956
+      Exponent: 4
+  - Level: 369
+    KPS:
+      Base: 6.993
+      Exponent: 3
+    Cost:
+      Base: 6.993
+      Exponent: 4
+  - Level: 370
+    KPS:
+      Base: 7.03
+      Exponent: 3
+    Cost:
+      Base: 7.03
+      Exponent: 4
+  - Level: 371
+    KPS:
+      Base: 7.068
+      Exponent: 3
+    Cost:
+      Base: 7.068
+      Exponent: 4
+  - Level: 372
+    KPS:
+      Base: 7.106
+      Exponent: 3
+    Cost:
+      Base: 7.106
+      Exponent: 4
+  - Level: 373
+    KPS:
+      Base: 7.144
+      Exponent: 3
+    Cost:
+      Base: 7.144
+      Exponent: 4
+  - Level: 374
+    KPS:
+      Base: 7.182
+      Exponent: 3
+    Cost:
+      Base: 7.182
+      Exponent: 4
+  - Level: 375
+    KPS:
+      Base: 7.22
+      Exponent: 3
+    Cost:
+      Base: 7.22
+      Exponent: 4
+  - Level: 376
+    KPS:
+      Base: 7.258
+      Exponent: 3
+    Cost:
+      Base: 7.258
+      Exponent: 4
+  - Level: 377
+    KPS:
+      Base: 7.296
+      Exponent: 3
+    Cost:
+      Base: 7.296
+      Exponent: 4
+  - Level: 378
+    KPS:
+      Base: 7.334
+      Exponent: 3
+    Cost:
+      Base: 7.334
+      Exponent: 4
+  - Level: 379
+    KPS:
+      Base: 7.372
+      Exponent: 3
+    Cost:
+      Base: 7.372
+      Exponent: 4
+  - Level: 380
+    KPS:
+      Base: 7.41
+      Exponent: 3
+    Cost:
+      Base: 7.41
+      Exponent: 4
+  - Level: 381
+    KPS:
+      Base: 7.449
+      Exponent: 3
+    Cost:
+      Base: 7.449
+      Exponent: 4
+  - Level: 382
+    KPS:
+      Base: 7.488
+      Exponent: 3
+    Cost:
+      Base: 7.488
+      Exponent: 4
+  - Level: 383
+    KPS:
+      Base: 7.527
+      Exponent: 3
+    Cost:
+      Base: 7.527
+      Exponent: 4
+  - Level: 384
+    KPS:
+      Base: 7.566
+      Exponent: 3
+    Cost:
+      Base: 7.566
+      Exponent: 4
+  - Level: 385
+    KPS:
+      Base: 7.605
+      Exponent: 3
+    Cost:
+      Base: 7.605
+      Exponent: 4
+  - Level: 386
+    KPS:
+      Base: 7.644
+      Exponent: 3
+    Cost:
+      Base: 7.644
+      Exponent: 4
+  - Level: 387
+    KPS:
+      Base: 7.683
+      Exponent: 3
+    Cost:
+      Base: 7.683
+      Exponent: 4
+  - Level: 388
+    KPS:
+      Base: 7.722
+      Exponent: 3
+    Cost:
+      Base: 7.722
+      Exponent: 4
+  - Level: 389
+    KPS:
+      Base: 7.761
+      Exponent: 3
+    Cost:
+      Base: 7.761
+      Exponent: 4
+  - Level: 390
+    KPS:
+      Base: 7.8
+      Exponent: 3
+    Cost:
+      Base: 7.8
+      Exponent: 4
+  - Level: 391
+    KPS:
+      Base: 7.84
+      Exponent: 3
+    Cost:
+      Base: 7.84
+      Exponent: 4
+  - Level: 392
+    KPS:
+      Base: 7.88
+      Exponent: 3
+    Cost:
+      Base: 7.88
+      Exponent: 4
+  - Level: 393
+    KPS:
+      Base: 7.92
+      Exponent: 3
+    Cost:
+      Base: 7.92
+      Exponent: 4
+  - Level: 394
+    KPS:
+      Base: 7.96
+      Exponent: 3
+    Cost:
+      Base: 7.96
+      Exponent: 4
+  - Level: 395
+    KPS:
+      Base: 8
+      Exponent: 3
+    Cost:
+      Base: 8
+      Exponent: 4
+  - Level: 396
+    KPS:
+      Base: 8.04
+      Exponent: 3
+    Cost:
+      Base: 8.04
+      Exponent: 4
+  - Level: 397
+    KPS:
+      Base: 8.08
+      Exponent: 3
+    Cost:
+      Base: 8.08
+      Exponent: 4
+  - Level: 398
+    KPS:
+      Base: 8.12
+      Exponent: 3
+    Cost:
+      Base: 8.12
+      Exponent: 4
+  - Level: 399
+    KPS:
+      Base: 8.16
+      Exponent: 3
+    Cost:
+      Base: 8.16
+      Exponent: 4
+  - Level: 400
+    KPS:
+      Base: 8.2
+      Exponent: 3
+    Cost:
+      Base: 8.2
+      Exponent: 4
+  - Level: 401
+    KPS:
+      Base: 8.241
+      Exponent: 3
+    Cost:
+      Base: 8.241
+      Exponent: 4
+  - Level: 402
+    KPS:
+      Base: 8.282
+      Exponent: 3
+    Cost:
+      Base: 8.282
+      Exponent: 4
+  - Level: 403
+    KPS:
+      Base: 8.323
+      Exponent: 3
+    Cost:
+      Base: 8.323
+      Exponent: 4
+  - Level: 404
+    KPS:
+      Base: 8.364
+      Exponent: 3
+    Cost:
+      Base: 8.364
+      Exponent: 4
+  - Level: 405
+    KPS:
+      Base: 8.405
+      Exponent: 3
+    Cost:
+      Base: 8.405
+      Exponent: 4
+  - Level: 406
+    KPS:
+      Base: 8.446
+      Exponent: 3
+    Cost:
+      Base: 8.446
+      Exponent: 4
+  - Level: 407
+    KPS:
+      Base: 8.487
+      Exponent: 3
+    Cost:
+      Base: 8.487
+      Exponent: 4
+  - Level: 408
+    KPS:
+      Base: 8.528
+      Exponent: 3
+    Cost:
+      Base: 8.528
+      Exponent: 4
+  - Level: 409
+    KPS:
+      Base: 8.569
+      Exponent: 3
+    Cost:
+      Base: 8.569
+      Exponent: 4
+  - Level: 410
+    KPS:
+      Base: 8.61
+      Exponent: 3
+    Cost:
+      Base: 8.61
+      Exponent: 4
+  - Level: 411
+    KPS:
+      Base: 8.652
+      Exponent: 3
+    Cost:
+      Base: 8.652
+      Exponent: 4
+  - Level: 412
+    KPS:
+      Base: 8.694
+      Exponent: 3
+    Cost:
+      Base: 8.694
+      Exponent: 4
+  - Level: 413
+    KPS:
+      Base: 8.736
+      Exponent: 3
+    Cost:
+      Base: 8.736
+      Exponent: 4
+  - Level: 414
+    KPS:
+      Base: 8.778
+      Exponent: 3
+    Cost:
+      Base: 8.778
+      Exponent: 4
+  - Level: 415
+    KPS:
+      Base: 8.82
+      Exponent: 3
+    Cost:
+      Base: 8.82
+      Exponent: 4
+  - Level: 416
+    KPS:
+      Base: 8.862
+      Exponent: 3
+    Cost:
+      Base: 8.862
+      Exponent: 4
+  - Level: 417
+    KPS:
+      Base: 8.904
+      Exponent: 3
+    Cost:
+      Base: 8.904
+      Exponent: 4
+  - Level: 418
+    KPS:
+      Base: 8.946
+      Exponent: 3
+    Cost:
+      Base: 8.946
+      Exponent: 4
+  - Level: 419
+    KPS:
+      Base: 8.988
+      Exponent: 3
+    Cost:
+      Base: 8.988
+      Exponent: 4
+  - Level: 420
+    KPS:
+      Base: 9.03
+      Exponent: 3
+    Cost:
+      Base: 9.03
+      Exponent: 4
+  - Level: 421
+    KPS:
+      Base: 9.073
+      Exponent: 3
+    Cost:
+      Base: 9.073
+      Exponent: 4
+  - Level: 422
+    KPS:
+      Base: 9.116
+      Exponent: 3
+    Cost:
+      Base: 9.116
+      Exponent: 4
+  - Level: 423
+    KPS:
+      Base: 9.159
+      Exponent: 3
+    Cost:
+      Base: 9.159
+      Exponent: 4
+  - Level: 424
+    KPS:
+      Base: 9.202
+      Exponent: 3
+    Cost:
+      Base: 9.202
+      Exponent: 4
+  - Level: 425
+    KPS:
+      Base: 9.245
+      Exponent: 3
+    Cost:
+      Base: 9.245
+      Exponent: 4
+  - Level: 426
+    KPS:
+      Base: 9.288
+      Exponent: 3
+    Cost:
+      Base: 9.288
+      Exponent: 4
+  - Level: 427
+    KPS:
+      Base: 9.331
+      Exponent: 3
+    Cost:
+      Base: 9.331
+      Exponent: 4
+  - Level: 428
+    KPS:
+      Base: 9.374
+      Exponent: 3
+    Cost:
+      Base: 9.374
+      Exponent: 4
+  - Level: 429
+    KPS:
+      Base: 9.417
+      Exponent: 3
+    Cost:
+      Base: 9.417
+      Exponent: 4
+  - Level: 430
+    KPS:
+      Base: 9.46
+      Exponent: 3
+    Cost:
+      Base: 9.46
+      Exponent: 4
+  - Level: 431
+    KPS:
+      Base: 9.504
+      Exponent: 3
+    Cost:
+      Base: 9.504
+      Exponent: 4
+  - Level: 432
+    KPS:
+      Base: 9.548
+      Exponent: 3
+    Cost:
+      Base: 9.548
+      Exponent: 4
+  - Level: 433
+    KPS:
+      Base: 9.592
+      Exponent: 3
+    Cost:
+      Base: 9.592
+      Exponent: 4
+  - Level: 434
+    KPS:
+      Base: 9.636
+      Exponent: 3
+    Cost:
+      Base: 9.636
+      Exponent: 4
+  - Level: 435
+    KPS:
+      Base: 9.68
+      Exponent: 3
+    Cost:
+      Base: 9.68
+      Exponent: 4
+  - Level: 436
+    KPS:
+      Base: 9.724
+      Exponent: 3
+    Cost:
+      Base: 9.724
+      Exponent: 4
+  - Level: 437
+    KPS:
+      Base: 9.768
+      Exponent: 3
+    Cost:
+      Base: 9.768
+      Exponent: 4
+  - Level: 438
+    KPS:
+      Base: 9.812
+      Exponent: 3
+    Cost:
+      Base: 9.812
+      Exponent: 4
+  - Level: 439
+    KPS:
+      Base: 9.856
+      Exponent: 3
+    Cost:
+      Base: 9.856
+      Exponent: 4
+  - Level: 440
+    KPS:
+      Base: 9.9
+      Exponent: 3
+    Cost:
+      Base: 9.9
+      Exponent: 4
+  - Level: 441
+    KPS:
+      Base: 9.945
+      Exponent: 3
+    Cost:
+      Base: 9.945
+      Exponent: 4
+  - Level: 442
+    KPS:
+      Base: 9.99
+      Exponent: 3
+    Cost:
+      Base: 9.99
+      Exponent: 4
+  - Level: 443
+    KPS:
+      Base: 1.0035
+      Exponent: 4
+    Cost:
+      Base: 1.0035
+      Exponent: 5
+  - Level: 444
+    KPS:
+      Base: 1.008
+      Exponent: 4
+    Cost:
+      Base: 1.008
+      Exponent: 5
+  - Level: 445
+    KPS:
+      Base: 1.0125
+      Exponent: 4
+    Cost:
+      Base: 1.0125
+      Exponent: 5
+  - Level: 446
+    KPS:
+      Base: 1.017
+      Exponent: 4
+    Cost:
+      Base: 1.017
+      Exponent: 5
+  - Level: 447
+    KPS:
+      Base: 1.0215
+      Exponent: 4
+    Cost:
+      Base: 1.0215
+      Exponent: 5
+  - Level: 448
+    KPS:
+      Base: 1.026
+      Exponent: 4
+    Cost:
+      Base: 1.026
+      Exponent: 5
+  - Level: 449
+    KPS:
+      Base: 1.0305
+      Exponent: 4
+    Cost:
+      Base: 1.0305
+      Exponent: 5
+  - Level: 450
+    KPS:
+      Base: 1.035
+      Exponent: 4
+    Cost:
+      Base: 1.035
+      Exponent: 5
+  - Level: 451
+    KPS:
+      Base: 1.0396
+      Exponent: 4
+    Cost:
+      Base: 1.0396
+      Exponent: 5
+  - Level: 452
+    KPS:
+      Base: 1.0442
+      Exponent: 4
+    Cost:
+      Base: 1.0442
+      Exponent: 5
+  - Level: 453
+    KPS:
+      Base: 1.0488
+      Exponent: 4
+    Cost:
+      Base: 1.0488
+      Exponent: 5
+  - Level: 454
+    KPS:
+      Base: 1.0534
+      Exponent: 4
+    Cost:
+      Base: 1.0534
+      Exponent: 5
+  - Level: 455
+    KPS:
+      Base: 1.058
+      Exponent: 4
+    Cost:
+      Base: 1.058
+      Exponent: 5
+  - Level: 456
+    KPS:
+      Base: 1.0626
+      Exponent: 4
+    Cost:
+      Base: 1.0626
+      Exponent: 5
+  - Level: 457
+    KPS:
+      Base: 1.0672
+      Exponent: 4
+    Cost:
+      Base: 1.0672
+      Exponent: 5
+  - Level: 458
+    KPS:
+      Base: 1.0718
+      Exponent: 4
+    Cost:
+      Base: 1.0718
+      Exponent: 5
+  - Level: 459
+    KPS:
+      Base: 1.0764
+      Exponent: 4
+    Cost:
+      Base: 1.0764
+      Exponent: 5
+  - Level: 460
+    KPS:
+      Base: 1.081
+      Exponent: 4
+    Cost:
+      Base: 1.081
+      Exponent: 5
+  - Level: 461
+    KPS:
+      Base: 1.0857
+      Exponent: 4
+    Cost:
+      Base: 1.0857
+      Exponent: 5
+  - Level: 462
+    KPS:
+      Base: 1.0904
+      Exponent: 4
+    Cost:
+      Base: 1.0904
+      Exponent: 5
+  - Level: 463
+    KPS:
+      Base: 1.0951
+      Exponent: 4
+    Cost:
+      Base: 1.0951
+      Exponent: 5
+  - Level: 464
+    KPS:
+      Base: 1.0998
+      Exponent: 4
+    Cost:
+      Base: 1.0998
+      Exponent: 5
+  - Level: 465
+    KPS:
+      Base: 1.1045
+      Exponent: 4
+    Cost:
+      Base: 1.1045
+      Exponent: 5
+  - Level: 466
+    KPS:
+      Base: 1.1092
+      Exponent: 4
+    Cost:
+      Base: 1.1092
+      Exponent: 5
+  - Level: 467
+    KPS:
+      Base: 1.1139
+      Exponent: 4
+    Cost:
+      Base: 1.1139
+      Exponent: 5
+  - Level: 468
+    KPS:
+      Base: 1.1186
+      Exponent: 4
+    Cost:
+      Base: 1.1186
+      Exponent: 5
+  - Level: 469
+    KPS:
+      Base: 1.1233
+      Exponent: 4
+    Cost:
+      Base: 1.1233
+      Exponent: 5
+  - Level: 470
+    KPS:
+      Base: 1.128
+      Exponent: 4
+    Cost:
+      Base: 1.128
+      Exponent: 5
+  - Level: 471
+    KPS:
+      Base: 1.1328
+      Exponent: 4
+    Cost:
+      Base: 1.1328
+      Exponent: 5
+  - Level: 472
+    KPS:
+      Base: 1.1376
+      Exponent: 4
+    Cost:
+      Base: 1.1376
+      Exponent: 5
+  - Level: 473
+    KPS:
+      Base: 1.1424
+      Exponent: 4
+    Cost:
+      Base: 1.1424
+      Exponent: 5
+  - Level: 474
+    KPS:
+      Base: 1.1472
+      Exponent: 4
+    Cost:
+      Base: 1.1472
+      Exponent: 5
+  - Level: 475
+    KPS:
+      Base: 1.152
+      Exponent: 4
+    Cost:
+      Base: 1.152
+      Exponent: 5
+  - Level: 476
+    KPS:
+      Base: 1.1568
+      Exponent: 4
+    Cost:
+      Base: 1.1568
+      Exponent: 5
+  - Level: 477
+    KPS:
+      Base: 1.1616
+      Exponent: 4
+    Cost:
+      Base: 1.1616
+      Exponent: 5
+  - Level: 478
+    KPS:
+      Base: 1.1664
+      Exponent: 4
+    Cost:
+      Base: 1.1664
+      Exponent: 5
+  - Level: 479
+    KPS:
+      Base: 1.1712
+      Exponent: 4
+    Cost:
+      Base: 1.1712
+      Exponent: 5
+  - Level: 480
+    KPS:
+      Base: 1.176
+      Exponent: 4
+    Cost:
+      Base: 1.176
+      Exponent: 5
+  - Level: 481
+    KPS:
+      Base: 1.1809
+      Exponent: 4
+    Cost:
+      Base: 1.1809
+      Exponent: 5
+  - Level: 482
+    KPS:
+      Base: 1.1858
+      Exponent: 4
+    Cost:
+      Base: 1.1858
+      Exponent: 5
+  - Level: 483
+    KPS:
+      Base: 1.1907
+      Exponent: 4
+    Cost:
+      Base: 1.1907
+      Exponent: 5
+  - Level: 484
+    KPS:
+      Base: 1.1956
+      Exponent: 4
+    Cost:
+      Base: 1.1956
+      Exponent: 5
+  - Level: 485
+    KPS:
+      Base: 1.2005
+      Exponent: 4
+    Cost:
+      Base: 1.2005
+      Exponent: 5
+  - Level: 486
+    KPS:
+      Base: 1.2054
+      Exponent: 4
+    Cost:
+      Base: 1.2054
+      Exponent: 5
+  - Level: 487
+    KPS:
+      Base: 1.2103
+      Exponent: 4
+    Cost:
+      Base: 1.2103
+      Exponent: 5
+  - Level: 488
+    KPS:
+      Base: 1.2152
+      Exponent: 4
+    Cost:
+      Base: 1.2152
+      Exponent: 5
+  - Level: 489
+    KPS:
+      Base: 1.2201
+      Exponent: 4
+    Cost:
+      Base: 1.2201
+      Exponent: 5
+  - Level: 490
+    KPS:
+      Base: 1.225
+      Exponent: 4
+    Cost:
+      Base: 1.225
+      Exponent: 5
+  - Level: 491
+    KPS:
+      Base: 1.23
+      Exponent: 4
+    Cost:
+      Base: 1.23
+      Exponent: 5
+  - Level: 492
+    KPS:
+      Base: 1.235
+      Exponent: 4
+    Cost:
+      Base: 1.235
+      Exponent: 5
+  - Level: 493
+    KPS:
+      Base: 1.24
+      Exponent: 4
+    Cost:
+      Base: 1.24
+      Exponent: 5
+  - Level: 494
+    KPS:
+      Base: 1.245
+      Exponent: 4
+    Cost:
+      Base: 1.245
+      Exponent: 5
+  - Level: 495
+    KPS:
+      Base: 1.25
+      Exponent: 4
+    Cost:
+      Base: 1.25
+      Exponent: 5
+  - Level: 496
+    KPS:
+      Base: 1.255
+      Exponent: 4
+    Cost:
+      Base: 1.255
+      Exponent: 5
+  - Level: 497
+    KPS:
+      Base: 1.26
+      Exponent: 4
+    Cost:
+      Base: 1.26
+      Exponent: 5
+  - Level: 498
+    KPS:
+      Base: 1.265
+      Exponent: 4
+    Cost:
+      Base: 1.265
+      Exponent: 5
+  - Level: 499
+    KPS:
+      Base: 1.27
+      Exponent: 4
+    Cost:
+      Base: 1.27
+      Exponent: 5
+  - Level: 500
+    KPS:
+      Base: 1.275
+      Exponent: 4
+    Cost:
+      Base: 1.275
+      Exponent: 5

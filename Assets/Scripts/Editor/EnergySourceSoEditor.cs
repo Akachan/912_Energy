@@ -60,7 +60,11 @@ public class EnergySourceSoEditor : UnityEditor.Editor
         try
         {
             string csvText = TryLoadCsvText(so.CsvUrl);
-
+            
+            
+            ////Debug
+            Debug.Log($"Importando CSV desde '{so.CsvUrl}'...");
+            
             if (string.IsNullOrWhiteSpace(csvText))
             {
                 // Si no hay URL o falló la descarga, permitir elegir un archivo local
@@ -78,6 +82,9 @@ public class EnergySourceSoEditor : UnityEditor.Editor
             }
 
             var result = ParseCsvToRows(csvText, out var warnings);
+            
+            ////Debug
+            Debug.Log(result);
 
             if (result == null || result.Count == 0)
             {

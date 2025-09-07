@@ -11,7 +11,7 @@ namespace Energy
       public event Action<BigNumber> OnEnergySourceChange; 
       private BigNumber _currentEnergy;
       private Dictionary<string, BigNumber> _energySources;
-      private float _currentTime = 0f;
+      private float _currentTime = 9f;
       private BigNumber _energyToAdd;
 
       private EnergyUI _energyUi;

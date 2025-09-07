@@ -16,6 +16,6 @@ public class EnergyUI : MonoBehaviour
     }
     public void SetEpsValue(BigNumber value)
     {
-        epsValue.text = BigNumberFormatter.SetSuffixFormat(value);
+        epsValue.text = $"EPS: {BigNumberFormatter.SetSuffixFormat(value)}";
     }
 }

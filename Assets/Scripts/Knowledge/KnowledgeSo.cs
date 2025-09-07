@@ -25,7 +25,7 @@ public class KnowledgeSo : ScriptableObject
     [SerializeField] private string csvUrl;
 
     [Tooltip("Filas importadas desde CSV (una por nivel).")]
-    [SerializeField] private List<LevelKnowledgeRow> rows = new List<LevelKnowledgeRow>();
+    [SerializeField] private List<LevelKnowledgeRow> rows;
 
     [NonSerialized] private Dictionary<int, LevelKnowledgeData> _cache;    
     
@@ -66,8 +66,11 @@ public class KnowledgeSo : ScriptableObject
     //Asegura que haya caché, si no hay, lo crea.
     private void EnsureCache()
     {
-        if (_cache == null)
+       
+          if (_cache == null)
+         
             BuildCache();
+        
     }
 
     //Te devuelve el DataLevel dado un nivel
@@ -88,8 +91,16 @@ public class KnowledgeSo : ScriptableObject
     // Método usado por el Editor para reemplazar todas las filas de una vez.
     public void SetImportedRows(List<LevelKnowledgeRow> newRows)
     {
-        rows = newRows ?? new List<LevelKnowledgeRow>();
         _cache = null;
+       
+        
+        rows = new List<LevelKnowledgeRow>();
+        rows = newRows;
+       
+        
+        
+        
+        
     }
 #endif
 }

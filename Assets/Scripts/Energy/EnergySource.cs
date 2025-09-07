@@ -10,6 +10,10 @@ namespace Energy
 
         [Header("Settings")] [SerializeField] private int currentLevel = 1;
         [SerializeField] private float timeToRecalculate = 3;
+        
+        [Header("Referencias")]
+        [SerializeField] private GameObject infoPanelPrefab;
+        
 
 
 
@@ -87,7 +91,12 @@ namespace Energy
                 currentLevel,
                 dataLevel.EPS,
                 difference,
-                dataLevel.Cost);
+                dataLevel.Cost,
+                _energySource.Illustration);
+            
+            var instance = Instantiate(infoPanelPrefab, _energy.transform);
+            instance.GetComponent<SetInfoPanel>().SetInfo(_energySource.EnergySourceName, _energySource.Illustration,_energySource.Description);
+            
         }
 
         private BigNumber GetDifferenceWithNextLevel(BigNumber eps)

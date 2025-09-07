@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995cddd334684934aa016554acce9346, type: 3}
+  m_Name: "8_Energ\xEDa Infinita"
+  m_EditorClassIdentifier: 
+  energySourceName: GATO-TOSTADA
+  costToUnlock:
+    Base: 0
+    Exponent: 0
+  illustration: {fileID: 21300000, guid: a55c8e38e2254d343909af3363c0df4e, type: 3}
+  description: "El llamado \u201Cgato con tostada en la espalda\u201D es un meme
+    cient\xEDfico-par\xF3dico sobre el movimiento perpetuo. Parte de dos supuestas
+    \u201Cleyes\u201D: 1) los gatos siempre caen de pie y 2) una tostada siempre
+    cae con el lado de la mantequilla hacia abajo. Si combinas ambas, colocando la
+    tostada sobre el lomo del gato, surge la broma de que el animal quedar\xEDa suspendido
+    en el aire girando infinitamente, incapaz de decidir c\xF3mo caer. Obviamente,
+    en la realidad es imposible porque violar\xEDa las leyes de la termodin\xE1mica,
+    pero como meme funciona como una divertida s\xE1tira de la b\xFAsqueda del movimiento\_perpetuo."
+  csvUrl: 
+  rows: []

@@ -61,6 +61,7 @@ namespace Editor
             try
             {
                 string csvText = TryLoadCsvText(so.CsvUrl);
+                Debug.Log(csvText);
 
                 if (string.IsNullOrWhiteSpace(csvText))
                 {
@@ -120,7 +121,9 @@ namespace Editor
                 // URL http/https
                 if (source.StartsWith("http", StringComparison.OrdinalIgnoreCase))
                 {
+                    Debug.Log($"Descargando CSV desde '{source}'...");
                     return DownloadStringSync(source);
+                    
                 }
 
                 // file://
@@ -159,7 +162,7 @@ namespace Editor
                     while (!op.isDone)
                     {
                         // Bloqueo simple en Editor (evita freeze total)
-                        System.Threading.Thread.Sleep(10);
+                        System.Threading.Thread.Sleep(100);
                     }
 
 #if UNITY_2020_2_OR_NEWER
@@ -168,6 +171,7 @@ namespace Editor
                 if (!req.isNetworkError && !req.isHttpError)
 #endif
                     {
+                        Debug.Log("Pasó por del downloadHandler.text");
                         return req.downloadHandler.text;
                     }
 
@@ -193,6 +197,7 @@ namespace Editor
                     catch { /* Ignorar si no aplica */ }
 
                     wc.Encoding = Encoding.UTF8;
+                
                     return wc.DownloadString(url);
                 }
 #pragma warning restore SYSLIB0014

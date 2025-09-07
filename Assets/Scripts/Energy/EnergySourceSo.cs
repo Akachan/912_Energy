@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Energy;
 using UnityEngine;
 
 //Este struct es para levantar las filas del CVS
@@ -9,6 +10,7 @@ public struct LevelRow
     public int Level;
     public BigNumber EPS;   // Texto en notación científica, p. ej.: "1.5e3"
     public BigNumber Cost;
+    
 }
 
 //Este struct es para cuardar los datos en el diccionario (el Nivel será la Key del Dict)
@@ -24,6 +26,8 @@ public partial class EnergySourceSo : ScriptableObject
 {
     [SerializeField] private string energySourceName;
     [SerializeField] private BigNumber costToUnlock;
+    [SerializeField] private Sprite illustration;
+    [SerializeField] [TextArea(4,50)] private string description;
     
     [Header("Importación CSV")]
     [Tooltip("URL pública del CSV para este tipo de Energy Source (por ejemplo, .../pub?output=csv).")]
@@ -33,6 +37,11 @@ public partial class EnergySourceSo : ScriptableObject
     [SerializeField] private List<LevelRow> rows = new List<LevelRow>();
 
     [NonSerialized] private Dictionary<int, LevelData> _cache;
+    
+    
+    
+    public Sprite Illustration => illustration;
+    public string Description => description;
 
     public string CsvUrl
     {
@@ -100,7 +109,8 @@ public partial class EnergySourceSo : ScriptableObject
     // Método usado por el Editor para reemplazar todas las filas de una vez.
     public void SetImportedRows(List<LevelRow> newRows)
     {
-        rows = newRows ?? new List<LevelRow>();
+        rows = newRows;
+        
         _cache = null;
     }
 #endif

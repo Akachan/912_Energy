@@ -7,6 +7,7 @@ namespace Energy
 {
     public class EnergySourceUI : MonoBehaviour
     {   [Header("References")]
+        [SerializeField] private Image illustration;
         [SerializeField] private TextMeshProUGUI titleText;
         [SerializeField] private TextMeshProUGUI levelText;
         [SerializeField] private TextMeshProUGUI epsText;
@@ -33,16 +34,19 @@ namespace Energy
             //nextLevelEpsText.text = $"NextEPS: +{firstLevelEps.Base:#.####}e{firstLevelEps.Exponent}";
             nextLevelEpsText.text = $"NextEPS: +{BigNumberFormatter.SetSuffixFormat(firstLevelEps)}";
             //unlockCostText.text = $"Unlock: {costToUnlock.Base}e{costToUnlock.Exponent}";
-            unlockCostText.text = $"Unlock: {BigNumberFormatter.SetSuffixFormat(costToUnlock)}";
+            unlockCostText.text = $"{BigNumberFormatter.SetSuffixFormat(costToUnlock)}";
             upgradeCostText.text = "";
         
             unlockButton.gameObject.SetActive(true);
             upgradeButton.gameObject.SetActive(false);
         }
 
-        public void SetUnlockedEnergySourceData(string energySourceName, int level, BigNumber eps, BigNumber nextLevelEps, BigNumber upgradeCost)
+        public void SetUnlockedEnergySourceData(string energySourceName, int level, BigNumber eps, BigNumber nextLevelEps, BigNumber upgradeCost, Sprite newSprite)
         {
-        
+            print(newSprite.name);
+            illustration.sprite = newSprite;
+            illustration.SetNativeSize();
+            
             titleText.text = energySourceName;
             UpdateEnergySourceData(level, eps, nextLevelEps, upgradeCost);
             unlockButton.gameObject.SetActive(false);
