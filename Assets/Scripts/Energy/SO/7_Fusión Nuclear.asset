@@ -26,4 +26,704 @@ MonoBehaviour:
     limpia y pr\xE1cticamente inagotable. Aunque se estudia desde mediados del siglo
     XX, a\xFAn no se ha logrado su aplicaci\xF3n comercial por su complejidad\_tecnol\xF3gica."
   csvUrl: 
-  rows: []
+  rows:
+  - Level: 1
+    EPS:
+      Base: 2.62144
+      Exponent: 5
+    Cost:
+      Base: 1
+      Exponent: 7
+  - Level: 2
+    EPS:
+      Base: 5.24288
+      Exponent: 5
+    Cost:
+      Base: 1.7
+      Exponent: 7
+  - Level: 3
+    EPS:
+      Base: 7.86432
+      Exponent: 5
+    Cost:
+      Base: 2.89
+      Exponent: 7
+  - Level: 4
+    EPS:
+      Base: 1.048576
+      Exponent: 6
+    Cost:
+      Base: 4.913
+      Exponent: 7
+  - Level: 5
+    EPS:
+      Base: 1.31072
+      Exponent: 6
+    Cost:
+      Base: 8.3521
+      Exponent: 7
+  - Level: 6
+    EPS:
+      Base: 1.572864
+      Exponent: 6
+    Cost:
+      Base: 1.419857
+      Exponent: 8
+  - Level: 7
+    EPS:
+      Base: 1.835008
+      Exponent: 6
+    Cost:
+      Base: 2.4137569
+      Exponent: 8
+  - Level: 8
+    EPS:
+      Base: 2.097152
+      Exponent: 6
+    Cost:
+      Base: 4.10338673
+      Exponent: 8
+  - Level: 9
+    EPS:
+      Base: 2.359296
+      Exponent: 6
+    Cost:
+      Base: 6.97575744
+      Exponent: 8
+  - Level: 10
+    EPS:
+      Base: 2.62144
+      Exponent: 6
+    Cost:
+      Base: 1.185878765
+      Exponent: 9
+  - Level: 11
+    EPS:
+      Base: 2.883584
+      Exponent: 6
+    Cost:
+      Base: 2.0159939
+      Exponent: 9
+  - Level: 12
+    EPS:
+      Base: 3.145728
+      Exponent: 6
+    Cost:
+      Base: 3.427189631
+      Exponent: 9
+  - Level: 13
+    EPS:
+      Base: 3.407872
+      Exponent: 6
+    Cost:
+      Base: 5.826222372
+      Exponent: 9
+  - Level: 14
+    EPS:
+      Base: 3.670016
+      Exponent: 6
+    Cost:
+      Base: 9.904578033
+      Exponent: 9
+  - Level: 15
+    EPS:
+      Base: 3.93216
+      Exponent: 6
+    Cost:
+      Base: 1.6837782656
+      Exponent: 10
+  - Level: 16
+    EPS:
+      Base: 4.194304
+      Exponent: 6
+    Cost:
+      Base: 2.8624230515
+      Exponent: 10
+  - Level: 17
+    EPS:
+      Base: 4.456448
+      Exponent: 6
+    Cost:
+      Base: 4.8661191876
+      Exponent: 10
+  - Level: 18
+    EPS:
+      Base: 4.718592
+      Exponent: 6
+    Cost:
+      Base: 8.2724026189
+      Exponent: 10
+  - Level: 19
+    EPS:
+      Base: 4.980736
+      Exponent: 6
+    Cost:
+      Base: 1.40630844521
+      Exponent: 11
+  - Level: 20
+    EPS:
+      Base: 5.24288
+      Exponent: 6
+    Cost:
+      Base: 2.39072435685
+      Exponent: 11
+  - Level: 21
+    EPS:
+      Base: 5.505024
+      Exponent: 6
+    Cost:
+      Base: 4.06423140665
+      Exponent: 11
+  - Level: 22
+    EPS:
+      Base: 5.767168
+      Exponent: 6
+    Cost:
+      Base: 6.9091933913
+      Exponent: 11
+  - Level: 23
+    EPS:
+      Base: 6.029312
+      Exponent: 6
+    Cost:
+      Base: 1.174562876521
+      Exponent: 12
+  - Level: 24
+    EPS:
+      Base: 6.291456
+      Exponent: 6
+    Cost:
+      Base: 1.996756890086
+      Exponent: 12
+  - Level: 25
+    EPS:
+      Base: 1.31072
+      Exponent: 7
+    Cost:
+      Base: 3.394486713146
+      Exponent: 12
+  - Level: 26
+    EPS:
+      Base: 1.3631488
+      Exponent: 7
+    Cost:
+      Base: 5.770627412348
+      Exponent: 12
+  - Level: 27
+    EPS:
+      Base: 1.4155776
+      Exponent: 7
+    Cost:
+      Base: 9.810066600992
+      Exponent: 12
+  - Level: 28
+    EPS:
+      Base: 1.4680064
+      Exponent: 7
+    Cost:
+      Base: 1.6677113221687
+      Exponent: 13
+  - Level: 29
+    EPS:
+      Base: 1.5204352
+      Exponent: 7
+    Cost:
+      Base: 2.8351092476868
+      Exponent: 13
+  - Level: 30
+    EPS:
+      Base: 1.572864
+      Exponent: 7
+    Cost:
+      Base: 4.8196857210675
+      Exponent: 13
+  - Level: 31
+    EPS:
+      Base: 1.6252928
+      Exponent: 7
+    Cost:
+      Base: 8.1934657258148
+      Exponent: 13
+  - Level: 32
+    EPS:
+      Base: 1.6777216
+      Exponent: 7
+    Cost:
+      Base: 1.39288917338851
+      Exponent: 14
+  - Level: 33
+    EPS:
+      Base: 1.7301504
+      Exponent: 7
+    Cost:
+      Base: 2.36791159476047
+      Exponent: 14
+  - Level: 34
+    EPS:
+      Base: 1.7825792
+      Exponent: 7
+    Cost:
+      Base: 4.02544971109279
+      Exponent: 14
+  - Level: 35
+    EPS:
+      Base: 1.835008
+      Exponent: 7
+    Cost:
+      Base: 6.84326450885775
+      Exponent: 14
+  - Level: 36
+    EPS:
+      Base: 1.8874368
+      Exponent: 7
+    Cost:
+      Base: 1.16335496650582
+      Exponent: 15
+  - Level: 37
+    EPS:
+      Base: 1.9398656
+      Exponent: 7
+    Cost:
+      Base: 1.97770344305989
+      Exponent: 15
+  - Level: 38
+    EPS:
+      Base: 1.9922944
+      Exponent: 7
+    Cost:
+      Base: 3.36209585320181
+      Exponent: 15
+  - Level: 39
+    EPS:
+      Base: 2.0447232
+      Exponent: 7
+    Cost:
+      Base: 5.71556295044308
+      Exponent: 15
+  - Level: 40
+    EPS:
+      Base: 2.097152
+      Exponent: 7
+    Cost:
+      Base: 9.71645701575323
+      Exponent: 15
+  - Level: 41
+    EPS:
+      Base: 2.1495808
+      Exponent: 7
+    Cost:
+      Base: 1.65179769267805
+      Exponent: 16
+  - Level: 42
+    EPS:
+      Base: 2.2020096
+      Exponent: 7
+    Cost:
+      Base: 2.80805607755268
+      Exponent: 16
+  - Level: 43
+    EPS:
+      Base: 2.2544384
+      Exponent: 7
+    Cost:
+      Base: 4.77369533183956
+      Exponent: 16
+  - Level: 44
+    EPS:
+      Base: 2.3068672
+      Exponent: 7
+    Cost:
+      Base: 8.11528206412726
+      Exponent: 16
+  - Level: 45
+    EPS:
+      Base: 2.359296
+      Exponent: 7
+    Cost:
+      Base: 1.37959795090163
+      Exponent: 17
+  - Level: 46
+    EPS:
+      Base: 2.4117248
+      Exponent: 7
+    Cost:
+      Base: 2.34531651653278
+      Exponent: 17
+  - Level: 47
+    EPS:
+      Base: 2.4641536
+      Exponent: 7
+    Cost:
+      Base: 3.98703807810572
+      Exponent: 17
+  - Level: 48
+    EPS:
+      Base: 2.5165824
+      Exponent: 7
+    Cost:
+      Base: 6.77796473277973
+      Exponent: 17
+  - Level: 49
+    EPS:
+      Base: 2.5690112
+      Exponent: 7
+    Cost:
+      Base: 1.15225400457255
+      Exponent: 18
+  - Level: 50
+    EPS:
+      Base: 5.24288
+      Exponent: 7
+    Cost:
+      Base: 1.95883180777334
+      Exponent: 18
+  - Level: 51
+    EPS:
+      Base: 5.3477376
+      Exponent: 7
+    Cost:
+      Base: 3.33001407321468
+      Exponent: 18
+  - Level: 52
+    EPS:
+      Base: 5.4525952
+      Exponent: 7
+    Cost:
+      Base: 5.66102392446495
+      Exponent: 18
+  - Level: 53
+    EPS:
+      Base: 5.5574528
+      Exponent: 7
+    Cost:
+      Base: 9.62374067159042
+      Exponent: 18
+  - Level: 54
+    EPS:
+      Base: 5.6623104
+      Exponent: 7
+    Cost:
+      Base: 1.63603591417037
+      Exponent: 19
+  - Level: 55
+    EPS:
+      Base: 5.767168
+      Exponent: 7
+    Cost:
+      Base: 2.7812610540896303
+      Exponent: 19
+  - Level: 56
+    EPS:
+      Base: 5.8720256
+      Exponent: 7
+    Cost:
+      Base: 4.72814379195237
+      Exponent: 19
+  - Level: 57
+    EPS:
+      Base: 5.9768832
+      Exponent: 7
+    Cost:
+      Base: 8.03784444631904
+      Exponent: 19
+  - Level: 58
+    EPS:
+      Base: 6.0817408
+      Exponent: 7
+    Cost:
+      Base: 1.36643355587424
+      Exponent: 20
+  - Level: 59
+    EPS:
+      Base: 6.1865984
+      Exponent: 7
+    Cost:
+      Base: 2.3229370449862
+      Exponent: 20
+  - Level: 60
+    EPS:
+      Base: 6.291456
+      Exponent: 7
+    Cost:
+      Base: 3.94899297647654
+      Exponent: 20
+  - Level: 61
+    EPS:
+      Base: 6.3963136
+      Exponent: 7
+    Cost:
+      Base: 6.71328806001012
+      Exponent: 20
+  - Level: 62
+    EPS:
+      Base: 6.5011712
+      Exponent: 7
+    Cost:
+      Base: 1.14125897020172
+      Exponent: 21
+  - Level: 63
+    EPS:
+      Base: 6.6060288
+      Exponent: 7
+    Cost:
+      Base: 1.94014024934292
+      Exponent: 21
+  - Level: 64
+    EPS:
+      Base: 6.7108864
+      Exponent: 7
+    Cost:
+      Base: 3.29823842388297
+      Exponent: 21
+  - Level: 65
+    EPS:
+      Base: 6.815744
+      Exponent: 7
+    Cost:
+      Base: 5.60700532060105
+      Exponent: 21
+  - Level: 66
+    EPS:
+      Base: 6.9206016
+      Exponent: 7
+    Cost:
+      Base: 9.53190904502179
+      Exponent: 21
+  - Level: 67
+    EPS:
+      Base: 7.0254592
+      Exponent: 7
+    Cost:
+      Base: 1.6204245376536999
+      Exponent: 22
+  - Level: 68
+    EPS:
+      Base: 7.1303168
+      Exponent: 7
+    Cost:
+      Base: 2.7547217140113003
+      Exponent: 22
+  - Level: 69
+    EPS:
+      Base: 7.2351744
+      Exponent: 7
+    Cost:
+      Base: 4.6830269138192095
+      Exponent: 22
+  - Level: 70
+    EPS:
+      Base: 7.340032
+      Exponent: 7
+    Cost:
+      Base: 7.96114575349265
+      Exponent: 22
+  - Level: 71
+    EPS:
+      Base: 7.4448896
+      Exponent: 7
+    Cost:
+      Base: 1.3533947780937499
+      Exponent: 23
+  - Level: 72
+    EPS:
+      Base: 7.5497472
+      Exponent: 7
+    Cost:
+      Base: 2.3007711227593797
+      Exponent: 23
+  - Level: 73
+    EPS:
+      Base: 7.6546048
+      Exponent: 7
+    Cost:
+      Base: 3.9113109086909397
+      Exponent: 23
+  - Level: 74
+    EPS:
+      Base: 7.7594624
+      Exponent: 7
+    Cost:
+      Base: 6.649228544774589
+      Exponent: 23
+  - Level: 75
+    EPS:
+      Base: 1.572864
+      Exponent: 8
+    Cost:
+      Base: 1.13036885261168
+      Exponent: 24
+  - Level: 76
+    EPS:
+      Base: 1.59383552
+      Exponent: 8
+    Cost:
+      Base: 1.92162704943986
+      Exponent: 24
+  - Level: 77
+    EPS:
+      Base: 1.61480704
+      Exponent: 8
+    Cost:
+      Base: 3.26676598404776
+      Exponent: 24
+  - Level: 78
+    EPS:
+      Base: 1.63577856
+      Exponent: 8
+    Cost:
+      Base: 5.55350217288119
+      Exponent: 24
+  - Level: 79
+    EPS:
+      Base: 1.65675008
+      Exponent: 8
+    Cost:
+      Base: 9.44095369389802
+      Exponent: 24
+  - Level: 80
+    EPS:
+      Base: 1.6777216
+      Exponent: 8
+    Cost:
+      Base: 1.6049621279626598
+      Exponent: 25
+  - Level: 81
+    EPS:
+      Base: 1.69869312
+      Exponent: 8
+    Cost:
+      Base: 2.7284356175365296
+      Exponent: 25
+  - Level: 82
+    EPS:
+      Base: 1.71966464
+      Exponent: 8
+    Cost:
+      Base: 4.638340549812099
+      Exponent: 25
+  - Level: 83
+    EPS:
+      Base: 1.74063616
+      Exponent: 8
+    Cost:
+      Base: 7.885178934680559
+      Exponent: 25
+  - Level: 84
+    EPS:
+      Base: 1.76160768
+      Exponent: 8
+    Cost:
+      Base: 1.3404804188956998
+      Exponent: 26
+  - Level: 85
+    EPS:
+      Base: 1.7825792
+      Exponent: 8
+    Cost:
+      Base: 2.27881671212268
+      Exponent: 26
+  - Level: 86
+    EPS:
+      Base: 1.80355072
+      Exponent: 8
+    Cost:
+      Base: 3.87398841060856
+      Exponent: 26
+  - Level: 87
+    EPS:
+      Base: 1.82452224
+      Exponent: 8
+    Cost:
+      Base: 6.585780298034551
+      Exponent: 26
+  - Level: 88
+    EPS:
+      Base: 1.84549376
+      Exponent: 8
+    Cost:
+      Base: 1.11958265066587
+      Exponent: 27
+  - Level: 89
+    EPS:
+      Base: 1.86646528
+      Exponent: 8
+    Cost:
+      Base: 1.90329050613199
+      Exponent: 27
+  - Level: 90
+    EPS:
+      Base: 1.8874368
+      Exponent: 8
+    Cost:
+      Base: 3.23559386042438
+      Exponent: 27
+  - Level: 91
+    EPS:
+      Base: 1.90840832
+      Exponent: 8
+    Cost:
+      Base: 5.50050956272144
+      Exponent: 27
+  - Level: 92
+    EPS:
+      Base: 1.92937984
+      Exponent: 8
+    Cost:
+      Base: 9.35086625662645
+      Exponent: 27
+  - Level: 93
+    EPS:
+      Base: 1.95035136
+      Exponent: 8
+    Cost:
+      Base: 1.5896472636265
+      Exponent: 28
+  - Level: 94
+    EPS:
+      Base: 1.97132288
+      Exponent: 8
+    Cost:
+      Base: 2.70240034816504
+      Exponent: 28
+  - Level: 95
+    EPS:
+      Base: 1.9922944
+      Exponent: 8
+    Cost:
+      Base: 4.59408059188057
+      Exponent: 28
+  - Level: 96
+    EPS:
+      Base: 2.01326592
+      Exponent: 8
+    Cost:
+      Base: 7.809937006196971
+      Exponent: 28
+  - Level: 97
+    EPS:
+      Base: 2.03423744
+      Exponent: 8
+    Cost:
+      Base: 1.32768929105349
+      Exponent: 29
+  - Level: 98
+    EPS:
+      Base: 2.05520896
+      Exponent: 8
+    Cost:
+      Base: 2.25707179479092
+      Exponent: 29
+  - Level: 99
+    EPS:
+      Base: 2.07618048
+      Exponent: 8
+    Cost:
+      Base: 3.8370220511445705
+      Exponent: 29
+  - Level: 100
+    EPS:
+      Base: 4.194304
+      Exponent: 8
+    Cost:
+      Base: 6.522937486945771
+      Exponent: 29

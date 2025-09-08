@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TimeController : MonoBehaviour
 {
+    [SerializeField] private bool _isDebug=false;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +14,7 @@ public class TimeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!_isDebug) return;
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Time.timeScale = 1f;
