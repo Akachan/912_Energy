@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energySourceName: PANELES SOLARES
   costToUnlock:
-    Base: 0
-    Exponent: 0
+    Base: 1
+    Exponent: 9
   illustration: {fileID: 21300000, guid: 0c68e3ad20a7c92468839588ec08c0f6, type: 3}
   description: "La energ\xEDa solar es una fuente de energ\xEDa renovable que aprovecha
     la radiaci\xF3n del sol para generar calor o electricidad. Se divide en solar

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energySourceName: "FUSI\xD3N NUCLEAR"
   costToUnlock:
-    Base: 0
-    Exponent: 0
+    Base: 5
+    Exponent: 10
   illustration: {fileID: 21300000, guid: af0009523d433b44c9b1c127560165fe, type: 3}
   description: "La fusi\xF3n nuclear es un proceso mediante el cual dos n\xFAcleos
     ligeros, como los is\xF3topos del hidr\xF3geno (deuterio y tritio), se combinan
