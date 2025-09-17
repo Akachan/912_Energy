@@ -7,8 +7,11 @@ using UnityEngine;
 
 public class KnowledgeSource : MonoBehaviour
 {
+    
 
     [SerializeField] private KnowledgeSo knowledgeSo;
+    
+    
 
     private int _currentKnowledgeLevel = 1;
     private KnowledgeManager _knowledgeManager;
@@ -75,11 +78,13 @@ public class KnowledgeSource : MonoBehaviour
     }
     
     //Al hacer Click en el Botón
-    public void BuyUpgrade()
+    public void BuyUpgrade(int levelsToBuy = 1)
     {
-        if (!_energy.RemoveEnergy(knowledgeSo.GetKnowledgeCost(_currentKnowledgeLevel))) return;
+        var nextLevel = _currentKnowledgeLevel + levelsToBuy;
+        if (!_energy.RemoveEnergy(knowledgeSo.GetKnowledgeCost(nextLevel, _currentKnowledgeLevel))) return;
         Debug.Log("Buy Upgrade");
-        _currentKnowledgeLevel++;
+        
+        _currentKnowledgeLevel = nextLevel;
         
         if (_currentKnowledgeLevel < knowledgeSo.GetMaxLevel())
         {

@@ -49,7 +49,7 @@ public partial class EnergySourceSo : ScriptableObject
         set => csvUrl = value;
     }
 
-    //Esto devuelve las filas... será necesario?
+    //Esto devuelve las filas... ¿Será necesario?
     public IReadOnlyList<LevelRow> Rows => rows;
 
     public int GetMaxLevel()
@@ -61,9 +61,19 @@ public partial class EnergySourceSo : ScriptableObject
         return TryGetLevelData(level, out var data) ? data.EPS : new BigNumber(0, 0);
     }
 
-    public BigNumber GetCost(int level)
+    public BigNumber GetCost(int levelToBuy, int currentLevel)
     {
-        return TryGetLevelData(level, out var data) ? data.Cost : new BigNumber(0, 0);
+        var cost = new BigNumber(0, 0);
+        for (var i = currentLevel; i < levelToBuy; i++)
+        {
+            var costToAdd = GetCost(i);
+            cost = Calculator.AddBigNumbers(cost, costToAdd);
+        }
+        return cost;
+    }
+    public BigNumber GetCost(int levelToBuy)
+    {
+        return TryGetLevelData(levelToBuy, out var data) ? data.Cost : new BigNumber(0, 0);
     }
     
     public BigNumber GetCostToUnlock()
@@ -88,6 +98,7 @@ public partial class EnergySourceSo : ScriptableObject
     private void EnsureCache()
     {
         if (_cache == null)
+            Debug.LogWarning("No hay caché");
             BuildCache();
     }
 

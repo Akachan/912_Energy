@@ -30,7 +30,6 @@ namespace Knowledge
         private void AddKnowledge()
         {
             _currentKnowledge = Calculator.AddBigNumbers(_currentKnowledge, _knowledgeToAdd);
-            print($"New Knowledge: {_currentKnowledge.Base}e{_currentKnowledge.Exponent}");
             _ui.SetKnowledgeValue(_currentKnowledge);
         }
 

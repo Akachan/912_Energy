@@ -103,7 +103,7 @@ namespace Energy
         {
             if (!GetLevelData(currentLevel + 1, out var nextDataLevel)) return null;
             var difference = Calculator.SubtractBigNumbers( nextDataLevel.EPS, eps);
-            Debug.Log($"difference: {difference.Base}e{difference.Exponent}");
+            
         
             return  Calculator.NormalizeBigNumber(difference);
         }
@@ -133,12 +133,21 @@ namespace Energy
 
 
         //Al hacer Click en el Botón
-        public void BuyUpgrade()
+        public void BuyUpgrade(int levelsToBuy = 1)
         {
-            if (!_energy.RemoveEnergy(_energySource.GetCost(currentLevel))) return;
+            var nextLevel = currentLevel + levelsToBuy;
+
+            if (nextLevel > _energySource.GetMaxLevel())
+            {
+                Debug.LogError($"No se puede subir de nivel ya que supera el máximo de {_energySource.GetMaxLevel()}");
+                return;
+            }
+            
+            if (!_energy.RemoveEnergy(_energySource.GetCost(nextLevel, currentLevel))) return;
             Debug.Log("Buy Upgrade");
-            currentLevel++;
-        
+            
+            currentLevel = nextLevel;
+           
             if (currentLevel < _energySource.GetMaxLevel())
             {
                 if (!GetLevelData(currentLevel, out var dataLevel)) return;
