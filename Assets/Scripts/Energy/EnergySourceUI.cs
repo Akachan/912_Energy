@@ -43,7 +43,7 @@ namespace Energy
         {
             print(newSprite.name);
             illustration.sprite = newSprite;
-            illustration.SetNativeSize();
+            //illustration.SetNativeSize();
             
             titleText.text = energySourceName;
             UpdateEnergySourceData(level, eps, nextLevelEps, upgradeCost);
