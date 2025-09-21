@@ -7,11 +7,13 @@ using UnityEngine;
 
 public class Battery : MonoBehaviour
 {
+    
     private Battery _instance;
     
 
     private void Awake()
     {
+        Application.runInBackground = true;
         ManageSingleton();
         
     }
