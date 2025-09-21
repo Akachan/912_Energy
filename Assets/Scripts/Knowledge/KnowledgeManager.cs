@@ -42,7 +42,7 @@ namespace Knowledge
 
         private void AddKnowledge()
         {
-            _currentKnowledge = Calculator.AddBigNumbers(_currentKnowledge, _knowledgeToAdd);
+            AddKnowledge(_knowledgeToAdd);
             _ui.SetKnowledgeValue(_currentKnowledge);
         }
 
@@ -69,9 +69,14 @@ namespace Knowledge
         }
 
         [ContextMenu("Add Knowledge")]
-        public void AddEnergy()
+        public void AddDebugKnowledge()
         {
-            _currentKnowledge = Calculator.AddBigNumbers(_currentKnowledge, debugKnowledge);
+            AddKnowledge(debugKnowledge);
+        }
+        public void AddKnowledge(BigNumber knowledgeToAdd)
+        {
+            _currentKnowledge = Calculator.AddBigNumbers(_currentKnowledge, knowledgeToAdd);
+            _ui.SetKnowledgeValue(_currentKnowledge);
         }
 
         [ContextMenu("Remove Knowledge")]
@@ -83,6 +88,13 @@ namespace Knowledge
         public BigNumber GetCurrentEnergy()
         {
             return _currentKnowledge;
+        }
+
+        private void OnDestroy()
+        {
+            
+            PlayerPrefs.SetFloat("KpsBase", (float)_knowledgeToAdd.Base);
+            PlayerPrefs.SetInt("KpsExponent", _knowledgeToAdd.Exponent);;
         }
     }
 }

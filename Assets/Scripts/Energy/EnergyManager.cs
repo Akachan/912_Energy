@@ -40,11 +40,13 @@ namespace Energy
       private void Update()
       {
          ///////DEBUG
+         /*
          if(Input.GetKeyDown(KeyCode.B))
          {
             PlayerPrefs.DeleteAll();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
          }
+         */
          ///////DEBUG
          
          
@@ -119,13 +121,30 @@ namespace Energy
       [ContextMenu("Add Energy")]
       public void AddEnergy()
       {
-         _currentEnergy = Calculator.AddBigNumbers(_currentEnergy, debugEnergy);
+         AddEnergy(debugEnergy);
+      }
+      
+      public void AddEnergy(BigNumber energyToAdd)
+      {
+         _currentEnergy = Calculator.AddBigNumbers(_currentEnergy, energyToAdd);
+         print("se agregó energia: " + energyToAdd + "");
+         //todo: Guardar energia nueva
+         PlayerPrefs.SetFloat("EnergyBase", (float)_currentEnergy.Base);
+         PlayerPrefs.SetInt("EnergyExponent", _currentEnergy.Exponent);
+         
       }
    
       [ContextMenu("Remove Energy")]
       public void RemoveEnergy()
       {
          _currentEnergy = Calculator.SubtractBigNumbers(_currentEnergy, debugEnergy);
+      }
+      
+      private void OnDestroy()
+      {
+         var eps = GetEps();
+         PlayerPrefs.SetFloat("EpsBase", (float)eps.Base);
+         PlayerPrefs.SetInt("EpsExponent", eps.Exponent);;
       }
    
    

@@ -98,7 +98,6 @@ public partial class EnergySourceSo : ScriptableObject
     private void EnsureCache()
     {
         if (_cache == null)
-            Debug.LogWarning("No hay caché");
             BuildCache();
     }
 
