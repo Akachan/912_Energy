@@ -4,25 +4,20 @@ using System.Collections.Generic;
 using Energy;
 using Knowledge;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Battery : MonoBehaviour
 {
-    
+    [SerializeField] private GameObject saveInfoPanel;
     private Battery _instance;
-    
+    public event Action OnPause;
+   
 
     private void Awake()
     {
-        Application.runInBackground = true;
         ManageSingleton();
-        
     }
-
-    private void Start()
-    {
-        StartCoroutine(RestoreEnergy());
-    }
-
+    
     private void OnDestroy()
     {
         SaveDate();
@@ -34,7 +29,7 @@ public class Battery : MonoBehaviour
             _instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else
+        else if (_instance != this)
         {
             gameObject.SetActive(false);
             Destroy(gameObject);
@@ -43,38 +38,70 @@ public class Battery : MonoBehaviour
 
     private void SaveDate()
     {
-        var date = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+        var date = DateTime.UtcNow.ToString("o"); // ISO 8601 UTC format
         PlayerPrefs.SetString("SavingTime", date);
-        print(DateTime.Now.ToString($"SaveDate: {date}"));
-        
-        
-        
-        
+        PlayerPrefs.Save(); // Fuerza el guardado inmediato
+        print($"SaveDate: {date}");
     }
-    
-    IEnumerator  RestoreEnergy()
+
+
+    private void OnApplicationPause(bool pauseStatus)
+    {
+        if (pauseStatus)
+        {
+            OnPause?.Invoke();
+            SaveDate();
+        }
+        else
+        {
+            StopAllCoroutines();
+            StartCoroutine(RestoreEnergy());
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        OnPause?.Invoke();
+        SaveDate();
+    }
+ 
+
+
+    IEnumerator RestoreEnergy()
     {
         if (!PlayerPrefs.HasKey("SavingTime")) yield return null;
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
+
+        var previusEnergy = FindAnyObjectByType<EnergyManager>().GetCurrentEnergy();
+        var previusKnowledge = FindAnyObjectByType<KnowledgeManager>().GetCurrentEnergy();
         
         var saveDate = DateTime.Parse(PlayerPrefs.GetString("SavingTime"));
         var now = DateTime.Now;
         var diff = now.Subtract(saveDate);
-        var hours = Mathf.Clamp(diff.Seconds, 0f, 2 * 3600f);
-        
+        var seconds = Mathf.Clamp((float)diff.TotalSeconds, 0f, 2 * 3600f);
+        seconds = Mathf.FloorToInt(seconds);
         //energy
         var eps = new BigNumber(PlayerPrefs.GetFloat("EpsBase"), PlayerPrefs.GetInt("EpsExponent"));
-        BigNumber energyToAdd = Calculator.MultiplyBigNumbers(eps, hours);
+        BigNumber energyToAdd = Calculator.MultiplyBigNumbers(eps, seconds);
         FindAnyObjectByType<EnergyManager>().AddEnergy(energyToAdd);
-        
-        
-        
+
+
+
         //knowledge
         var kps = new BigNumber(PlayerPrefs.GetFloat("KpsBase"), PlayerPrefs.GetInt("KpsExponent"));
-        BigNumber knowledgeToAdd = Calculator.MultiplyBigNumbers(kps, hours);
+        BigNumber knowledgeToAdd = Calculator.MultiplyBigNumbers(kps, seconds);
         FindAnyObjectByType<KnowledgeManager>().AddKnowledge(knowledgeToAdd);
-        
+
         Debug.Log($"RestoreEnergy: {energyToAdd.Base}e{energyToAdd.Exponent}\n RestoreKnowledg {knowledgeToAdd.Base}e{knowledgeToAdd.Exponent}");
-        
+
+        var instance = Instantiate(saveInfoPanel, FindFirstObjectByType<EnergyUI>().transform);
+        instance.GetComponent<BatteryUI>().SetInfo(PlayerPrefs.GetString("SavingTime"), 
+                                                    now.ToString("dd/MM/yyyy HH:mm:ss"), 
+                                                    seconds, eps, kps, 
+                                                    FindAnyObjectByType<EnergyManager>().GetCurrentEnergy(),
+                                                    FindAnyObjectByType<KnowledgeManager>().GetCurrentEnergy(),
+                                                    previusEnergy, previusKnowledge,
+                                                    energyToAdd, knowledgeToAdd );
     }
+
 }

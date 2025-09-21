@@ -34,6 +34,8 @@ namespace Energy
             _currentEnergy = new BigNumber(PlayerPrefs.GetFloat("EnergyBase"), PlayerPrefs.GetInt("EnergyExponent"));
             _energyUi.SetEnergyValue(_currentEnergy);
          }
+
+         FindFirstObjectByType<Battery>().OnPause += SaveEps;
       }
 
       private void Update()
@@ -139,17 +141,14 @@ namespace Energy
          _currentEnergy = Calculator.SubtractBigNumbers(_currentEnergy, debugEnergy);
       }
       
-      private void OnDestroy()
+   
+
+      private void SaveEps()
       {
          var eps = GetEps();
          PlayerPrefs.SetFloat("EpsBase", (float)eps.Base);
-         PlayerPrefs.SetInt("EpsExponent", eps.Exponent);;
+         PlayerPrefs.SetInt("EpsExponent", eps.Exponent);
+         PlayerPrefs.Save(); // Fuerza el guardado inmediato
       }
-   
-   
-   
-   
-   
-   
    }
 }

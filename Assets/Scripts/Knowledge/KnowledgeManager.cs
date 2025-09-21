@@ -25,6 +25,7 @@ namespace Knowledge
                 _currentKnowledge = new BigNumber(PlayerPrefs.GetFloat("KnowledgeBase"), PlayerPrefs.GetInt("KnowledgeExponent"));
                 _ui.SetKnowledgeValue(_currentKnowledge);
             }
+            FindFirstObjectByType<Battery>().OnPause += SaveKps;
         }
 
         private void Update()
@@ -92,9 +93,15 @@ namespace Knowledge
 
         private void OnDestroy()
         {
+            FindFirstObjectByType<Battery>().OnPause -= SaveKps;
+        }
+
+        private void SaveKps()
+        {
             
             PlayerPrefs.SetFloat("KpsBase", (float)_knowledgeToAdd.Base);
-            PlayerPrefs.SetInt("KpsExponent", _knowledgeToAdd.Exponent);;
+            PlayerPrefs.SetInt("KpsExponent", _knowledgeToAdd.Exponent);
+            PlayerPrefs.Save(); // Fuerza el guardado inmediato
         }
     }
 }
