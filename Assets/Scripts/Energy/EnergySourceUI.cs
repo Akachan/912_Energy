@@ -41,7 +41,7 @@ namespace Energy
 
         public void SetUnlockedEnergySourceData(string energySourceName, int level, BigNumber eps, BigNumber nextLevelEps, BigNumber upgradeCost, Sprite newSprite)
         {
-            print(newSprite.name);
+            print($"Se desbloquéo: {newSprite.name}");
             illustration.sprite = newSprite;
             //illustration.SetNativeSize();
             
@@ -60,12 +60,19 @@ namespace Energy
   
         }
 
-        public void UpdateLastLevelEnergySourceData(int level, BigNumber eps)
+        public void UpdateLastLevelEnergySourceData( int level, BigNumber eps)
         {
             levelText.text = $"Level: {level}";
             epsText.text = $"EPS: {BigNumberFormatter.SetSuffixFormat(eps)}";
             nextLevelEpsText.text = "";
             upgradeButton.gameObject.SetActive(false);
+        }
+        public void UpdateLastLevelEnergySourceData(string energySourceName, Sprite newSprite, int level, BigNumber eps)
+        {
+            UpdateLastLevelEnergySourceData(level, eps);
+            titleText.text = energySourceName;
+            illustration.sprite = newSprite;
+            unlockButton.gameObject.SetActive(false);
         }
 
         public void UpdateRatioText(BigNumber ratio)

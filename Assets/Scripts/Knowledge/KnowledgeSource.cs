@@ -30,6 +30,7 @@ public class KnowledgeSource : MonoBehaviour
 
     private void Start()
     {
+        
         SetInitialKnowledge();
     }
 
@@ -46,6 +47,11 @@ public class KnowledgeSource : MonoBehaviour
 
     private void SetInitialKnowledge() 
     {
+        if (PlayerPrefs.HasKey("KnowledgeLevel"))
+        {
+            _currentKnowledgeLevel = PlayerPrefs.GetInt("KnowledgeLevel");
+        }
+        
         if(!GetLevelData(_currentKnowledgeLevel, out var data)) return;
         
         _knowledgeManager.SetKps(data.KPS);
@@ -86,6 +92,7 @@ public class KnowledgeSource : MonoBehaviour
         
         _currentKnowledgeLevel = nextLevel;
         
+        
         if (_currentKnowledgeLevel < knowledgeSo.GetMaxLevel())
         {
             if (!GetLevelData(_currentKnowledgeLevel, out var dataLevel)) return;
@@ -106,6 +113,7 @@ public class KnowledgeSource : MonoBehaviour
             _isLastLevel = true;
         }
 
+        PlayerPrefs.SetInt("KnowledgeLevel", _currentKnowledgeLevel);
     }
 
     private void UpdateUpgradeButton()

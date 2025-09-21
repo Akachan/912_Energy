@@ -34,6 +34,7 @@ public class SetInfoPanel : MonoBehaviour
 
     public void OnWinButton()
     {
+        PlayerPrefs.DeleteAll();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

@@ -57,9 +57,13 @@ namespace Energy
         public void SetEnergySource(EnergySourceSo energySource)
         {
             _energySource = energySource;
-
+           
             if (!GetLevelData(currentLevel, out var dataLevel)) return;
             _ui.SetLockedEnergySourceData(dataLevel.EPS, _energySource.GetCostToUnlock());
+            
+            PlayerPrefs.SetInt($"{_energySource.EnergySourceName}IsLocked", _isLocked == true ? 1 : 0);
+            
+            
         }
 
         private bool GetLevelData(int level, out LevelData dataLevel)
@@ -79,7 +83,9 @@ namespace Energy
                 if (!_knowledgeManager.RemoveKnowledge(_energySource.GetCostToUnlock())) return;
             }
             _isLocked = false;
-        
+            PlayerPrefs.SetInt($"{_energySource.EnergySourceName}IsLocked", _isLocked == true ? 1 : 0);
+            PlayerPrefs.SetInt($"{_energySource.EnergySourceName}Level", currentLevel);
+            
             _energy.OnEnergySourceChange += UpdateRatio;
             _spawner.CreateNewEnergySource();
         
@@ -163,9 +169,11 @@ namespace Energy
             {
                 if (!GetLevelData(currentLevel, out var dataLevel)) return;
                 _energy.UpdateSource(_energySource.EnergySourceName, dataLevel.EPS);;
-                _ui.UpdateLastLevelEnergySourceData(currentLevel, dataLevel.EPS);
+                _ui.UpdateLastLevelEnergySourceData( currentLevel, dataLevel.EPS);
                 _isLastLevel = true;
             }
+            
+            PlayerPrefs.SetInt($"{_energySource.EnergySourceName}Level", currentLevel);
 
         }
 
@@ -178,7 +186,51 @@ namespace Energy
 
 
 
+        public void RestoreEnergySource(EnergySourceSo energySo)
+        {
+            _energySource = energySo;
+            _isLocked = PlayerPrefs.GetInt($"{_energySource.EnergySourceName}IsLocked") == 1;
 
+            if (PlayerPrefs.HasKey($"{_energySource.EnergySourceName}Level"))
+            {
+                currentLevel = PlayerPrefs.GetInt($"{_energySource.EnergySourceName}Level");
+            }
+            
+            
+
+            if (_isLocked)
+            {
+                if (!GetLevelData(currentLevel, out var dataLevel)) return;
+                _ui.SetLockedEnergySourceData(dataLevel.EPS, _energySource.GetCostToUnlock());
+            }
+            else
+            {
+            
+                if (!GetLevelData(currentLevel, out var dataLevel)) return;
+                
+                _energy.OnEnergySourceChange += UpdateRatio;
+               
+                _energy.UpdateSource(_energySource.EnergySourceName, dataLevel.EPS);
+
+                if (currentLevel < _energySource.GetMaxLevel())
+                {
+                    var difference = GetDifferenceWithNextLevel(dataLevel.EPS);
+                    _ui.SetUnlockedEnergySourceData(_energySource.EnergySourceName,
+                        currentLevel,
+                        dataLevel.EPS,
+                        difference,
+                        dataLevel.Cost,
+                        _energySource.Illustration);
+                }
+                else
+                {
+                    
+                    _ui.UpdateLastLevelEnergySourceData(_energySource.EnergySourceName, _energySource.Illustration,currentLevel, dataLevel.EPS);
+                }
+
+            }
+
+        }
 
     
     }

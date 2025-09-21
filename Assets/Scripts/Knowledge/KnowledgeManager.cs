@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Knowledge
@@ -17,12 +18,24 @@ namespace Knowledge
             _currentKnowledge = new BigNumber(0, 0);
         }
 
+        private void Start()
+        {
+            if (PlayerPrefs.HasKey("KnowledgeBase"))
+            {
+                _currentKnowledge = new BigNumber(PlayerPrefs.GetFloat("KnowledgeBase"), PlayerPrefs.GetInt("KnowledgeExponent"));
+                _ui.SetKnowledgeValue(_currentKnowledge);
+            }
+        }
+
         private void Update()
         {
             _currentTime += Time.deltaTime;
             if (!(_currentTime >= 1f)) return;
             AddKnowledge();
             _currentTime = 0f;
+            
+            PlayerPrefs.SetFloat("KnowledgeBase", (float)_currentKnowledge.Base);
+            PlayerPrefs.SetInt("KnowledgeExponent", _currentKnowledge.Exponent);
 
 
         }
