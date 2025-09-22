@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: RylonStudio
-  productName: Energy
+  productName: EnergyIdle
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -141,7 +141,7 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 0.0.1.5
+  bundleVersion: 0.0.1.6
   preloadedAssets:
   - {fileID: -5378625698925886638, guid: adfd76e6d980d6549adaf38827c3c5d6, type: 2}
   - {fileID: 11400000, guid: a37c907c6b9d3764785aed2a2b6415a2, type: 2}
