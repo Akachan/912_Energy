@@ -25,7 +25,7 @@ namespace Knowledge
                 _currentKnowledge = new BigNumber(PlayerPrefs.GetFloat("KnowledgeBase"), PlayerPrefs.GetInt("KnowledgeExponent"));
                 _ui.SetKnowledgeValue(_currentKnowledge);
             }
-            FindFirstObjectByType<Battery>().OnPause += SaveKps;
+            FindFirstObjectByType<Battery.Battery>().OnPause += SaveKps;
         }
 
         private void Update()
@@ -93,7 +93,7 @@ namespace Knowledge
 
         private void OnDestroy()
         {
-            FindFirstObjectByType<Battery>().OnPause -= SaveKps;
+            FindFirstObjectByType<Battery.Battery>().OnPause -= SaveKps;
         }
 
         private void SaveKps()

@@ -35,7 +35,7 @@ namespace Energy
             _energyUi.SetEnergyValue(_currentEnergy);
          }
 
-         FindFirstObjectByType<Battery>().OnPause += SaveEps;
+         FindFirstObjectByType<Battery.Battery>().OnPause += SaveEps;
       }
 
       private void Update()
