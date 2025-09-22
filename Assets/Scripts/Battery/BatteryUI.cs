@@ -41,7 +41,7 @@ public class BatteryUI : MonoBehaviour
    {
        
        
-       timeText.text = $"{time.Hours:00}:{time.Minutes:00}:{time.Seconds:00}";
+       timeText.text = $"Tiempo transcurrido: {time.Hours:00}:{time.Minutes:00}:{time.Seconds:00}";
        energyText.text = BigNumberFormatter.SetSuffixFormat(energy);
        knowledgeText.text = BigNumberFormatter.SetSuffixFormat(knowledge);
    }

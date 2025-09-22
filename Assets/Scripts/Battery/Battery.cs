@@ -97,21 +97,32 @@ namespace Battery
            
             
             //Restaurar UI
-            var instance = Instantiate(restoreInfoPanel, FindFirstObjectByType<EnergyUI>().transform);
-            var batteryUI = instance.GetComponent<BatteryUI>();
             
-            batteryUI.SetBatteryInfo(diff, energyToAdd, knowledgeToAdd);
+
+
+            if (seconds < 5 * 60)
+            {
+                AddProgress(energyToAdd, knowledgeToAdd);
+               
+            }
+            else
+            {
+                var instance = Instantiate(restoreInfoPanel, FindFirstObjectByType<EnergyUI>().transform);
+                var batteryUI = instance.GetComponent<BatteryUI>();
+                batteryUI.SetBatteryInfo(diff, energyToAdd, knowledgeToAdd);
+                batteryUI.OnAddProgress += () => AddProgress(energyToAdd, knowledgeToAdd);;
+                
+                /*
+                instance.GetComponent<BatteryUI>().SetDebugInfo(PlayerPrefs.GetString("SavingTime"), 
+                    now.ToString("dd/MM/yyyy HH:mm:ss"), 
+                    seconds, eps, kps, 
+                    FindAnyObjectByType<EnergyManager>().GetCurrentEnergy(),
+                    FindAnyObjectByType<KnowledgeManager>().GetCurrentEnergy(),
+                    previusEnergy, previusKnowledge,
+                    energyToAdd, knowledgeToAdd );
+                */
+            }
             
-            batteryUI.OnAddProgress += () => AddProgress(energyToAdd, knowledgeToAdd);;
-            /*
-            instance.GetComponent<BatteryUI>().SetDebugInfo(PlayerPrefs.GetString("SavingTime"), 
-                now.ToString("dd/MM/yyyy HH:mm:ss"), 
-                seconds, eps, kps, 
-                FindAnyObjectByType<EnergyManager>().GetCurrentEnergy(),
-                FindAnyObjectByType<KnowledgeManager>().GetCurrentEnergy(),
-                previusEnergy, previusKnowledge,
-                energyToAdd, knowledgeToAdd );
-            */
         }
 
         private void AddProgress(BigNumber energyToAdd, BigNumber knowledgeToAdd)
