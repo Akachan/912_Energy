@@ -16,6 +16,7 @@ namespace Battery
         private void Awake()
         {
             ManageSingleton();
+
         }
     
         private void OnDestroy()
@@ -44,7 +45,7 @@ namespace Battery
             print($"SaveDate: {date}");
         }
 
-
+#if UNITY_ANDROID
         private void OnApplicationPause(bool pauseStatus)
         {
             if (pauseStatus)
@@ -64,6 +65,23 @@ namespace Battery
             OnPause?.Invoke();
             SaveDate();
         }
+#endif
+#if UNITY_WEBGL
+        private void OnApplicationFocus(bool hasFocus)
+        {
+            if (!hasFocus)
+            {
+                OnPause?.Invoke();
+                SaveDate();
+            }
+            else
+            {
+                StopAllCoroutines();
+                StartCoroutine(RestoreEnergy());
+            }
+        }
+#endif
+        
  
 
 

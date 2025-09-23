@@ -55,10 +55,20 @@ public class KnowledgeSource : MonoBehaviour
         if(!GetLevelData(_currentKnowledgeLevel, out var data)) return;
         
         _knowledgeManager.SetKps(data.KPS);
-        _ui.UpdateKnowledgeData(_currentKnowledgeLevel,
-                                data.KPS,
-                                GetDifferenceWithNextLevel(data.KPS),
-                                data.Cost);
+
+        if (_currentKnowledgeLevel < knowledgeSo.GetMaxLevel())
+        {
+            _ui.UpdateKnowledgeData(_currentKnowledgeLevel,
+                                            data.KPS,
+                                            GetDifferenceWithNextLevel(data.KPS),
+                                            data.Cost);
+        }
+        else
+        {
+            _ui.UpdateLastLevelKnowledgeSourceData(_currentKnowledgeLevel, data.KPS);
+            _isLastLevel = true;
+        }
+        
 
     }
 
