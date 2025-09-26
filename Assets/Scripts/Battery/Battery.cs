@@ -18,11 +18,7 @@ namespace Battery
             ManageSingleton();
 
         }
-    
-        private void OnDestroy()
-        {
-            SaveDate();
-        }
+        
         private void ManageSingleton()
         {
             if (_instance == null)
@@ -88,61 +84,58 @@ namespace Battery
         IEnumerator RestoreEnergy()
         {
             if (!PlayerPrefs.HasKey("SavingTime")) yield return null;
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.2f);
 
             //debug
             var previusEnergy = FindAnyObjectByType<EnergyManager>().GetCurrentEnergy();
             var previusKnowledge = FindAnyObjectByType<KnowledgeManager>().GetCurrentEnergy();
         
+            //Calculate Time
             var saveDate = DateTime.Parse(PlayerPrefs.GetString("SavingTime"));
             var now = DateTime.Now;
             var diff = now.Subtract(saveDate);
             if (diff.TotalHours > 2)
             {
                 diff = TimeSpan.FromHours(2);
-
             }
             var seconds = Mathf.FloorToInt((float)diff.TotalSeconds);
            
-            //energy
+            //Calculate energy
             var eps = new BigNumber(PlayerPrefs.GetFloat("EpsBase"), PlayerPrefs.GetInt("EpsExponent"));
             BigNumber energyToAdd = Calculator.MultiplyBigNumbers(eps, seconds);
             
-
-            //knowledge
+            //Calculate knowledge
             var kps = new BigNumber(PlayerPrefs.GetFloat("KpsBase"), PlayerPrefs.GetInt("KpsExponent"));
             BigNumber knowledgeToAdd = Calculator.MultiplyBigNumbers(kps, seconds);
            
             
-            //Restaurar UI
-            
-
-
             if (seconds < 5 * 60)
             {
                 AddProgress(energyToAdd, knowledgeToAdd);
-               
             }
             else
             {
-                var instance = Instantiate(restoreInfoPanel, FindFirstObjectByType<EnergyUI>().transform);
-                var batteryUI = instance.GetComponent<BatteryUI>();
-                batteryUI.SetBatteryInfo(diff, energyToAdd, knowledgeToAdd);
-                batteryUI.OnAddProgress += () => AddProgress(energyToAdd, knowledgeToAdd);;
-                
-                /*
-                instance.GetComponent<BatteryUI>().SetDebugInfo(PlayerPrefs.GetString("SavingTime"), 
-                    now.ToString("dd/MM/yyyy HH:mm:ss"), 
-                    seconds, eps, kps, 
-                    FindAnyObjectByType<EnergyManager>().GetCurrentEnergy(),
-                    FindAnyObjectByType<KnowledgeManager>().GetCurrentEnergy(),
-                    previusEnergy, previusKnowledge,
-                    energyToAdd, knowledgeToAdd );
-                */
+                VerifyPreviousBattery();
+                InstantiateBatteryUI(diff, energyToAdd, knowledgeToAdd);
             }
             
         }
-
+        private static void VerifyPreviousBattery()
+        {
+            var previousBattery = FindFirstObjectByType<BatteryUI>();
+            if (previousBattery != null)
+            {
+                previousBattery.AddProgress();   
+            }
+        }
+        private void InstantiateBatteryUI(TimeSpan diff, BigNumber energyToAdd, BigNumber knowledgeToAdd)
+        {
+            var instance = Instantiate(restoreInfoPanel, FindFirstObjectByType<EnergyUI>().transform);
+            var batteryUI = instance.GetComponent<BatteryUI>();
+            batteryUI.SetBatteryInfo(diff, energyToAdd, knowledgeToAdd);
+            batteryUI.OnAddProgress += () => AddProgress(energyToAdd, knowledgeToAdd);
+        }
+        
         private void AddProgress(BigNumber energyToAdd, BigNumber knowledgeToAdd)
         {
             FindAnyObjectByType<EnergyManager>().AddEnergy(energyToAdd);

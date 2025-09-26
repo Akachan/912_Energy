@@ -45,15 +45,22 @@ public class BatteryUI : MonoBehaviour
        energyText.text = BigNumberFormatter.SetSuffixFormat(energy);
        knowledgeText.text = BigNumberFormatter.SetSuffixFormat(knowledge);
    }
+   
+
 
    public void OnAddProgressButton()
+   {
+       AddProgress();
+   }
+
+   public void AddProgress()
    {
        OnAddProgress?.Invoke();
        OnAddProgress = null;
        
        Destroy(gameObject);
    }
-   
+
 
    public void OnQuitButton()
    {
