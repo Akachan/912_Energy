@@ -47,9 +47,19 @@ public class KnowledgeSo : ScriptableObject
         return TryGetKnowledgeData(level, out var data) ? data.KPS : new BigNumber(0, 0);
     }
 
-    public BigNumber GetKnowledgeCost(int level)
+    public BigNumber GetKnowledgeCost(int levelToBuy, int currentLevel)
     {
-        return TryGetKnowledgeData(level, out var data) ? data.Cost : new BigNumber(0, 0);
+        BigNumber cost = new BigNumber(0, 0);
+        for (var i = currentLevel; i < levelToBuy; i++)
+        {
+            var costToAdd = GetKnowledgeCost(i);
+            cost = Calculator.AddBigNumbers(cost, costToAdd);
+        }
+        return cost;
+    }
+    public BigNumber GetKnowledgeCost(int levelToBuy)
+    {
+        return TryGetKnowledgeData(levelToBuy, out var data) ? data.Cost : new BigNumber(0, 0);
     }
     
     public void BuildCache()

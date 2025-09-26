@@ -31,9 +31,7 @@ namespace Energy
             titleText.text = "???";
             epsText.text = "";
             ratioText.text = "";
-            //nextLevelEpsText.text = $"NextEPS: +{firstLevelEps.Base:#.####}e{firstLevelEps.Exponent}";
             nextLevelEpsText.text = $"NextEPS: +{BigNumberFormatter.SetSuffixFormat(firstLevelEps)}";
-            //unlockCostText.text = $"Unlock: {costToUnlock.Base}e{costToUnlock.Exponent}";
             unlockCostText.text = $"{BigNumberFormatter.SetSuffixFormat(costToUnlock)}";
             upgradeCostText.text = "";
         
@@ -43,9 +41,9 @@ namespace Energy
 
         public void SetUnlockedEnergySourceData(string energySourceName, int level, BigNumber eps, BigNumber nextLevelEps, BigNumber upgradeCost, Sprite newSprite)
         {
-            print(newSprite.name);
+            print($"Se desbloquéo: {newSprite.name}");
             illustration.sprite = newSprite;
-            illustration.SetNativeSize();
+            //illustration.SetNativeSize();
             
             titleText.text = energySourceName;
             UpdateEnergySourceData(level, eps, nextLevelEps, upgradeCost);
@@ -56,23 +54,25 @@ namespace Energy
         public void UpdateEnergySourceData(int level, BigNumber eps, BigNumber nextLevelEps, BigNumber upgradeCost)
         {
             levelText.text = $"Level: {level}";
-            //epsText.text = $"EPS: {eps.Base:#.########}e{eps.Exponent}";
             epsText.text = $"EPS: {BigNumberFormatter.SetSuffixFormat(eps)}";
-            //nextLevelEpsText.text = $"NextEPS: +{nextLevelEps.Base:#.####}e{nextLevelEps.Exponent}";
             nextLevelEpsText.text = $"NextEPS: +{BigNumberFormatter.SetSuffixFormat(nextLevelEps)}";
-            //upgradeCostText.text = $"Upgrade: {upgradeCost.Base:#.########}e{upgradeCost.Exponent}";
             upgradeCostText.text = $"{BigNumberFormatter.SetSuffixFormat(upgradeCost)}";
   
         }
 
-        public void UpdateLastLevelEnergySourceData(int level, BigNumber eps)
+        public void UpdateLastLevelEnergySourceData( int level, BigNumber eps)
         {
             levelText.text = $"Level: {level}";
-            //epsText.text = $"EPS: {eps.Base:#.########}e{eps.Exponent}";
             epsText.text = $"EPS: {BigNumberFormatter.SetSuffixFormat(eps)}";
             nextLevelEpsText.text = "";
-            upgradeCostText.text = "MAX LEVEL";
-            SetUpgradeButtonState(false);
+            upgradeButton.gameObject.SetActive(false);
+        }
+        public void UpdateLastLevelEnergySourceData(string energySourceName, Sprite newSprite, int level, BigNumber eps)
+        {
+            UpdateLastLevelEnergySourceData(level, eps);
+            titleText.text = energySourceName;
+            illustration.sprite = newSprite;
+            unlockButton.gameObject.SetActive(false);
         }
 
         public void UpdateRatioText(BigNumber ratio)
@@ -99,8 +99,6 @@ namespace Energy
             var newRatio = ratio.Base * Mathf.Pow(10, ratio.Exponent);
             return (float)newRatio;
         }
-
-   
 
         public void SetUnlockButtonState(bool state)
         {

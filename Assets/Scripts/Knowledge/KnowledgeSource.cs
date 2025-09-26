@@ -7,8 +7,11 @@ using UnityEngine;
 
 public class KnowledgeSource : MonoBehaviour
 {
+    
 
     [SerializeField] private KnowledgeSo knowledgeSo;
+    
+    
 
     private int _currentKnowledgeLevel = 1;
     private KnowledgeManager _knowledgeManager;
@@ -27,6 +30,7 @@ public class KnowledgeSource : MonoBehaviour
 
     private void Start()
     {
+        
         SetInitialKnowledge();
     }
 
@@ -43,13 +47,28 @@ public class KnowledgeSource : MonoBehaviour
 
     private void SetInitialKnowledge() 
     {
+        if (PlayerPrefs.HasKey("KnowledgeLevel"))
+        {
+            _currentKnowledgeLevel = PlayerPrefs.GetInt("KnowledgeLevel");
+        }
+        
         if(!GetLevelData(_currentKnowledgeLevel, out var data)) return;
         
         _knowledgeManager.SetKps(data.KPS);
-        _ui.UpdateKnowledgeData(_currentKnowledgeLevel,
-                                data.KPS,
-                                GetDifferenceWithNextLevel(data.KPS),
-                                data.Cost);
+
+        if (_currentKnowledgeLevel < knowledgeSo.GetMaxLevel())
+        {
+            _ui.UpdateKnowledgeData(_currentKnowledgeLevel,
+                                            data.KPS,
+                                            GetDifferenceWithNextLevel(data.KPS),
+                                            data.Cost);
+        }
+        else
+        {
+            _ui.UpdateLastLevelKnowledgeSourceData(_currentKnowledgeLevel, data.KPS);
+            _isLastLevel = true;
+        }
+        
 
     }
 
@@ -75,11 +94,14 @@ public class KnowledgeSource : MonoBehaviour
     }
     
     //Al hacer Click en el Botón
-    public void BuyUpgrade()
+    public void BuyUpgrade(int levelsToBuy = 1)
     {
-        if (!_energy.RemoveEnergy(knowledgeSo.GetKnowledgeCost(_currentKnowledgeLevel))) return;
+        var nextLevel = _currentKnowledgeLevel + levelsToBuy;
+        if (!_energy.RemoveEnergy(knowledgeSo.GetKnowledgeCost(nextLevel, _currentKnowledgeLevel))) return;
         Debug.Log("Buy Upgrade");
-        _currentKnowledgeLevel++;
+        
+        _currentKnowledgeLevel = nextLevel;
+        
         
         if (_currentKnowledgeLevel < knowledgeSo.GetMaxLevel())
         {
@@ -101,6 +123,7 @@ public class KnowledgeSource : MonoBehaviour
             _isLastLevel = true;
         }
 
+        PlayerPrefs.SetInt("KnowledgeLevel", _currentKnowledgeLevel);
     }
 
     private void UpdateUpgradeButton()

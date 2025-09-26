@@ -22,15 +22,34 @@ namespace Energy
 
         private void Start()
         {
-            InitializeFirstEnergySource();
+            if(!PlayerPrefs.HasKey("EnergySourceIndex"))
+            {
+                InitializeFirstEnergySource();
+                return;
+            }
+            _energySourceIndex = PlayerPrefs.GetInt("EnergySourceIndex");
+            RestoreEnergySources();
+
+        }
+
+        private void RestoreEnergySources()
+        {
+            for (int i = 0; i < _energySourceIndex; i++) 
+            {
+                var instance = Instantiate(energySourcePrefab, energySourceParent).GetComponent<EnergySource>(); 
+                instance.RestoreEnergySource(energySources[i]);
+            }
         }
 
         private void InitializeFirstEnergySource()
         {
             var instance = Instantiate(energySourcePrefab, energySourceParent).GetComponent<EnergySource>(); 
             instance.SetEnergySource(energySources[_energySourceIndex]);
+            Debug.Log($"Se spawneo: {energySources[_energySourceIndex]}");
             _energySourceIndex++;
             instance.UnlockEnergySource(true);  //El primero está siempre desbloqueado
+            
+            
         }
 
         public void CreateNewEnergySource()
@@ -38,8 +57,12 @@ namespace Energy
             if(_energySourceIndex >= energySources.Length) return;
             var instance = Instantiate(energySourcePrefab, energySourceParent).GetComponent<EnergySource>(); 
             instance.SetEnergySource(energySources[_energySourceIndex]);
+            Debug.Log($"Se spawneo: {energySources[_energySourceIndex]}");
             _energySourceIndex++;
+            PlayerPrefs.SetInt("EnergySourceIndex", _energySourceIndex);
         }
+        
+        
 
  
     

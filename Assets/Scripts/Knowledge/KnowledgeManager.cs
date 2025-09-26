@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Knowledge
@@ -17,20 +18,32 @@ namespace Knowledge
             _currentKnowledge = new BigNumber(0, 0);
         }
 
+        private void Start()
+        {
+            if (PlayerPrefs.HasKey("KnowledgeBase"))
+            {
+                _currentKnowledge = new BigNumber(PlayerPrefs.GetFloat("KnowledgeBase"), PlayerPrefs.GetInt("KnowledgeExponent"));
+                _ui.SetKnowledgeValue(_currentKnowledge);
+            }
+            FindFirstObjectByType<Battery.Battery>().OnPause += SaveKps;
+        }
+
         private void Update()
         {
             _currentTime += Time.deltaTime;
             if (!(_currentTime >= 1f)) return;
             AddKnowledge();
             _currentTime = 0f;
+            
+            PlayerPrefs.SetFloat("KnowledgeBase", (float)_currentKnowledge.Base);
+            PlayerPrefs.SetInt("KnowledgeExponent", _currentKnowledge.Exponent);
 
 
         }
 
         private void AddKnowledge()
         {
-            _currentKnowledge = Calculator.AddBigNumbers(_currentKnowledge, _knowledgeToAdd);
-            print($"New Knowledge: {_currentKnowledge.Base}e{_currentKnowledge.Exponent}");
+            AddKnowledge(_knowledgeToAdd);
             _ui.SetKnowledgeValue(_currentKnowledge);
         }
 
@@ -57,9 +70,14 @@ namespace Knowledge
         }
 
         [ContextMenu("Add Knowledge")]
-        public void AddEnergy()
+        public void AddDebugKnowledge()
         {
-            _currentKnowledge = Calculator.AddBigNumbers(_currentKnowledge, debugKnowledge);
+            AddKnowledge(debugKnowledge);
+        }
+        public void AddKnowledge(BigNumber knowledgeToAdd)
+        {
+            _currentKnowledge = Calculator.AddBigNumbers(_currentKnowledge, knowledgeToAdd);
+            _ui.SetKnowledgeValue(_currentKnowledge);
         }
 
         [ContextMenu("Remove Knowledge")]
@@ -71,6 +89,19 @@ namespace Knowledge
         public BigNumber GetCurrentEnergy()
         {
             return _currentKnowledge;
+        }
+
+        private void OnDestroy()
+        {
+            FindFirstObjectByType<Battery.Battery>().OnPause -= SaveKps;
+        }
+
+        private void SaveKps()
+        {
+            
+            PlayerPrefs.SetFloat("KpsBase", (float)_knowledgeToAdd.Base);
+            PlayerPrefs.SetInt("KpsExponent", _knowledgeToAdd.Exponent);
+            PlayerPrefs.Save(); // Fuerza el guardado inmediato
         }
     }
 }

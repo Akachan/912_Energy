@@ -16,13 +16,9 @@ namespace Knowledge
         public void UpdateKnowledgeData(int level, BigNumber kps, BigNumber nextLevelKps, BigNumber upgradeCost)
         {
             knowledgeLevelText.text = $"Level: {level}";
-            //epsText.text = $"EPS: {eps.Base:#.########}e{eps.Exponent}";
             knowledgeKps.text = $"KPS: {BigNumberFormatter.SetSuffixFormat(kps)}";
-            //nextLevelEpsText.text = $"NextEPS: +{nextLevelEps.Base:#.####}e{nextLevelEps.Exponent}";
             knowledgeNextLevel.text = $"NextKPS: +{BigNumberFormatter.SetSuffixFormat(nextLevelKps)}";
-            //upgradeCostText.text = $"Upgrade: {upgradeCost.Base:#.########}e{upgradeCost.Exponent}";
             upgradeCostText.text = $"{BigNumberFormatter.SetSuffixFormat(upgradeCost)}";
-  
         }
 
         public void UpdateLastLevelKnowledgeSourceData(int level, BigNumber kps)
@@ -30,7 +26,7 @@ namespace Knowledge
             knowledgeLevelText.text = $"Level: {level}";
             knowledgeKps.text = $"KPS: {BigNumberFormatter.SetSuffixFormat(kps)}";
             knowledgeNextLevel.text = $"";
-            upgradeCostText.text = $"MAX";
+            upgradeButton.gameObject.SetActive(false);
         }
 
         public void SetUpgradeButtonState(bool state)

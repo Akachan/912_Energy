@@ -17,7 +17,7 @@ public class SetInfoPanel : MonoBehaviour
     {
         titleText.text = title;
         illustration.sprite = illustrationSprite;
-        illustration.SetNativeSize();
+        //illustration.SetNativeSize();
         infoText.text = text;
 
         if (title == "GATO-TOSTADA")
@@ -34,6 +34,7 @@ public class SetInfoPanel : MonoBehaviour
 
     public void OnWinButton()
     {
+        PlayerPrefs.DeleteAll();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

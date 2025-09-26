@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace Energy
 {
    public class EnergyManager : MonoBehaviour
@@ -21,16 +22,46 @@ namespace Energy
          _energyUi = GetComponent<EnergyUI>();
          _currentEnergy = new BigNumber(0, 0);
          _energyToAdd = new BigNumber(0, 0);
+         
+         
+         
       }
-   
+
+      private void Start()
+      {
+         if (PlayerPrefs.HasKey("EnergyBase"))
+         {
+            _currentEnergy = new BigNumber(PlayerPrefs.GetFloat("EnergyBase"), PlayerPrefs.GetInt("EnergyExponent"));
+            _energyUi.SetEnergyValue(_currentEnergy);
+         }
+
+         FindFirstObjectByType<Battery.Battery>().OnPause += SaveEps;
+      }
+
       private void Update()
       {
+         ///////DEBUG
+         /*
+         if(Input.GetKeyDown(KeyCode.B))
+         {
+            PlayerPrefs.DeleteAll();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+         }
+         */
+         ///////DEBUG
+         
+         
+         
          _currentTime += Time.deltaTime;
          if (_currentTime >= 1f)
          {
             _currentTime = 0f;
             AddNewEnergy();
             _energyUi.SetEnergyValue(_currentEnergy);
+            
+            //todo: Guardar energia nueva
+            PlayerPrefs.SetFloat("EnergyBase", (float)_currentEnergy.Base);
+            PlayerPrefs.SetInt("EnergyExponent", _currentEnergy.Exponent);
          }
       }
 
@@ -91,7 +122,17 @@ namespace Energy
       [ContextMenu("Add Energy")]
       public void AddEnergy()
       {
-         _currentEnergy = Calculator.AddBigNumbers(_currentEnergy, debugEnergy);
+         AddEnergy(debugEnergy);
+      }
+      
+      public void AddEnergy(BigNumber energyToAdd)
+      {
+         _currentEnergy = Calculator.AddBigNumbers(_currentEnergy, energyToAdd);
+         print("se agregó energia: " + energyToAdd + "");
+         //todo: Guardar energia nueva
+         PlayerPrefs.SetFloat("EnergyBase", (float)_currentEnergy.Base);
+         PlayerPrefs.SetInt("EnergyExponent", _currentEnergy.Exponent);
+         
       }
    
       [ContextMenu("Remove Energy")]
@@ -99,11 +140,15 @@ namespace Energy
       {
          _currentEnergy = Calculator.SubtractBigNumbers(_currentEnergy, debugEnergy);
       }
+      
    
-   
-   
-   
-   
-   
+
+      private void SaveEps()
+      {
+         var eps = GetEps();
+         PlayerPrefs.SetFloat("EpsBase", (float)eps.Base);
+         PlayerPrefs.SetInt("EpsExponent", eps.Exponent);
+         PlayerPrefs.Save(); // Fuerza el guardado inmediato
+      }
    }
 }
