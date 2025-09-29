@@ -1,20 +1,67 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class TimeController : MonoBehaviour
 {
-    [SerializeField] private bool _isDebug=false;
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private bool _isDebug = false;
+
+    [SerializeField] private BigNumber resourceToAdd;
+    
+    
+    [Header("References")]
+    private EnergyManager _energyManager;
+    private KnowledgeManager _knowledgeManager;
+
+
+    private void Awake()
     {
-        
+        _energyManager = FindObjectOfType<EnergyManager>();
+        _knowledgeManager = FindObjectOfType<KnowledgeManager>();
     }
 
-    // Update is called once per frame
+    [ContextMenu("Add Energy")]
+    private void AddEnergy()
+    {
+        _energyManager.AddResources(resourceToAdd);
+    }
+    [ContextMenu("Add Knowledge")]
+    private void AddKnowledge()
+    {
+        _knowledgeManager.AddResources(resourceToAdd);
+    }
+
+    [ContextMenu("Remove All Resources")]
+    private void RemoveAllResources()
+    {
+        _energyManager.SetResources(new BigNumber(0, 0));
+        _knowledgeManager.SetResources(new BigNumber(0, 0));
+    }
+    
+    
+
     void Update()
     {
         if (!_isDebug) return;
+        ResetGame();
+        SetTimeScale();
+    }
+
+    private void ResetGame()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            PlayerPrefs.DeleteAll();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+
+    private void SetTimeScale()
+    {
+        
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Time.timeScale = 1f;
@@ -51,7 +98,5 @@ public class TimeController : MonoBehaviour
         {
             Time.timeScale = 9f;
         }
-            
-        
     }
 }

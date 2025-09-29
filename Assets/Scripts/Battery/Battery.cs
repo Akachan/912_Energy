@@ -9,7 +9,7 @@ namespace Battery
     public class Battery : MonoBehaviour
     {
         [SerializeField] private GameObject restoreInfoPanel;
-        private Battery _instance;
+        private static Battery _instance;
         public event Action OnPause;
    
 
@@ -87,8 +87,8 @@ namespace Battery
             yield return new WaitForSeconds(0.2f);
 
             //debug
-            var previusEnergy = FindAnyObjectByType<EnergyManager>().GetCurrentEnergy();
-            var previusKnowledge = FindAnyObjectByType<KnowledgeManager>().GetCurrentEnergy();
+            var previusEnergy = FindAnyObjectByType<EnergyManager>().GetResources();
+            var previusKnowledge = FindAnyObjectByType<KnowledgeManager>().GetResources();
         
             //Calculate Time
             var saveDate = DateTime.Parse(PlayerPrefs.GetString("SavingTime"));
@@ -138,8 +138,8 @@ namespace Battery
         
         private void AddProgress(BigNumber energyToAdd, BigNumber knowledgeToAdd)
         {
-            FindAnyObjectByType<EnergyManager>().AddEnergy(energyToAdd);
-            FindAnyObjectByType<KnowledgeManager>().AddKnowledge(knowledgeToAdd);
+            FindAnyObjectByType<EnergyManager>().AddResources(energyToAdd);
+            FindAnyObjectByType<KnowledgeManager>().AddResources(knowledgeToAdd);
             
         }
 

@@ -80,7 +80,7 @@ namespace Energy
         {
             if (!isFirst)
             {
-                if (!_knowledgeManager.RemoveKnowledge(_energySource.GetCostToUnlock())) return;
+                if (!_knowledgeManager.RemoveResources(_energySource.GetCostToUnlock())) return;
             }
             _isLocked = false;
             PlayerPrefs.SetInt($"{_energySource.EnergySourceName}IsLocked", _isLocked == true ? 1 : 0);
@@ -118,7 +118,7 @@ namespace Energy
         private void UpdateUnlockButton()
         {
             if (!_isLocked) return;
-            Calculator.CompareBigNumbers(_knowledgeManager.GetCurrentEnergy(), 
+            Calculator.CompareBigNumbers(_knowledgeManager.GetResources(), 
                 _energySource.GetCostToUnlock(), 
                 out var result);
             _ui.SetUnlockButtonState(result is ComparisonResult.Bigger or ComparisonResult.Equal);
@@ -128,7 +128,7 @@ namespace Energy
         {
             if (_isLocked) return;
             if (_isLastLevel) return;
-            Calculator.CompareBigNumbers(_energy.GetCurrentEnergy(),
+            Calculator.CompareBigNumbers(_energy.GetResources(),
                 _energySource.GetCost(currentLevel), 
                 out var result);
 
@@ -149,7 +149,7 @@ namespace Energy
                 return;
             }
             
-            if (!_energy.RemoveEnergy(_energySource.GetCost(nextLevel, currentLevel))) return;
+            if (!_energy.RemoveResources(_energySource.GetCost(nextLevel, currentLevel))) return;
             Debug.Log("Buy Upgrade");
             
             currentLevel = nextLevel;
@@ -180,7 +180,7 @@ namespace Energy
         private void UpdateRatio( BigNumber totalEps)
         {
             if(!GetLevelData(currentLevel, out var dataLevel)) return;
-            var ratio =Calculator.DivideBigNumbers(dataLevel.EPS, _energy.GetEps());
+            var ratio =Calculator.DivideBigNumbers(dataLevel.EPS, _energy.Eps);
             _ui.UpdateRatioText(ratio);
         }
 

@@ -97,7 +97,7 @@ public class KnowledgeSource : MonoBehaviour
     public void BuyUpgrade(int levelsToBuy = 1)
     {
         var nextLevel = _currentKnowledgeLevel + levelsToBuy;
-        if (!_energy.RemoveEnergy(knowledgeSo.GetKnowledgeCost(nextLevel, _currentKnowledgeLevel))) return;
+        if (!_energy.RemoveResources(knowledgeSo.GetKnowledgeCost(nextLevel, _currentKnowledgeLevel))) return;
         Debug.Log("Buy Upgrade");
         
         _currentKnowledgeLevel = nextLevel;
@@ -130,7 +130,7 @@ public class KnowledgeSource : MonoBehaviour
     {
         
         if (_isLastLevel) return;
-        Calculator.CompareBigNumbers(_energy.GetCurrentEnergy(),
+        Calculator.CompareBigNumbers(_energy.GetResources(),
             knowledgeSo.GetKnowledgeCost(_currentKnowledgeLevel), 
             out var result);
 

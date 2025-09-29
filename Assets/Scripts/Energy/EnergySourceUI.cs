@@ -18,13 +18,7 @@ namespace Energy
         [SerializeField] private Button unlockButton;
         [SerializeField] private Button upgradeButton;
 
-        private EnergyManager _energy;
-    
-        private void Awake()
-        {
-            _energy = FindObjectOfType<EnergyManager>();
-        }
-
+      
 
         public void SetLockedEnergySourceData(BigNumber firstLevelEps, BigNumber costToUnlock)
         {
@@ -43,8 +37,6 @@ namespace Energy
         {
             print($"Se desbloquéo: {newSprite.name}");
             illustration.sprite = newSprite;
-            //illustration.SetNativeSize();
-            
             titleText.text = energySourceName;
             UpdateEnergySourceData(level, eps, nextLevelEps, upgradeCost);
             unlockButton.gameObject.SetActive(false);
