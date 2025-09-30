@@ -1261,12 +1261,12 @@ MonoBehaviour:
   energySources:
   - {fileID: 11400000, guid: a6ecd426c17bf9440932746f761f2dc6, type: 2}
   - {fileID: 11400000, guid: 2bba051955fc7cd47abcde78e1b5426a, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 2b21f0910e417814d8f25e6205dba1e5, type: 2}
+  - {fileID: 11400000, guid: 36f9c4c6a34cd7f44bec60fb1511b8dd, type: 2}
+  - {fileID: 11400000, guid: 47cb003e97df2a147a79d8a5c050c6fe, type: 2}
+  - {fileID: 11400000, guid: 92b44487d84c6984c889c68caf118f1f, type: 2}
+  - {fileID: 11400000, guid: 4359312da08acb945b2a8076e49dc6d2, type: 2}
+  - {fileID: 11400000, guid: 9cc8c34f1d0fca84eb39fa7d222f9d8c, type: 2}
   energySourcePrefab: {fileID: 4692717864829675909, guid: 92101213a31081f42b8a9be211d830ce, type: 3}
   energySourceParent: {fileID: 1400926437}
 --- !u!1 &601198276

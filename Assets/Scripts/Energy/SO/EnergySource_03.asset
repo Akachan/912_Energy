@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef353f7ebec34464abd80bf9faa9021e, type: 3}
-  m_Name: EnergySource_01
+  m_Name: EnergySource_03
   m_EditorClassIdentifier: 
-  sourceName: MOLINO DE AGUA
-  priceGrowthRate: 1.07
+  sourceName: "CARB\xD3N"
+  priceGrowthRate: 1.14
   maxLevel: 500
   baseCost:
-    Base: 1
-    Exponent: 1
+    Base: 1.5
+    Exponent: 4
   baseRps:
-    Base: 1
-    Exponent: 0
+    Base: 6.4
+    Exponent: 1
   costToUnlock:
-    Base: 0
-    Exponent: 0
-  illustration: {fileID: 21300000, guid: d85ee2808222ca343b27242aaa10725f, type: 3}
-  description: Texto Molino de Agua
+    Base: 1
+    Exponent: 4
+  illustration: {fileID: 21300000, guid: c0f1b68cfa334fc4fa2656291e87e972, type: 3}
+  description: "Texto de Carb\xF3n"
