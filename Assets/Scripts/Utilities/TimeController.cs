@@ -74,31 +74,31 @@ namespace Utilities
             }
             else if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                Time.timeScale = 3f;
+                Time.timeScale = 4f;
             }
             else if (Input.GetKeyDown(KeyCode.Alpha4))
             {
-                Time.timeScale = 4f;
+                Time.timeScale = 8f;
             }
             else if (Input.GetKeyDown(KeyCode.Alpha5))
             {
-                Time.timeScale = 5f;
+                Time.timeScale = 16f;
             }
             else if (Input.GetKeyDown(KeyCode.Alpha6))
             {
-                Time.timeScale = 6f;
+                Time.timeScale = 32f;
             }
             else if (Input.GetKeyDown(KeyCode.Alpha7))
             {
-                Time.timeScale = 7f;
+                Time.timeScale = 64f;
             }
             else if (Input.GetKeyDown(KeyCode.Alpha8))
             {
-                Time.timeScale = 8f;
+                Time.timeScale = 80f;
             }
             else if (Input.GetKeyDown(KeyCode.Alpha9))
             {
-                Time.timeScale = 9f;
+                Time.timeScale = 99f;
             }
         }
     }
