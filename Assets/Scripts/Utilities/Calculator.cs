@@ -217,7 +217,14 @@ public abstract class Calculator
             _ => ComparisonResult.Equal
         };
     }
-    
+
+    public static BigNumber TruncateDecimalBigNumber(BigNumber num)
+    {
+        if(num.Exponent > Threshold)  return num;
+        
+        var newBase = Mathf.Floor((float)(num.Base * Pow10(num.Exponent))) / Pow10(num.Exponent);
+        return new BigNumber(newBase, num.Exponent);
+    }
     //Cosas que probablemente no use
     
         public static BigNumber TranformToBigNumber(string value)

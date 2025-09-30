@@ -49,7 +49,6 @@ namespace Energy
             _energySourceIndex++;
             instance.UnlockEnergySource(true);  //El primero está siempre desbloqueado
             
-            
         }
 
         public void CreateNewEnergySource()
@@ -61,13 +60,6 @@ namespace Energy
             _energySourceIndex++;
             PlayerPrefs.SetInt("EnergySourceIndex", _energySourceIndex);
         }
-        
-        
-
- 
-    
-    
-    
-
+  
     }
 }

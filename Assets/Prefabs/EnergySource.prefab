@@ -121,7 +121,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2814067918938981593}
+      - m_Target: {fileID: 1296062436112042768}
         m_TargetAssemblyTypeName: Energy.EnergySource, Assembly-CSharp
         m_MethodName: BuyUpgrade
         m_Mode: 3
@@ -329,8 +329,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2814067918938981593}
-        m_TargetAssemblyTypeName: EnergySource, Assembly-CSharp
+      - m_Target: {fileID: 1296062436112042768}
+        m_TargetAssemblyTypeName: Energy.EnergySource, Assembly-CSharp
         m_MethodName: UnlockEnergySource
         m_Mode: 6
         m_Arguments:
@@ -352,8 +352,8 @@ GameObject:
   - component: {fileID: 1331441624682250193}
   - component: {fileID: 5218296139101853049}
   - component: {fileID: 1482817284267546370}
-  - component: {fileID: 2814067918938981593}
   - component: {fileID: 5422776641105329570}
+  - component: {fileID: 1296062436112042768}
   m_Layer: 5
   m_Name: EnergySource
   m_TagString: Untagged
@@ -419,21 +419,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 4
---- !u!114 &2814067918938981593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4692717864829675909}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8981f1ac46802d4429347db77b45c957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentLevel: 1
-  timeToRecalculate: 0.5
-  infoPanelPrefab: {fileID: 6620869286672095357, guid: d7cf45928643c7542a97953dd48ad92e, type: 3}
 --- !u!114 &5422776641105329570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,6 +441,20 @@ MonoBehaviour:
   upgradeCostText: {fileID: 4965218272065078348}
   unlockButton: {fileID: 7253248845722544935}
   upgradeButton: {fileID: 5847449257716289766}
+--- !u!114 &1296062436112042768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4692717864829675909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45807d43b54d40e59f0b7ade0d58c74d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToRecalculate: 1
+  infoPanelPrefab: {fileID: 6620869286672095357, guid: d7cf45928643c7542a97953dd48ad92e, type: 3}
 --- !u!1 &5548707155394944315
 GameObject:
   m_ObjectHideFlags: 0
