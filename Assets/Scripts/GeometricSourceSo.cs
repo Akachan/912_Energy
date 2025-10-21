@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -10,9 +12,29 @@ public abstract class GeometricSourceSo : ScriptableObject
     [SerializeField] private int maxLevel;
     [SerializeField] private  BigNumber baseCost;
     [SerializeField] private  BigNumber baseRps;
-    
-    
+    [SerializeField] private List<Multipliers>  multipliersList;
 
+    private Dictionary<int, float> _multipliers;
+    private float _multiplier;
+
+    [Serializable]
+    public struct Multipliers
+    {
+        public int level;
+        public float multiplier;
+    }
+
+    private void Init()
+    {
+        var mult = 1f;
+        _multipliers = new Dictionary<int, float>();
+        foreach (var multiplier in multipliersList)
+        {
+            mult *= multiplier.multiplier;
+            _multipliers.Add(multiplier.level, mult);
+        }
+    }
+    
 
     public string SourceName => sourceName;
     public BigNumber BaseCost => baseCost;
@@ -38,9 +60,10 @@ public abstract class GeometricSourceSo : ScriptableObject
     
     public BigNumber GetRps(int level) 
     {
-        var rps = Calculator.MultiplyBigNumbers(baseRps, level);
+        var rps = Calculator.MultiplyBigNumbers(baseRps, level * GetMultiplier(level));
         return rps;
     }
+        
 
     public BigNumber GetDifferenceRps(int level, int levelToCompare)
     {
@@ -56,6 +79,32 @@ public abstract class GeometricSourceSo : ScriptableObject
     public BigNumber GetDifferenceRps(int level)
     {
         return GetDifferenceRps(level, level + 1);
+    }
+
+    public float GetMultiplier(int level)
+    {
+        if(_multipliers == null)
+        {
+            Init();
+        }
+        
+        // Si existe exactamente, devolverlo
+        if (_multipliers.TryGetValue(level, out var exact))
+        {
+            return exact;
+        }
+
+        // Buscar el nivel inferior más cercano
+            var bestLevel = -1;
+            foreach (var key in _multipliers.Keys)
+            {
+                if (key <= level && key > bestLevel)
+                {
+                    bestLevel = key;
+                }
+            }
+
+        return bestLevel >= 0 ? _multipliers[bestLevel] : 1f;
     }
 
 

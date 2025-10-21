@@ -1,140 +1,111 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Energy;
-using Knowledge;
 using UnityEngine;
 
-public class KnowledgeSource : MonoBehaviour
+namespace Knowledge
 {
-    
-
-    [SerializeField] private KnowledgeSo knowledgeSo;
-    
-    
-
-    private int _currentKnowledgeLevel = 1;
-    private KnowledgeManager _knowledgeManager;
-    private KnowledgeSourceUI _ui;
-    private EnergyManager _energy;
-    private bool _isLastLevel;
-    private float _currentTime;
-
-
-    private void Awake()
+    public class KnowledgeSource : MonoBehaviour
     {
-        _knowledgeManager = FindFirstObjectByType<KnowledgeManager>();
-        _ui = GetComponent<KnowledgeSourceUI>();
-        _energy = FindFirstObjectByType<EnergyManager>();
-    }
-
-    private void Start()
-    {
+        [SerializeField] private KnowledgeSourceSo knowledgeSourceSo;
         
-        SetInitialKnowledge();
-    }
+        private int _currentLevel = 1;
+        private KnowledgeManager _knowledgeManager;
+        private KnowledgeSourceUI _ui;
+        private EnergyManager _energy;
+        private bool _isLastLevel;
+        private float _currentTime;
 
-    private void Update()
-    {
-        _currentTime += Time.deltaTime;
 
-        if (!(_currentTime >= 0.2)) return;
-
-        UpdateUpgradeButton();
-      
-        _currentTime = 0f;
-    }
-
-    private void SetInitialKnowledge() 
-    {
-        if (PlayerPrefs.HasKey("KnowledgeLevel"))
+        private void Awake()
         {
-            _currentKnowledgeLevel = PlayerPrefs.GetInt("KnowledgeLevel");
-        }
-        
-        if(!GetLevelData(_currentKnowledgeLevel, out var data)) return;
-        
-        _knowledgeManager.SetKps(data.KPS);
-
-        if (_currentKnowledgeLevel < knowledgeSo.GetMaxLevel())
-        {
-            _ui.UpdateKnowledgeData(_currentKnowledgeLevel,
-                                            data.KPS,
-                                            GetDifferenceWithNextLevel(data.KPS),
-                                            data.Cost);
-        }
-        else
-        {
-            _ui.UpdateLastLevelKnowledgeSourceData(_currentKnowledgeLevel, data.KPS);
-            _isLastLevel = true;
-        }
-        
-
-    }
-
-    private BigNumber GetDifferenceWithNextLevel(BigNumber kps)
-    {
-        if (!GetLevelData(_currentKnowledgeLevel + 1, out var nextDataLevel)) return null;
-        var difference = Calculator.SubtractBigNumbers(nextDataLevel.KPS, kps);
-        return difference;
-    }
-
-    private bool GetLevelData(int level, out LevelKnowledgeData dataLevel)
-    {
-        if (knowledgeSo.TryGetKnowledgeData(level, out var data))
-        {
-            dataLevel = data;
-            return true;
+            _knowledgeManager = FindFirstObjectByType<KnowledgeManager>();
+            _ui = GetComponent<KnowledgeSourceUI>();
+            _energy = FindFirstObjectByType<EnergyManager>();
         }
 
-        Debug.LogError("No se han encontrado los datos del energySource");
-        dataLevel = default;
-        return false;
-
-    }
-    
-    //Al hacer Click en el Botón
-    public void BuyUpgrade(int levelsToBuy = 1)
-    {
-        var nextLevel = _currentKnowledgeLevel + levelsToBuy;
-        if (!_energy.RemoveResources(knowledgeSo.GetKnowledgeCost(nextLevel, _currentKnowledgeLevel))) return;
-        Debug.Log("Buy Upgrade");
-        
-        _currentKnowledgeLevel = nextLevel;
-        
-        
-        if (_currentKnowledgeLevel < knowledgeSo.GetMaxLevel())
+        private void Start()
         {
-            if (!GetLevelData(_currentKnowledgeLevel, out var dataLevel)) return;
-            
-            _knowledgeManager.SetKps(dataLevel.KPS);;
-            _ui.UpdateKnowledgeData( _currentKnowledgeLevel,
-                dataLevel.KPS,
-                GetDifferenceWithNextLevel(dataLevel.KPS),
-                dataLevel.Cost);
-            
+            SetInitialKnowledge();
+        }
+
+        private void Update()
+        {
+            _currentTime += Time.deltaTime;
+
+            if (!(_currentTime >= 0.2)) return;
+
             UpdateUpgradeButton();
+      
+            _currentTime = 0f;
         }
-        else
+
+        private void SetInitialKnowledge() 
         {
-            if (!GetLevelData(_currentKnowledgeLevel, out var dataLevel)) return;
-            _knowledgeManager.SetKps(dataLevel.KPS);;
-            _ui.UpdateLastLevelKnowledgeSourceData(_currentKnowledgeLevel, dataLevel.KPS);
-            _isLastLevel = true;
+            if (PlayerPrefs.HasKey("KnowledgeLevel"))
+            {
+                _currentLevel = PlayerPrefs.GetInt("KnowledgeLevel");
+            }
+            
+            _knowledgeManager.SetKps(knowledgeSourceSo.GetRps(_currentLevel));
+
+            if (_currentLevel < knowledgeSourceSo.MaxLevel)
+            {
+                
+                _ui.UpdateKnowledgeData(_currentLevel,
+                    knowledgeSourceSo.GetRps(_currentLevel),
+                    knowledgeSourceSo.GetDifferenceRps(_currentLevel),
+                    knowledgeSourceSo.GetCost(_currentLevel));
+            }
+            else
+            {
+                _ui.UpdateLastLevelKnowledgeSourceData(_currentLevel,knowledgeSourceSo.GetRps(_currentLevel));
+                _isLastLevel = true;
+            }
         }
 
-        PlayerPrefs.SetInt("KnowledgeLevel", _currentKnowledgeLevel);
-    }
-
-    private void UpdateUpgradeButton()
-    {
+     
+       
+    
+        //Al hacer Click en el Botón
+        public void BuyUpgrade(int levelsToBuy = 1)
+        {
+            var nextLevel = _currentLevel + levelsToBuy;
+            if (!_energy.RemoveResources(knowledgeSourceSo.GetCost(_currentLevel))) return;
+            Debug.Log("Buy Upgrade");
         
-        if (_isLastLevel) return;
-        Calculator.CompareBigNumbers(_energy.GetResources(),
-            knowledgeSo.GetKnowledgeCost(_currentKnowledgeLevel), 
-            out var result);
+            _currentLevel = nextLevel;
+        
+        
+            if (_currentLevel < knowledgeSourceSo.MaxLevel)
+            {
+                _knowledgeManager.SetKps(knowledgeSourceSo.GetRps(_currentLevel));;
+                _ui.UpdateKnowledgeData( _currentLevel,
+                    knowledgeSourceSo.GetRps(_currentLevel),
+                    knowledgeSourceSo.GetDifferenceRps(_currentLevel),
+                    knowledgeSourceSo.GetCost(_currentLevel));
+            
+                UpdateUpgradeButton();
+            }
+            else
+            {
+                
+                _knowledgeManager.SetKps(knowledgeSourceSo.GetRps(_currentLevel));;
+                _ui.UpdateLastLevelKnowledgeSourceData(_currentLevel, knowledgeSourceSo.GetRps(_currentLevel));
+                _isLastLevel = true;
+            }
 
-        _ui.SetUpgradeButtonState(result is ComparisonResult.Bigger or ComparisonResult.Equal);
+            PlayerPrefs.SetInt("KnowledgeLevel", _currentLevel);
+        }
+
+        private void UpdateUpgradeButton()
+        {
+        
+            if (_isLastLevel) return;
+            Calculator.CompareBigNumbers(_energy.GetResources(),
+                knowledgeSourceSo.GetCost(_currentLevel), 
+                out var result);
+
+            _ui.SetUpgradeButtonState(result is ComparisonResult.Bigger or ComparisonResult.Equal);
+        }
     }
 }
 

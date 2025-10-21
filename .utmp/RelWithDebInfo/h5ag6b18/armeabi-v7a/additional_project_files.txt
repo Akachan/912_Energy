@@ -1,0 +1,1 @@
+E:\Documentos\04_Unity\912_Energy\Energy\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\FramePacing\UnitySwappyWrapper.h

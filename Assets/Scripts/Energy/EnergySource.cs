@@ -1,5 +1,6 @@
 using Knowledge;
 using UnityEngine;
+using Utilities;
 
 namespace Energy
 {
@@ -21,13 +22,14 @@ namespace Energy
         private float _currentTime;
         private bool _isLocked = true;
         private bool _isLastLevel = false;
+       
         
         private void Awake()
         {
-            _energy = FindObjectOfType<EnergyManager>();
+            _energy = FindFirstObjectByType<EnergyManager>();
             _ui = GetComponent<EnergySourceUI>();
             _spawner = GetComponentInParent<EnergySourcesSpawner>();
-            _knowledgeManager = FindObjectOfType<KnowledgeManager>();
+            _knowledgeManager = FindFirstObjectByType<KnowledgeManager>();
 
         }
         private void OnDisable()
@@ -107,20 +109,24 @@ namespace Energy
             Debug.Log("Buy Upgrade");
             
             _currentLevel = nextLevel;
-           
+            var rps = _energySource.GetRps(_currentLevel);
+            
             if (_currentLevel < _energySource.MaxLevel)
             {
-                _energy.UpdateSource(_energySource.SourceName, _energySource.GetRps(_currentLevel));;
+                
+                print($"Level: {_currentLevel} \n RPS: {BigNumberFormatter.SetSuffixFormat(_energySource.GetRps(_currentLevel))} \n Next: {BigNumberFormatter.SetSuffixFormat(_energySource.GetDifferenceRps(_currentLevel))} \n Cost: {BigNumberFormatter.SetSuffixFormat(_energySource.GetCost(_currentLevel))}");
+
+                _energy.UpdateSource(_energySource.SourceName, rps);
                 _ui.UpdateEnergySourceData( _currentLevel,
-                                        _energySource.GetRps(_currentLevel),
+                                        rps,
                                 _energySource.GetDifferenceRps(_currentLevel),
                                             _energySource.GetCost(_currentLevel));
                 UpdateUpgradeButton();
             }
             else if (_currentLevel == _energySource.MaxLevel)
             {
-                _energy.UpdateSource(_energySource.SourceName, _energySource.GetRps(_currentLevel));;
-                _ui.UpdateLastLevelEnergySourceData( _currentLevel, _energySource.GetRps(_currentLevel));
+                _energy.UpdateSource(_energySource.SourceName, rps);
+                _ui.UpdateLastLevelEnergySourceData( _currentLevel, rps);
                 _isLastLevel = true;
             }
             

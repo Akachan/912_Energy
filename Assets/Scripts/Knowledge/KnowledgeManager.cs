@@ -24,7 +24,7 @@ namespace Knowledge
         private void Update()
         {
             UpdateResources();
-            Save();
+            
         }
 
         private void UpdateResources()
@@ -35,6 +35,7 @@ namespace Knowledge
             _currentTime = 0f;
             
             _ui.SetKnowledgeValue(CurrentResources);
+            Save();
         }
         
         public void SetKps(BigNumber kps)
@@ -52,9 +53,16 @@ namespace Knowledge
         //GUARDADO//
         public override void Save()
         {
+            
+            if (Time.timeScale == 0)
+            {
+                print("entro a save despues de la detención");
+            }
             PlayerPrefs.SetFloat("KnowledgeBase", (float)CurrentResources.Base);
             PlayerPrefs.SetInt("KnowledgeExponent", CurrentResources.Exponent);
         }
+
+      
         public override void Load()
         {
             if (PlayerPrefs.HasKey("KnowledgeBase"))
@@ -65,6 +73,7 @@ namespace Knowledge
         }
         private void SaveKps()
         {
+            
             PlayerPrefs.SetFloat("KpsBase", (float)_kps.Base);
             PlayerPrefs.SetInt("KpsExponent", _kps.Exponent);
             PlayerPrefs.Save(); // Fuerza el guardado inmediato

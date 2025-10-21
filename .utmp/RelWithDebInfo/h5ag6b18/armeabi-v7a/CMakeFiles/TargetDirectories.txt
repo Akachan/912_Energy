@@ -1,0 +1,5 @@
+E:/Documentos/04_Unity/912_Energy/Energy/.utmp/RelWithDebInfo/h5ag6b18/armeabi-v7a/CMakeFiles/edit_cache.dir
+E:/Documentos/04_Unity/912_Energy/Energy/.utmp/RelWithDebInfo/h5ag6b18/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+E:/Documentos/04_Unity/912_Energy/Energy/.utmp/RelWithDebInfo/h5ag6b18/armeabi-v7a/FramePacing/CMakeFiles/swappywrapper.dir
+E:/Documentos/04_Unity/912_Energy/Energy/.utmp/RelWithDebInfo/h5ag6b18/armeabi-v7a/FramePacing/CMakeFiles/edit_cache.dir
+E:/Documentos/04_Unity/912_Energy/Energy/.utmp/RelWithDebInfo/h5ag6b18/armeabi-v7a/FramePacing/CMakeFiles/rebuild_cache.dir

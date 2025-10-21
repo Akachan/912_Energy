@@ -76,6 +76,7 @@ namespace Energy
               //GUARDADO//
               public override void Save()
               {
+                  
                      PlayerPrefs.SetFloat("EnergyBase", (float)CurrentResources.Base);
                      PlayerPrefs.SetInt("EnergyExponent", CurrentResources.Exponent);
               }

@@ -21,6 +21,17 @@ MonoBehaviour:
   baseRps:
     Base: 1.2
     Exponent: 5
+  multipliersList:
+  - level: 25
+    multiplier: 2
+  - level: 0
+    multiplier: 0
+  - level: 50
+    multiplier: 2
+  - level: 100
+    multiplier: 4
+  - level: 200
+    multiplier: 4
   costToUnlock:
     Base: 1.5
     Exponent: 8

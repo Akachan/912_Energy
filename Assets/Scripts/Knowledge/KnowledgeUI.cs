@@ -12,6 +12,10 @@ public class KnowledgeUI : MonoBehaviour
     public void SetKnowledgeValue(BigNumber value)
     {
 
+        if (Time.timeScale == 0)
+        {
+            print($"TimeScale es cero. KNOWLDEDGE: {BigNumberFormatter.SetSuffixFormat(value)}");
+        }
         //energyValue.text = $"{value.Base:#.########}e{value.Exponent}";
         knowledgeValueText.text = BigNumberFormatter.SetSuffixFormat(value);
     }

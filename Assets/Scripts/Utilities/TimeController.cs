@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using Energy;
 using Knowledge;
 using UnityEngine;
@@ -21,8 +23,8 @@ namespace Utilities
 
         private void Awake()
         {
-            _energyManager = FindObjectOfType<EnergyManager>();
-            _knowledgeManager = FindObjectOfType<KnowledgeManager>();
+            _energyManager = FindFirstObjectByType<EnergyManager>();
+            _knowledgeManager = FindFirstObjectByType<KnowledgeManager>();
         }
 
         [ContextMenu("Add Energy")]
