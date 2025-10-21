@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef353f7ebec34464abd80bf9faa9021e, type: 3}
   m_Name: EnergySource_03
   m_EditorClassIdentifier: 
-  sourceName: "CARB\xD3N"
+  sourceName: COAL
   priceGrowthRate: 1.14
   maxLevel: 500
   baseCost:
@@ -34,4 +34,8 @@ MonoBehaviour:
     Base: 1
     Exponent: 4
   illustration: {fileID: 21300000, guid: c0f1b68cfa334fc4fa2656291e87e972, type: 3}
-  description: "Texto de Carb\xF3n"
+  description: "Deep beneath the earth slept a dark power: coal. When lit, it unleashed
+    immense energy\u2014moving locomotives, melting metals, and feeding whole factories.
+    The Industrial Revolution was born amid smoke and steam, pushing civilization
+    forward on fossil fire. A monumental leap, though one whose cost would take centuries
+    to understand."

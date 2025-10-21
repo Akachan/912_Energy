@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef353f7ebec34464abd80bf9faa9021e, type: 3}
   m_Name: EnergySource_05
   m_EditorClassIdentifier: 
-  sourceName: NUCLEAR
+  sourceName: NUCLEAR ENERGY
   priceGrowthRate: 1.12
   maxLevel: 500
   baseCost:
@@ -34,4 +34,8 @@ MonoBehaviour:
     Base: 1
     Exponent: 7
   illustration: {fileID: 21300000, guid: b68ad62d659b2ac42b4eb45469ee4a70, type: 3}
-  description: Texto Nuclear
+  description: "By splitting the atom, humanity unleashed the greatest power it had
+    ever known. Nuclear energy could light entire nations\u2014or turn them to ash.
+    It was the moment science confronted its own reflection: a force as capable of
+    creation as of destruction. In its radiant glow, the future seemed both closer
+    and more uncertain."

@@ -20,7 +20,7 @@ public class SetInfoPanel : MonoBehaviour
         //illustration.SetNativeSize();
         infoText.text = text;
 
-        if (title == "GATO-TOSTADA")
+        if (title == "CAT-TOAST REACTOR")
         {
             winButton.gameObject.SetActive(true);
         }

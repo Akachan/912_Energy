@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef353f7ebec34464abd80bf9faa9021e, type: 3}
   m_Name: EnergySource_07
   m_EditorClassIdentifier: 
-  sourceName: "FUSI\xD3N NUCLEAR"
+  sourceName: NUCLEAR FUSION
   priceGrowthRate: 1.1
   maxLevel: 500
   baseCost:
@@ -32,4 +32,8 @@ MonoBehaviour:
     Base: 1
     Exponent: 10
   illustration: {fileID: 21300000, guid: af0009523d433b44c9b1c127560165fe, type: 3}
-  description: "Texto Fusi\xF3n Nuclear\n"
+  description: "In the future, humanity finally learns to join atoms instead of splitting
+    them. Nuclear fusion recreates the heart of the sun, releasing pure, near-infinite
+    energy without the dangers of the past. It is the fulfilled dream of generations
+    of scientists\u2014a star born on Earth.\nYou\u2019re in the future. Civilization
+    has reached the peak of its energy evolution."

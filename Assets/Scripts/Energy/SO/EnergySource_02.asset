@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef353f7ebec34464abd80bf9faa9021e, type: 3}
   m_Name: EnergySource_02
   m_EditorClassIdentifier: 
-  sourceName: MOLINO DE VIENTO
+  sourceName: WINDMILL
   priceGrowthRate: 1.16
   maxLevel: 500
   baseCost:
@@ -34,4 +34,7 @@ MonoBehaviour:
     Base: 1
     Exponent: 3
   illustration: {fileID: 21300000, guid: 34687c027eb1e7b45a877c803c050e7d, type: 3}
-  description: Texto Molino de viento
+  description: "When water wasn\u2019t near, the wind offered its invisible strength.
+    With blades spinning tirelessly, windmills turned air into useful motion. In
+    plains and deserts where rivers were scarce, wind powered crops, pumped water,
+    and ground grain. It marked humanity\u2019s first great expansion over the elements."

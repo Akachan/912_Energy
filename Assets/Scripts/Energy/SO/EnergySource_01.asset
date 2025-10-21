@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef353f7ebec34464abd80bf9faa9021e, type: 3}
   m_Name: EnergySource_01
   m_EditorClassIdentifier: 
-  sourceName: MOLINO DE AGUA
+  sourceName: WATER MILL
   priceGrowthRate: 1.07
   maxLevel: 500
   baseCost:
@@ -36,4 +36,8 @@ MonoBehaviour:
     Base: 0
     Exponent: 0
   illustration: {fileID: 21300000, guid: d85ee2808222ca343b27242aaa10725f, type: 3}
-  description: Texto Molino de Agua
+  description: "For centuries, humans discovered they could turn the force of water
+    into work. Rivers, once just pathways and sources of life, became natural engines.
+    Water wheels drove mills, saws, and hammers\u2014birthplaces of early industry.
+    It was the moment energy stopped depending solely on human or animal muscle,
+    marking the dawn of true mechanical ingenuity."

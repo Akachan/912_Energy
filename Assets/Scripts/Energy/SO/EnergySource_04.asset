@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef353f7ebec34464abd80bf9faa9021e, type: 3}
   m_Name: EnergySource_04
   m_EditorClassIdentifier: 
-  sourceName: PETROLEO
+  sourceName: OIL
   priceGrowthRate: 1.13
   maxLevel: 500
   baseCost:
@@ -34,4 +34,8 @@ MonoBehaviour:
     Base: 1.5
     Exponent: 5
   illustration: {fileID: 21300000, guid: 3dc4af96b76819246b660bd2f6b905f2, type: 3}
-  description: Texto Petroleo
+  description: "With the discovery of oil, the world changed pace. Engines roared,
+    cities lit up, and transport became faster than ever before. This \u201Cblack
+    gold\u201D powered an era of growth and excess, fueling both prosperity and dependence.
+    It defined the 20th century\u2014a time when energy flowed as freely as dreams\u2026
+    and conflicts."

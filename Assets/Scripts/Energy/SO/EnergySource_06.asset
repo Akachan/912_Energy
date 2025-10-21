@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef353f7ebec34464abd80bf9faa9021e, type: 3}
   m_Name: EnergySource_06
   m_EditorClassIdentifier: 
-  sourceName: PANEL SOLAR
+  sourceName: SOLAR PANELS
   priceGrowthRate: 1.11
   maxLevel: 500
   baseCost:
@@ -36,4 +36,8 @@ MonoBehaviour:
     Base: 1.5
     Exponent: 8
   illustration: {fileID: 21300000, guid: 0c68e3ad20a7c92468839588ec08c0f6, type: 3}
-  description: Texto energia solar
+  description: "After centuries of gazing at the sky, humans learned to turn light
+    itself into energy. Solar panels transformed the sun\u2019s radiation into clean,
+    renewable, silent electricity. For the first time, power came not from the depths
+    of the earth but from the heavens. It was a rebirth of hope\u2014energy that
+    doesn\u2019t destroy what it sustains."
