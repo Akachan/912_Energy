@@ -1,4 +1,5 @@
 using System;
+using Cash;
 using Energy;
 using UnityEngine;
 using Utilities;
@@ -10,6 +11,7 @@ namespace Requests
       
         private BigNumber _energyToRequest;
         private EnergyManager _energyManager;
+        
         
         public BigNumber EnergyToRequest => _energyToRequest;
         public event Action<BigNumber> OnFulFillRequest;
@@ -37,7 +39,10 @@ namespace Requests
         {
             if (_energyManager.RemoveResources(_energyToRequest))
             {
-                OnFulFillRequest?.Invoke(CalculateGoldToGet(new BigNumber(1, 1)));
+                var calculateGoldToGet = CalculateGoldToGet(new BigNumber(1, 1));
+                FindFirstObjectByType<CashManager>().AddResources(calculateGoldToGet);
+                
+                OnFulFillRequest?.Invoke(calculateGoldToGet); //para pasarle el texto para despues mostrarlo en el UI
                 
                 //Add gold to player
                 //Destroy this object

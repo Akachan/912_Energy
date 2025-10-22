@@ -11,7 +11,7 @@ public abstract class BigResourceManager : MonoBehaviour, IResource<BigNumber>, 
     
     protected BigNumber CurrentResources;
     
-    public void AddResources(BigNumber resource)
+    public virtual void AddResources(BigNumber resource)
     {
         CurrentResources = Calculator.AddBigNumbers(CurrentResources, resource);
         Save();
