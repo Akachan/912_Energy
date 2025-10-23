@@ -3159,11 +3159,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12953b6b6be9c474b8ef37864a88f292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  energyRequestPrefab: {fileID: 7133208252817346023, guid: 929932ecf1da6dc47aef5656f1e239cd, type: 3}
   energyToRequestBase:
     Base: 1
     Exponent: 1
-  maxRequests: 3
+  timeToSpawnBase: 10
+  maxRequestsBase: 3
+  cashRatioBase: 1
+  randomizeFactorBase: 0.1
+  energyToRequestMultiplier: 0.1
+  timeToSpawnMultiplier: 0.05
+  cashRatioMultiplier: 0.1
+  maxRequestsAmplifier: 1
+  populationPurchased: 0
+  industriesPurchased: 0
+  commercesPurchased: 0
+  energyRequestPrefab: {fileID: 7133208252817346023, guid: 929932ecf1da6dc47aef5656f1e239cd, type: 3}
 --- !u!1 &1996728754
 GameObject:
   m_ObjectHideFlags: 0

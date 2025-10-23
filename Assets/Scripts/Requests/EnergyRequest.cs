@@ -12,6 +12,8 @@ namespace Requests
         private BigNumber _energyToRequest;
         private EnergyManager _energyManager;
         private EnergyRequestManager _energyRequestManager;
+        private EnergyRequestSaver _energyRequestSaver;
+        private int _index;
         
         
         public BigNumber EnergyToRequest => _energyToRequest;
@@ -25,9 +27,12 @@ namespace Requests
             _energyRequestManager = FindFirstObjectByType<EnergyRequestManager>();
         }
         
-        public void SetEnergyToRequest(BigNumber energyToRequest)
+        public void SetEnergyToRequest(EnergyRequestSaver saver, BigNumber energyToRequest, int index)
         {
+            _energyRequestSaver = saver;
             _energyToRequest = energyToRequest;
+            _index = index;
+            _energyRequestSaver.SaveRequest(_index, _energyToRequest);
             
         }
         
@@ -37,13 +42,14 @@ namespace Requests
         {
             if (_energyManager.RemoveResources(_energyToRequest))
             {
+                _energyRequestSaver.DeleteRequest(_index);
+                
                 var calculateGoldToGet = CalculateGoldToGet();
                 FindFirstObjectByType<CashManager>().AddResources(calculateGoldToGet);
                 
                 OnFulFillRequest?.Invoke(calculateGoldToGet); //para pasarle el texto para despues mostrarlo en el UI
                 
-                //Add gold to player
-                //Destroy this object
+                
             }
         }
         

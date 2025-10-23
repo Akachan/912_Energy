@@ -1,11 +1,13 @@
 using System;
+using System.Collections.Generic;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using Utilities;
 
 
 namespace Requests
 {
-    public class EnergyRequestManager : MonoBehaviour
+    public class EnergyRequestManager : MonoBehaviour, ISaveable
     {
         
         [Header("Base Settings")]
@@ -34,16 +36,22 @@ namespace Requests
         private float _timeToSpawn;
         private float _cashRatio;
         
-        private float _currentTime = 99f;
+        private float _currentTime = 0f;
+        private EnergyRequestSaver _saver;
+        private int _currentIndex = 0;
         
         public float CashRatio => _cashRatio;
 
+        
 
         private void Start()
         {
             SetEnergyToRequest();
             SetTimeToSpawn();
             SetCashRatio();
+
+            Load();
+            
         }
 
         private void Update()
@@ -72,7 +80,9 @@ namespace Requests
 
             //New request
             var instance = Instantiate(energyRequestPrefab, transform).GetComponent<EnergyRequest>();
-            instance.SetEnergyToRequest(request);
+            instance.SetEnergyToRequest(_saver, request, _currentIndex);
+            _currentIndex++;
+            Save();
             
         }
 
@@ -80,7 +90,6 @@ namespace Requests
         {
             var randomizeFactor = UnityEngine.Random.Range(-randomizeFactorBase, randomizeFactorBase);
             var energyToRequest = Calculator.MultiplyBigNumbers(_energyToRequest, 1 + randomizeFactor);
-            print("energyToRequest: " + BigNumberFormatter.SetSuffixFormat(energyToRequest) + "");
             energyToRequest = Calculator.RoundDecimalBigNumber(energyToRequest);
             return energyToRequest;
         }
@@ -106,6 +115,36 @@ namespace Requests
             SetEnergyToRequest();
             SetTimeToSpawn();
             SetCashRatio();
+        }
+
+        public void Save()
+        {
+            PlayerPrefs.SetInt("CurrentRequestIndex", _currentIndex);
+        }
+
+        public void Load()
+        {
+            if (_saver == null)
+            {
+                _saver = new EnergyRequestSaver();
+            }
+            
+            if (!PlayerPrefs.HasKey("CurrentRequestIndex")) return;
+            _currentIndex = PlayerPrefs.GetInt("CurrentRequestIndex");
+            
+            
+            
+            
+            List<EnergyRequestSaver.RequestData> requests = _saver.LoadRequests();
+            
+            if (requests == null) return;
+            
+            foreach (var request in requests)
+            {
+                var instance = Instantiate(energyRequestPrefab, transform).GetComponent<EnergyRequest>();
+                instance.SetEnergyToRequest(_saver, request.EnergyToRequest, request.Index);
+            }
+            
         }
     }
 }
