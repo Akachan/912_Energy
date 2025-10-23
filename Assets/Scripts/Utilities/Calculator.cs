@@ -225,6 +225,15 @@ public abstract class Calculator
         var newBase = Mathf.Floor((float)(num.Base * Pow10(num.Exponent))) / Pow10(num.Exponent);
         return new BigNumber(newBase, num.Exponent);
     }
+
+    public static BigNumber RoundDecimalBigNumber(BigNumber num)
+    {
+        if(num.Exponent > Threshold)  return num;
+        
+        var newBase = Mathf.Round((float)(num.Base * Pow10(num.Exponent))) / Pow10(num.Exponent);
+        return new BigNumber(newBase, num.Exponent);
+        
+    }
     //Cosas que probablemente no use
     
         public static BigNumber TranformToBigNumber(string value)

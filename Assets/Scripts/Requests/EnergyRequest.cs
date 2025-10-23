@@ -11,6 +11,7 @@ namespace Requests
       
         private BigNumber _energyToRequest;
         private EnergyManager _energyManager;
+        private EnergyRequestManager _energyRequestManager;
         
         
         public BigNumber EnergyToRequest => _energyToRequest;
@@ -21,6 +22,7 @@ namespace Requests
         private void Awake()
         {
             _energyManager = FindFirstObjectByType<EnergyManager>();
+            _energyRequestManager = FindFirstObjectByType<EnergyRequestManager>();
         }
         
         public void SetEnergyToRequest(BigNumber energyToRequest)
@@ -29,17 +31,13 @@ namespace Requests
             
         }
         
-        private BigNumber CalculateGoldToGet(BigNumber ratioGoldEnergy)
-        {
-            BigNumber goldToGet = Calculator.MultiplyBigNumbers(_energyToRequest, ratioGoldEnergy);   
-            return goldToGet;
-        }
+
 
         public void FulFillRequest()
         {
             if (_energyManager.RemoveResources(_energyToRequest))
             {
-                var calculateGoldToGet = CalculateGoldToGet(new BigNumber(1, 1));
+                var calculateGoldToGet = CalculateGoldToGet();
                 FindFirstObjectByType<CashManager>().AddResources(calculateGoldToGet);
                 
                 OnFulFillRequest?.Invoke(calculateGoldToGet); //para pasarle el texto para despues mostrarlo en el UI
@@ -47,6 +45,12 @@ namespace Requests
                 //Add gold to player
                 //Destroy this object
             }
+        }
+        
+        private BigNumber CalculateGoldToGet()
+        {
+            BigNumber goldToGet = Calculator.MultiplyBigNumbers(_energyToRequest, _energyRequestManager.CashRatio);   
+            return goldToGet;
         }
         
         
