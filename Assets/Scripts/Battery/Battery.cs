@@ -4,6 +4,7 @@ using System.Globalization;
 using Energy;
 using Knowledge;
 using Newtonsoft.Json.Linq;
+using Requests;
 using SavingSystem;
 using UnityEngine;
 using Utilities;
@@ -95,23 +96,11 @@ namespace Battery
 
         IEnumerator RestoreEnergy()
         {
-            
-            //if (!PlayerPrefs.HasKey("SavingTime")) yield return null;
             var dateData = _saving.GetSavingValue(SavingKeys.Battery.SavingTime);
             if (dateData == null) yield return null;
             var date = dateData.ToObject<DateTime>().ToUniversalTime();
             
-            
             yield return new WaitForSeconds(0.2f);
-
-            //debug
-            /*
-            var previusEnergy = FindAnyObjectByType<EnergyManager>().GetResources();
-            var previusKnowledge = FindAnyObjectByType<KnowledgeManager>().GetResources();
-            */ 
-            
-            //Calculate Time
-            //var saveDate = DateTime.Parse(PlayerPrefs.GetString("SavingTime"));
             
             var now = DateTime.UtcNow;
             var diff = now.Subtract(date);
@@ -121,24 +110,19 @@ namespace Battery
             }
             var seconds = Mathf.FloorToInt((float)diff.TotalSeconds);
             print($"Fecha anterior = {date}, Ahora= {now}, Pasaron Seconds: {seconds}");
-           
-            //Calculate energy
+            
             var energyToAdd = CalculateEnergyToAdd(seconds);
-
-            //Calculate knowledge
             var knowledgeToAdd = CalculateKnowledgeToAdd(seconds);
-           
             
             if (seconds < 5 * 60)
             {
-                AddProgress(energyToAdd, knowledgeToAdd);
+                AddProgress(energyToAdd, knowledgeToAdd, seconds);
             }
             else
             {
                 VerifyPreviousBattery();
-                InstantiateBatteryUI(diff, energyToAdd, knowledgeToAdd);
+                InstantiateBatteryUI(diff, energyToAdd, knowledgeToAdd, seconds);
             }
-            
         }
 
         private BigNumber CalculateEnergyToAdd(int seconds)
@@ -148,7 +132,6 @@ namespace Battery
             BigNumber energyToAdd = Calculator.MultiplyBigNumbers(eps, seconds);
             return energyToAdd;
         }
-
         private BigNumber CalculateKnowledgeToAdd(int seconds)
         {
             var kps = _saving.GetSavingValue(SavingKeys.Knowledge.Rps)?.ToBigNumber();
@@ -165,19 +148,20 @@ namespace Battery
                 previousBattery.AddProgress();   
             }
         }
-        private void InstantiateBatteryUI(TimeSpan diff, BigNumber energyToAdd, BigNumber knowledgeToAdd)
+        private void InstantiateBatteryUI(TimeSpan diff, BigNumber energyToAdd, BigNumber knowledgeToAdd, int seconds)
         {
             var instance = Instantiate(restoreInfoPanel, FindFirstObjectByType<EnergyUI>().transform);
             var batteryUI = instance.GetComponent<BatteryUI>();
             batteryUI.SetBatteryInfo(diff, energyToAdd, knowledgeToAdd);
-            batteryUI.OnAddProgress += () => AddProgress(energyToAdd, knowledgeToAdd);
+            batteryUI.OnAddProgress += () => AddProgress(energyToAdd, knowledgeToAdd, seconds);
         }
         
-        private void AddProgress(BigNumber energyToAdd, BigNumber knowledgeToAdd)
+        private void AddProgress(BigNumber energyToAdd, BigNumber knowledgeToAdd, int seconds)
         {
             FindAnyObjectByType<EnergyManager>().AddResources(energyToAdd);
             FindAnyObjectByType<KnowledgeManager>().AddResources(knowledgeToAdd);
-            
+            FindFirstObjectByType<EnergyRequestManager>().NewRequestsOnDisconnection(seconds);
+
         }
 
     }

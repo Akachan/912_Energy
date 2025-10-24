@@ -55,9 +55,7 @@ namespace Requests
             SetEnergyToRequest();
             SetTimeToSpawn();
             SetCashRatio();
-
             Load();
-            
         }
 
         private void Update()
@@ -96,8 +94,6 @@ namespace Requests
             //New request
             var instance = Instantiate(energyRequestPrefab, transform).GetComponent<EnergyRequest>();
             instance.SetEnergyToRequest(request);
-            
-            
         }
 
         public void RemoveRequest(BigNumber energyValue)
@@ -130,19 +126,29 @@ namespace Requests
             _cashRatio = cashRatioBase * (1 + cashRatioMultiplier * commercesPurchased);
         }
 
-        private void OnValidate()
+        public void NewRequestsOnDisconnection(int seconds)
         {
-            SetEnergyToRequest();
-            SetTimeToSpawn();
-            SetCashRatio();
-        }
+            var newRequests = Mathf.Floor(seconds / _timeToSpawn);
+            var requestSlots = maxRequestsBase - _requests.Count;
+            newRequests = Mathf.Clamp(newRequests, 0, requestSlots);
 
+            if (!(newRequests > 0)) return;
+            for (var i = 0; i < newRequests; i++)
+            {
+                SpawnRequest();
+            }
+            Save();
+
+
+        }
+        
+        //SAVING SYSTEM
         public void Save()
         {
             var list = JToken.FromObject(_requests);
             _saving.SetTemporalSave(SavingKeys.Request.Current, list);
         }
-
+        
         public void Load()
         {
             var list = _saving.GetSavingValue(SavingKeys.Request.Current);
@@ -160,5 +166,13 @@ namespace Requests
             }
             
         }
+        
+        private void OnValidate()
+        {
+            SetEnergyToRequest();
+            SetTimeToSpawn();
+            SetCashRatio();
+        }
+
     }
 }
