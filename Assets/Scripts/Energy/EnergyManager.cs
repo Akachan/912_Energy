@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
+using SavingSystem;
 using UnityEngine;
+using Utilities;
 
 namespace Energy
 {
@@ -9,12 +12,14 @@ namespace Energy
               private BigNumber _eps;
               private Dictionary <string, BigNumber> _energySources;
               private EnergyUI _ui;
+              private SavingWrapper _saving;
               private float _currentTime;
               public event Action<BigNumber> OnEnergySourceChange; 
 
               public BigNumber Eps => _eps;
               private void Awake()
               {
+                     _saving = FindFirstObjectByType<SavingWrapper>();
                      _ui = GetComponent<EnergyUI>();
                      CurrentResources = new BigNumber(0, 0);
                      _eps = new BigNumber(0, 0);
@@ -23,7 +28,7 @@ namespace Energy
               void Start()
               {
                      Load();
-                     FindFirstObjectByType<Battery.Battery>().OnPause += SaveEps;
+                     FindFirstObjectByType<Battery.Battery>().OnPause += Save;
               }
 
               private void Update()
@@ -76,21 +81,33 @@ namespace Energy
               //GUARDADO//
               public override void Save()
               {
+                     if (CurrentResources == null)
+                     {
+                            print("current resources is null");
+                            CurrentResources = new BigNumber(0, 0);
+                     }
+                     _saving.SetTemporalSave(SavingKeys.Energy.Current, CurrentResources.ToToken());
+                     _saving.SetTemporalSave(SavingKeys.Energy.Rps, _eps.ToToken());
+                     
                   
-                     PlayerPrefs.SetFloat("EnergyBase", (float)CurrentResources.Base);
-                     PlayerPrefs.SetInt("EnergyExponent", CurrentResources.Exponent);
               }
               public override void Load()
               {
-                     if (!PlayerPrefs.HasKey("EnergyBase")) return;
-                     CurrentResources = new BigNumber(PlayerPrefs.GetFloat("EnergyBase"), PlayerPrefs.GetInt("EnergyExponent"));
-                     _ui.SetEnergyValue(CurrentResources);
+                     var ce= _saving.GetSavingValue(SavingKeys.Energy.Current);
+                     if (ce != null)
+                     {
+                         CurrentResources = ce.ToBigNumber();  
+                         _ui.SetEnergyValue(CurrentResources);
+                     }
+                     
+                     var eps = _saving.GetSavingValue(SavingKeys.Energy.Rps);
+                     if (eps != null)
+                     {
+                            _eps = eps.ToBigNumber();
+                            _ui.SetEpsValue(_eps);
+                     }
+             
               }
-              private void SaveEps() //para la battery
-              {
-                     PlayerPrefs.SetFloat("EpsBase", (float)_eps.Base);
-                     PlayerPrefs.SetInt("EpsExponent", _eps.Exponent);
-                     PlayerPrefs.Save(); // Fuerza el guardado inmediato
-              }
+        
        }
 }

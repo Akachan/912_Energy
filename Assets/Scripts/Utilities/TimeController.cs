@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Energy;
 using Knowledge;
+using SavingSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -58,6 +59,7 @@ namespace Utilities
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
+                FindFirstObjectByType<SavingWrapper>().DeleteSaveFile();
                 PlayerPrefs.DeleteAll();
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }

@@ -12,7 +12,6 @@ namespace Requests
         private BigNumber _energyToRequest;
         private EnergyManager _energyManager;
         private EnergyRequestManager _energyRequestManager;
-        private EnergyRequestSaver _energyRequestSaver;
         private int _index;
         
         
@@ -27,13 +26,9 @@ namespace Requests
             _energyRequestManager = FindFirstObjectByType<EnergyRequestManager>();
         }
         
-        public void SetEnergyToRequest(EnergyRequestSaver saver, BigNumber energyToRequest, int index)
+        public void SetEnergyToRequest(BigNumber energyToRequest)
         {
-            _energyRequestSaver = saver;
             _energyToRequest = energyToRequest;
-            _index = index;
-            _energyRequestSaver.SaveRequest(_index, _energyToRequest);
-            
         }
         
 
@@ -42,7 +37,7 @@ namespace Requests
         {
             if (_energyManager.RemoveResources(_energyToRequest))
             {
-                _energyRequestSaver.DeleteRequest(_index);
+                _energyRequestManager.RemoveRequest(_energyToRequest);
                 
                 var calculateGoldToGet = CalculateGoldToGet();
                 FindFirstObjectByType<CashManager>().AddResources(calculateGoldToGet);

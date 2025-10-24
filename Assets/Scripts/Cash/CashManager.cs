@@ -1,16 +1,20 @@
 using System;
+using SavingSystem;
 using UnityEngine;
+using Utilities;
 
 namespace Cash
 {
     public class CashManager : BigResourceManager
     {
         private CashManagerUI _ui;
+        private SavingWrapper _saving;
         public event Action<BigNumber> OnCashChange;
         
         
         private void Awake()
         {
+            _saving = FindFirstObjectByType<SavingWrapper>();
             _ui = GetComponent<CashManagerUI>();
             CurrentResources = new BigNumber(0, 0);
         }
@@ -37,14 +41,16 @@ namespace Cash
         
         public override void Save()
         {
-            PlayerPrefs.SetFloat("CashBase", (float)CurrentResources.Base);
-            PlayerPrefs.SetInt("CashExponent", CurrentResources.Exponent);
+            _saving.SetTemporalSave(SavingKeys.Cash.Current, CurrentResources.ToToken());
         }
         public override void Load()
         {
-            if (!PlayerPrefs.HasKey("CashBase")) return;
-            CurrentResources = new BigNumber(PlayerPrefs.GetFloat("CashBase"), PlayerPrefs.GetInt("CashExponent"));
-            _ui.SetCashValue(CurrentResources);
+            var cc= _saving.GetSavingValue(SavingKeys.Cash.Current);
+            if (cc != null)
+            {
+                CurrentResources = cc.ToBigNumber(); 
+                _ui.SetCashValue(CurrentResources);
+            }
         }
     }
 }

@@ -1,4 +1,6 @@
+using SavingSystem;
 using UnityEngine;
+using Utilities;
 
 namespace Knowledge
 {
@@ -6,18 +8,21 @@ namespace Knowledge
     {
         private BigNumber _kps;
         private KnowledgeUI _ui;
+        private SavingWrapper _saving;
         private float _currentTime;
 
         private void Awake()
         {
             _ui = GetComponent<KnowledgeUI>();
             CurrentResources = new BigNumber(0, 0);
+            _saving = FindFirstObjectByType<SavingWrapper>();
         }
 
         private void Start()
         {
             Load();
-            FindFirstObjectByType<Battery.Battery>().OnPause += SaveKps;
+            Battery.Battery battery = FindFirstObjectByType<Battery.Battery>();
+            battery.OnPause += SaveRps;
             
         }
 
@@ -53,32 +58,30 @@ namespace Knowledge
         //GUARDADO//
         public override void Save()
         {
-            
-            if (Time.timeScale == 0)
-            {
-                print("entro a save despues de la detención");
-            }
-            PlayerPrefs.SetFloat("KnowledgeBase", (float)CurrentResources.Base);
-            PlayerPrefs.SetInt("KnowledgeExponent", CurrentResources.Exponent);
-        }
-
-      
-        public override void Load()
-        {
-            if (PlayerPrefs.HasKey("KnowledgeBase"))
-            {
-                CurrentResources = new BigNumber(PlayerPrefs.GetFloat("KnowledgeBase"), PlayerPrefs.GetInt("KnowledgeExponent"));
-                _ui.SetKnowledgeValue(CurrentResources);
-            }
-        }
-        private void SaveKps()
-        {
-            
-            PlayerPrefs.SetFloat("KpsBase", (float)_kps.Base);
-            PlayerPrefs.SetInt("KpsExponent", _kps.Exponent);
-            PlayerPrefs.Save(); // Fuerza el guardado inmediato
+            SaveCurrentResources();
         }
         
-   
+        private void SaveCurrentResources()
+        {
+            _saving.SetTemporalSave(SavingKeys.Knowledge.Current, CurrentResources.ToToken());
+        }
+        private void SaveRps()
+        {
+            _saving.SaveInFile(SavingKeys.Knowledge.Rps, _kps.ToToken());
+        }
+
+
+        public override void Load()
+        {
+            var resources= _saving.GetSavingValue(SavingKeys.Knowledge.Current);
+            if (resources == null)
+            {
+                Debug.Log("No se ha encontrado el recurso en el archivo de guardado.");
+                return;
+            }
+            CurrentResources = resources?.ToBigNumber();
+            _ui.SetKnowledgeValue(CurrentResources);
+            
+        }
     }
 }

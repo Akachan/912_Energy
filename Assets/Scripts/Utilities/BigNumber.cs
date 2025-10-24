@@ -1,14 +1,24 @@
 using System;
-[Serializable]
-public class BigNumber
+
+namespace Utilities
 {
-    public double Base;
-    public int Exponent;
+    [Serializable]
+    public class BigNumber
+    {
+        public double Base;
+        public int Exponent;
         
     
-    public BigNumber(double baseValue, int exponent)
-    {
-        Base = baseValue;
-        Exponent = exponent;
+        public BigNumber(double baseValue, int exponent)
+        {
+       
+            Base = baseValue;
+            Exponent = exponent;
+        }
+        public BigNumber()
+        {
+            Base = 0f;
+            Exponent = 0;
+        }
     }
 }

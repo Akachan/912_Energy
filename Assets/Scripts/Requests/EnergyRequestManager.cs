@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
+using SavingSystem;
 using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using Utilities;
@@ -35,14 +37,18 @@ namespace Requests
         private BigNumber _energyToRequest;
         private float _timeToSpawn;
         private float _cashRatio;
-        
         private float _currentTime = 0f;
-        private EnergyRequestSaver _saver;
-        private int _currentIndex = 0;
+     
+        //Saving
+        private List<BigNumber> _requests = new List<BigNumber>();
+        private SavingWrapper _saving;
         
         public float CashRatio => _cashRatio;
 
-        
+        private void Awake()
+        {
+            _saving = FindFirstObjectByType<SavingWrapper>();
+        }
 
         private void Start()
         {
@@ -66,24 +72,38 @@ namespace Requests
             if (_currentTime > _timeToSpawn)
             {
                 SpawnRequest();
+                
+                Save();
+                
                 _currentTime = 0f;
             }
         }
 
-        private void SpawnRequest()
+        private void SpawnRequest(BigNumber energyValue = null)
         {
             //request limit
             if(transform.childCount >= maxRequestsBase) return;
             
             //GetEnergyToRequest
-            var request = CalculateEnergyToRequest();
-
+            var request = energyValue;
+            if (energyValue == null)
+            {
+                request = CalculateEnergyToRequest();
+                _requests.Add(request);
+                Save();
+            }
+            
             //New request
             var instance = Instantiate(energyRequestPrefab, transform).GetComponent<EnergyRequest>();
-            instance.SetEnergyToRequest(_saver, request, _currentIndex);
-            _currentIndex++;
-            Save();
+            instance.SetEnergyToRequest(request);
             
+            
+        }
+
+        public void RemoveRequest(BigNumber energyValue)
+        {
+            _requests.Remove(energyValue);
+            Save();
         }
 
         private BigNumber CalculateEnergyToRequest()
@@ -119,30 +139,24 @@ namespace Requests
 
         public void Save()
         {
-            PlayerPrefs.SetInt("CurrentRequestIndex", _currentIndex);
+            var list = JToken.FromObject(_requests);
+            _saving.SetTemporalSave(SavingKeys.Request.Current, list);
         }
 
         public void Load()
         {
-            if (_saver == null)
+            var list = _saving.GetSavingValue(SavingKeys.Request.Current);
+            if (list != null)
             {
-                _saver = new EnergyRequestSaver();
+                _requests = list.ToObject<List<BigNumber>>();
             }
             
-            if (!PlayerPrefs.HasKey("CurrentRequestIndex")) return;
-            _currentIndex = PlayerPrefs.GetInt("CurrentRequestIndex");
+            if (_requests == null) return;
             
-            
-            
-            
-            List<EnergyRequestSaver.RequestData> requests = _saver.LoadRequests();
-            
-            if (requests == null) return;
-            
-            foreach (var request in requests)
+            foreach (var request in _requests)
             {
                 var instance = Instantiate(energyRequestPrefab, transform).GetComponent<EnergyRequest>();
-                instance.SetEnergyToRequest(_saver, request.EnergyToRequest, request.Index);
+                instance.SetEnergyToRequest(request);
             }
             
         }

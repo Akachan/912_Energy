@@ -35,7 +35,6 @@ namespace Energy
 
         public void SetUnlockedEnergySourceData(string energySourceName, int level, BigNumber eps, BigNumber nextLevelEps, BigNumber upgradeCost, Sprite newSprite)
         {
-            print($"Se desbloquéo: {newSprite.name}");
             illustration.sprite = newSprite;
             titleText.text = energySourceName;
             UpdateEnergySourceData(level, eps, nextLevelEps, upgradeCost);
