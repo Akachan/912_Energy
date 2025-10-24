@@ -63,6 +63,11 @@ namespace Knowledge
         
         private void SaveCurrentResources()
         {
+            if (CurrentResources == null)
+            {
+                print("current resources is null");
+                CurrentResources = new BigNumber(0, 0);
+            }
             _saving.SetTemporalSave(SavingKeys.Knowledge.Current, CurrentResources.ToToken());
         }
         private void SaveRps()

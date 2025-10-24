@@ -16,11 +16,13 @@ namespace Cash
         {
             _saving = FindFirstObjectByType<SavingWrapper>();
             _ui = GetComponent<CashManagerUI>();
-            CurrentResources = new BigNumber(0, 0);
+            CurrentResources = new BigNumber();
+            print($"current cash {BigNumberFormatter.SetSuffixFormat(CurrentResources)}");
         }
 
         private void Start()
         {
+            print($"current cash {BigNumberFormatter.SetSuffixFormat(CurrentResources)}");
             UpdateUI();
             Load();
         }

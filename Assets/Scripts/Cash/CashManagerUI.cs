@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Utilities;
@@ -20,6 +22,9 @@ namespace Cash
         private void Start()
         {
             _cashManager.OnCashChange += SetCashValue;
+            print("Se agregó SetCashValue en  OnCashChange");
+            
+            
         }
 
         public void SetCashValue(BigNumber value)
@@ -27,4 +32,6 @@ namespace Cash
             cashValue.text = BigNumberFormatter.SetSuffixFormat(value);
         }
     }
+
+   
 }

@@ -126,8 +126,7 @@ namespace Battery
             var energyToAdd = CalculateEnergyToAdd(seconds);
 
             //Calculate knowledge
-            var kps = new BigNumber(PlayerPrefs.GetFloat("KpsBase"), PlayerPrefs.GetInt("KpsExponent"));
-            BigNumber knowledgeToAdd = Calculator.MultiplyBigNumbers(kps, seconds);
+            var knowledgeToAdd = CalculateKnowledgeToAdd(seconds);
            
             
             if (seconds < 5 * 60)
@@ -144,12 +143,18 @@ namespace Battery
 
         private BigNumber CalculateEnergyToAdd(int seconds)
         {
-            //var eps = new BigNumber(PlayerPrefs.GetFloat("EpsBase"), PlayerPrefs.GetInt("EpsExponent"));
-            
             var eps = _saving.GetSavingValue(SavingKeys.Energy.Rps)?.ToBigNumber();
             
             BigNumber energyToAdd = Calculator.MultiplyBigNumbers(eps, seconds);
             return energyToAdd;
+        }
+
+        private BigNumber CalculateKnowledgeToAdd(int seconds)
+        {
+            var kps = _saving.GetSavingValue(SavingKeys.Knowledge.Rps)?.ToBigNumber();
+            
+            BigNumber knowledgeToAdd = Calculator.MultiplyBigNumbers(kps, seconds);
+            return knowledgeToAdd;
         }
 
         private static void VerifyPreviousBattery()

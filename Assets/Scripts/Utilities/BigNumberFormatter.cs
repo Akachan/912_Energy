@@ -28,7 +28,16 @@ namespace Utilities
             var suffix = Suffixes[suf];
             var baseValue = bigNumber.Base* Mathf.Pow(10,exp);
 
-            var numberFormatted = $"{baseValue:#.##}{suffix}";
+            string numberFormatted;
+            if (baseValue == 0)
+            {
+                 numberFormatted = $"0{suffix}";
+            }
+            else
+            {
+                 numberFormatted = $"{baseValue:#.##}{suffix}";
+            }
+            
             return numberFormatted;
         }
     }
