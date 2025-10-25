@@ -25,6 +25,11 @@ namespace SavingSystem
         {
             public const string Current = "CurrentRequest";
         }
+
+        public static class Milestone
+        {
+            public const string Current = "CurrentMilestone";
+        }
         
         
         

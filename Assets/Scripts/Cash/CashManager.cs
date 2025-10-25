@@ -7,7 +7,7 @@ namespace Cash
 {
     public class CashManager : BigResourceManager
     {
-        private CashManagerUI _ui;
+        
         private SavingWrapper _saving;
         public event Action<BigNumber> OnCashChange;
         
@@ -15,14 +15,12 @@ namespace Cash
         private void Awake()
         {
             _saving = FindFirstObjectByType<SavingWrapper>();
-            _ui = GetComponent<CashManagerUI>();
             CurrentResources = new BigNumber();
-            print($"current cash {BigNumberFormatter.SetSuffixFormat(CurrentResources)}");
+            
         }
 
         private void Start()
         {
-            print($"current cash {BigNumberFormatter.SetSuffixFormat(CurrentResources)}");
             UpdateUI();
             Load();
         }
@@ -51,7 +49,7 @@ namespace Cash
             if (cc != null)
             {
                 CurrentResources = cc.ToBigNumber(); 
-                _ui.SetCashValue(CurrentResources);
+                UpdateUI();
             }
         }
     }

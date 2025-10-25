@@ -8,6 +8,7 @@ public abstract class SmallResourceManager : MonoBehaviour, IResource<int>, ISav
     {
         CurrentResources += resource;
         Save();
+        UpdateUI();
     }
 
     public bool RemoveResources(int resource)
@@ -39,17 +40,17 @@ public abstract class SmallResourceManager : MonoBehaviour, IResource<int>, ISav
         Save();
     }
 
-    public void UpdateUI()
+    public virtual void UpdateUI()
     {
-        throw new System.NotImplementedException();
+        
     }
 
-    public void Save()
+    public virtual void Save()
     {
             
     }
 
-    public void Load()
+    public virtual void Load()
     {
             
     }
