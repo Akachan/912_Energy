@@ -76,7 +76,17 @@ namespace Energy
                      return newEnergy;
               }
 
-  
+              //STATS
+              protected override void UpdateResourcesProducedStats(BigNumber resource)
+              {
+                     EventStatBus.Instance.OnEnergyProducedEvent(resource);
+              }
+
+              protected override void UpdateResourcesConsumedStats(BigNumber resource)
+              {
+                     EventStatBus.Instance.OnEnergyConsumedEvent(resource);
+              }
+
 
               //GUARDADO//
               public override void Save()

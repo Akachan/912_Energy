@@ -14,8 +14,10 @@ public abstract class BigResourceManager : MonoBehaviour, IResource<BigNumber>, 
     public virtual void AddResources(BigNumber resource)
     {
         CurrentResources = Calculator.AddBigNumbers(CurrentResources, resource);
+        UpdateResourcesProducedStats(resource);
         Save();
     }
+    
 
     public bool RemoveResources(BigNumber resource)
     {
@@ -36,10 +38,21 @@ public abstract class BigResourceManager : MonoBehaviour, IResource<BigNumber>, 
         }
       
         CurrentResources = Calculator.SubtractBigNumbers(CurrentResources, resource);
+        UpdateResourcesConsumedStats(resource);
         Save();
         return true;
     }
 
+    protected virtual void UpdateResourcesProducedStats(BigNumber resource)
+    {
+        
+    }
+    protected virtual void UpdateResourcesConsumedStats(BigNumber resource)
+    {
+        
+    }
+    
+    
     public BigNumber GetResources()
     {
         return CurrentResources;
