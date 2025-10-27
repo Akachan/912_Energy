@@ -28,6 +28,9 @@ namespace SavingSystem
         public static class Request
         {
             public const string Current = "CurrentEnergyRequest";
+            public const string PopulationLevel = "PopulationLevel";
+            public const string IndustriesLevel = "IndustriesLevel";
+            public const string CommerceLevel = "CommerceLevel";
         }
 
         public static class Milestone

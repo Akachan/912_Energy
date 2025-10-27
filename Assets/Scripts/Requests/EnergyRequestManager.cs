@@ -52,9 +52,7 @@ namespace Requests
 
         private void Start()
         {
-            SetEnergyToRequest();
-            SetTimeToSpawn();
-            SetCashRatio();
+            
             Load();
         }
 
@@ -110,18 +108,18 @@ namespace Requests
             return energyToRequest;
         }
 
-        private void SetEnergyToRequest()
+        public void SetEnergyToRequest(BigNumber energyToRequest)
         {
             _energyToRequest = Calculator.MultiplyBigNumbers(energyToRequestBase,
                                 1 + energyToRequestMultiplier * industriesPurchased); 
         }
 
-        private void SetTimeToSpawn()
+        public void SetTimeToSpawn(float timeToSpawn)
         {
-            _timeToSpawn = timeToSpawnBase * (1 - timeToSpawnMultiplier * populationPurchased);
+            _timeToSpawn = timeToSpawn;
         }
 
-        private void SetCashRatio()
+        public void SetCashRatio(float ratio)
         {
             _cashRatio = cashRatioBase * (1 + cashRatioMultiplier * commercesPurchased);
         }
@@ -169,9 +167,7 @@ namespace Requests
         
         private void OnValidate()
         {
-            SetEnergyToRequest();
-            SetTimeToSpawn();
-            SetCashRatio();
+           
         }
 
     }
