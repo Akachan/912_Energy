@@ -1,4 +1,5 @@
 using SavingSystem;
+using Stats;
 using UnityEngine;
 using Utilities;
 
@@ -53,7 +54,16 @@ namespace Knowledge
             _kps = kps;
         }
 
+        //STATS
+        protected override void UpdateResourcesProducedStats(BigNumber resource)
+        {
+            EventStatBus.Instance.OnKnowledgeProducedEvent(resource);
+        }
 
+        protected override void UpdateResourcesConsumedStats(BigNumber resource)
+        {
+            EventStatBus.Instance.OnKnowledgeConsumedEvent(resource);
+        }
 
         //GUARDADO//
         public override void Save()
@@ -70,12 +80,12 @@ namespace Knowledge
             }
             _saving.SetTemporalSave(SavingKeys.Knowledge.Current, CurrentResources.ToToken());
         }
+      
         private void SaveRps()
         {
             _saving.SaveInFile(SavingKeys.Knowledge.Rps, _kps.ToToken());
         }
-
-
+        
         public override void Load()
         {
             var resources= _saving.GetSavingValue(SavingKeys.Knowledge.Current);

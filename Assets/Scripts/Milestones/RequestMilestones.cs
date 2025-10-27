@@ -1,4 +1,5 @@
 using System;
+using Stats;
 using UnityEngine;
 using Utilities;
 
@@ -11,7 +12,7 @@ namespace Milestones
 
         private void Start()
         {
-            StatsManager.Energy.OnEnergyTradeStatChange += VerifyGoals;
+            StatsManager.EnergyStat.OnEnergyTradeStatChange += VerifyGoals;
         }
         private void VerifyGoals(BigNumber energy)
         {

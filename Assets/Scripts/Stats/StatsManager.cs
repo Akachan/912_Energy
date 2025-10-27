@@ -1,0 +1,202 @@
+using System;
+using Newtonsoft.Json.Linq;
+using SavingSystem;
+using UnityEngine;
+using Utilities;
+
+namespace Stats
+{
+    public class StatsManager : MonoBehaviour
+    {
+        private static StatsManager _instance;
+        public static StatsManager Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = FindFirstObjectByType<StatsManager>();
+                }
+                return _instance;
+            }
+        }
+    
+        private SavingWrapper _saving;
+   
+    
+        private void Awake()
+        {
+            InitializeSingleton();
+        
+            _saving = FindFirstObjectByType<SavingWrapper>();
+        
+        
+            //Energy
+            EnergyStat.Load();
+            EventStatBus.Instance.OnEnergyProduced += EnergyStat.AddEnergyProduced;
+            EventStatBus.Instance.OnEnergyConsumed += EnergyStat.AddEnergyConsumed;
+        
+            //Knowledge
+            EventStatBus.Instance.OnKnowledgeProduced += KnowledgeStat.AddResourceProduced;
+            EventStatBus.Instance.OnKnowledgeConsumed += KnowledgeStat.AddResourcesConsumed;
+        
+            //Cash
+        
+            //Resquest
+            EventStatBus.Instance.OnFulFillRequest += EnergyStat.AddEnergyTrade;
+        }
+        private void OnDisable()
+        {
+            EventStatBus.Instance.OnEnergyProduced -= EnergyStat.AddEnergyProduced;
+            EventStatBus.Instance.OnEnergyConsumed -= EnergyStat.AddEnergyConsumed;
+        
+            EventStatBus.Instance.OnKnowledgeProduced -= KnowledgeStat.AddResourceProduced;
+            EventStatBus.Instance.OnKnowledgeConsumed -= KnowledgeStat.AddResourcesConsumed;
+        
+            EventStatBus.Instance.OnFulFillRequest -= EnergyStat.AddEnergyTrade;
+        
+        }
+        private void InitializeSingleton()
+        {
+            if (_instance != null && _instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+
+        private StatsManager() { }
+
+
+    
+        public static class EnergyStat
+        {
+            private static StatData _statsData;
+        
+
+            public static event Action<BigNumber> OnProducedStatChange;
+            public static event Action<BigNumber> OnEnergyConsumedStatChange;
+            public static event Action<BigNumber> OnEnergyTradeStatChange;
+
+            public static void AddEnergyProduced(BigNumber energyToAdd)
+            {
+                if (energyToAdd == null)
+                {
+                    print("energy to add es null");
+                }
+
+                if (_statsData == null)
+                {
+                    print("stats es null");
+                }
+
+                if (_statsData != null && _statsData.Produced == null)
+                {
+                    print("produced es null");
+                }
+            
+                print($"Energy produced: {_statsData.Produced} + {energyToAdd} =");
+                _statsData.Produced = Calculator.AddBigNumbers(_statsData.Produced, energyToAdd);
+                OnProducedStatChange?.Invoke(_statsData.Produced);
+                Save();
+            }
+            public static void AddEnergyConsumed(BigNumber energyToAdd)
+            {
+                if (energyToAdd == null) return;
+                _statsData.Consumed = Calculator.AddBigNumbers(_statsData.Consumed, energyToAdd);
+                OnEnergyConsumedStatChange?.Invoke(_statsData.Consumed);
+                Save();
+            }
+            public static void AddEnergyTrade(BigNumber energyToAdd)
+            {
+                _statsData.Trade = Calculator.AddBigNumbers(_statsData.Trade, energyToAdd);
+                OnEnergyTradeStatChange?.Invoke(_statsData.Trade);
+                Save();
+            }
+
+            private static void Save()
+            {
+                Instance._saving.SetTemporalSave(SavingKeys.Energy.Stats, JToken.FromObject(_statsData));
+            }
+
+            public static void Load()
+            {
+                var stats = Instance._saving.GetSavingValue(SavingKeys.Energy.Stats);
+                if (stats != null)
+                {
+                    _statsData = stats.ToObject<StatData>();
+                }
+                else
+                {
+                    _statsData = new StatData();
+                }
+            }
+
+            private class StatData
+            {
+                public BigNumber Produced = new(0, 0);
+                public BigNumber Consumed = new(0, 0);
+                public BigNumber Trade = new(0, 0);
+            }
+        
+        
+        
+        }
+    
+        public static class KnowledgeStat
+        {
+            private static StatData _stats;
+
+            public static event Action<BigNumber> OnProducedStatChange;
+            public static event Action<BigNumber> OnConsumedStatChange;
+
+
+            public static void AddResourceProduced(BigNumber resourceToAdd)
+            {
+                if (_stats == null || resourceToAdd == null) return;
+                _stats.Produced = Calculator.AddBigNumbers(_stats.Produced, resourceToAdd);
+                OnProducedStatChange?.Invoke(_stats.Produced);
+                Save();
+
+            }
+            public static void AddResourcesConsumed(BigNumber energyToAdd)
+            {
+                if (_stats == null || energyToAdd == null) return;
+                _stats.Consumed = Calculator.AddBigNumbers(_stats.Consumed, energyToAdd);
+                OnConsumedStatChange?.Invoke(_stats.Consumed);
+                Save();
+            }
+        
+
+            private static void Save()
+            {
+                Instance._saving.SetTemporalSave(SavingKeys.Knowledge.Stats, JToken.FromObject(_stats));
+            }
+
+            public static void Load()
+            {
+                var stats = Instance._saving.GetSavingValue(SavingKeys.Knowledge.Stats);
+                if (stats != null)
+                {
+                    _stats = stats.ToObject<StatData>();
+                }
+                else
+                {
+                    _stats = new StatData();
+                }
+            }
+
+            private class StatData
+            {
+                public BigNumber Produced = new(0, 0);
+                public BigNumber Consumed = new(0, 0);
+            }
+        
+        
+        
+        }
+    }
+}

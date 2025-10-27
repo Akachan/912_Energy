@@ -15,6 +15,7 @@ namespace SavingSystem
         {
             public const string Rps = "KPS";
             public const string Current = "CurrentKnowledge";
+            public const string Stats = "KnowledgeStats";
 
         }
         public static class Cash
