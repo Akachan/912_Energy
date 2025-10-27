@@ -21,6 +21,7 @@ namespace SavingSystem
         public static class Cash
         {
             public const string Current = "CurrentCash";
+            public const string Stats = "CashStats";
         }
 
         public static class Request
@@ -31,6 +32,7 @@ namespace SavingSystem
         public static class Milestone
         {
             public const string Current = "CurrentMilestone";
+            public const string Stats = "MilestoneStats";
         }
         
         

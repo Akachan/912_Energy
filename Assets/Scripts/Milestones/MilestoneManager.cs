@@ -1,6 +1,8 @@
 using System;
 using Newtonsoft.Json.Linq;
 using SavingSystem;
+using Stats;
+using Utilities;
 
 namespace Milestones
 {
@@ -25,9 +27,20 @@ namespace Milestones
 
         public override void UpdateUI()
         {
-            OnMilestoneChange?.Invoke(CurrentResources);
+            OnMilestoneChange?.Invoke(CurrentResources); //para la Ui
         }
 
+        //STATS
+        protected override void UpdateResourcesProducedStats(int resource)
+        {
+            EventStatBus.Instance.OnMilestoneProducedEvent(resource);
+        }
+        protected override void UpdateResourcesConsumedStats(int resource)
+        {
+            EventStatBus.Instance.OnMilestoneConsumedEvent(resource);
+        }   
+        
+        //SAVING SYSTEM
         public override void Save()
         {
            _savingWrapper.SaveInFile(SavingKeys.Milestone.Current, JToken.FromObject(CurrentResources)); 

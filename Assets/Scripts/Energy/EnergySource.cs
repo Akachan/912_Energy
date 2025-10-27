@@ -113,9 +113,6 @@ namespace Energy
             
             if (_currentLevel < _energySource.MaxLevel)
             {
-                
-                print($"Level: {_currentLevel} \n RPS: {BigNumberFormatter.SetSuffixFormat(_energySource.GetRps(_currentLevel))} \n Next: {BigNumberFormatter.SetSuffixFormat(_energySource.GetDifferenceRps(_currentLevel))} \n Cost: {BigNumberFormatter.SetSuffixFormat(_energySource.GetCost(_currentLevel))}");
-
                 _energy.UpdateSource(_energySource.SourceName, rps);
                 _ui.UpdateEnergySourceData( _currentLevel,
                                         rps,

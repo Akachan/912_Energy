@@ -39,20 +39,20 @@ namespace Stats
         public event Action<BigNumber> OnEnergyProduced;
         public event Action<BigNumber> OnEnergyConsumed;
     
-    
         //Knowledge
         public event Action<BigNumber> OnKnowledgeProduced;
         public event Action<BigNumber> OnKnowledgeConsumed;
     
         //Cash
-        public event Action<BigNumber> OnCashProduce;
-        public event Action<BigNumber> OnCashConsume;
+        public event Action<BigNumber> OnCashProduced;
+        public event Action<BigNumber> OnCashConsumed;
     
         //Resquest
         public event Action<BigNumber> OnFulFillRequest;
-    
-    
+        
         //Milestones
+        public event Action<int> OnMilestoneProduced;
+        public event Action<int> OnMilestoneConsumed;
 
 
         //EVENTS
@@ -66,10 +66,14 @@ namespace Stats
         public void OnKnowledgeConsumedEvent(BigNumber knowledge) => OnKnowledgeConsumed?.Invoke(knowledge);
     
         //Cash
-        public void OnCashProduceEvent(BigNumber cash) => OnCashProduce?.Invoke(cash);
-        public void OnCashConsumeEvent(BigNumber cash) => OnCashConsume?.Invoke(cash);
+        public void OnCashProduceEvent(BigNumber cash) => OnCashProduced?.Invoke(cash);
+        public void OnCashConsumeEvent(BigNumber cash) => OnCashConsumed?.Invoke(cash);
     
         //Resquest
         public void OnFulFillRequestEvent(BigNumber energy) => OnFulFillRequest?.Invoke(energy);
+        
+        //Milestones
+        public void OnMilestoneProducedEvent(int milestone) => OnMilestoneProduced?.Invoke(milestone);
+        public void OnMilestoneConsumedEvent(int milestone) => OnMilestoneConsumed?.Invoke(milestone);
     }
 }

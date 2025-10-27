@@ -1,5 +1,6 @@
 using System;
 using SavingSystem;
+using Stats;
 using UnityEngine;
 using Utilities;
 
@@ -38,7 +39,18 @@ namespace Cash
             OnCashChange?.Invoke(CurrentResources);
         }
     
+        //STATS
+
+        protected override void UpdateResourcesProducedStats(BigNumber resource)
+        {
+            EventStatBus.Instance.OnCashProduceEvent(resource);
+        }
+        protected override void UpdateResourcesConsumedStats(BigNumber resource)
+        {
+            EventStatBus.Instance.OnCashConsumeEvent(resource);
+        }
         
+        //SAVING SYSTEM
         public override void Save()
         {
             _saving.SetTemporalSave(SavingKeys.Cash.Current, CurrentResources.ToToken());

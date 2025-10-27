@@ -7,6 +7,7 @@ public abstract class SmallResourceManager : MonoBehaviour, IResource<int>, ISav
     public void AddResources(int resource)
     {
         CurrentResources += resource;
+        UpdateResourcesProducedStats(resource);
         Save();
         UpdateUI();
     }
@@ -25,6 +26,7 @@ public abstract class SmallResourceManager : MonoBehaviour, IResource<int>, ISav
             
         }
         CurrentResources -= resource;
+        UpdateResourcesConsumedStats(resource);
         Save();
         return true;
     }
@@ -45,6 +47,19 @@ public abstract class SmallResourceManager : MonoBehaviour, IResource<int>, ISav
         
     }
 
+    //STATS
+
+    protected virtual void UpdateResourcesProducedStats(int resource)
+    {
+        
+    }
+    protected virtual void UpdateResourcesConsumedStats(int resource)
+    {
+        
+    }
+    
+    
+    //SAVING SYSTEM
     public virtual void Save()
     {
             

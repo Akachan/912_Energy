@@ -41,6 +41,8 @@ namespace Stats
             EventStatBus.Instance.OnKnowledgeConsumed += KnowledgeStat.AddResourcesConsumed;
         
             //Cash
+            EventStatBus.Instance.OnCashProduced += CashStat.AddResourceProduced;
+            EventStatBus.Instance.OnCashConsumed += CashStat.AddResourcesConsumed;
         
             //Resquest
             EventStatBus.Instance.OnFulFillRequest += EnergyStat.AddEnergyTrade;
@@ -52,6 +54,9 @@ namespace Stats
         
             EventStatBus.Instance.OnKnowledgeProduced -= KnowledgeStat.AddResourceProduced;
             EventStatBus.Instance.OnKnowledgeConsumed -= KnowledgeStat.AddResourcesConsumed;
+            
+            EventStatBus.Instance.OnCashProduced -= CashStat.AddResourceProduced;
+            EventStatBus.Instance.OnCashConsumed -= CashStat.AddResourcesConsumed;
         
             EventStatBus.Instance.OnFulFillRequest -= EnergyStat.AddEnergyTrade;
         
@@ -83,25 +88,13 @@ namespace Stats
 
             public static void AddEnergyProduced(BigNumber energyToAdd)
             {
-                if (energyToAdd == null)
-                {
-                    print("energy to add es null");
-                }
-
-                if (_statsData == null)
-                {
-                    print("stats es null");
-                }
-
-                if (_statsData != null && _statsData.Produced == null)
-                {
-                    print("produced es null");
-                }
-            
-                print($"Energy produced: {_statsData.Produced} + {energyToAdd} =");
+                if (_statsData == null && energyToAdd == null) return;
+                
                 _statsData.Produced = Calculator.AddBigNumbers(_statsData.Produced, energyToAdd);
                 OnProducedStatChange?.Invoke(_statsData.Produced);
                 Save();
+
+
             }
             public static void AddEnergyConsumed(BigNumber energyToAdd)
             {
@@ -193,6 +186,112 @@ namespace Stats
             {
                 public BigNumber Produced = new(0, 0);
                 public BigNumber Consumed = new(0, 0);
+            }
+        
+        
+        
+        }
+        
+        public static class CashStat
+        {
+            private static StatData _stats;
+
+            public static event Action<BigNumber> OnProducedStatChange;
+            public static event Action<BigNumber> OnConsumedStatChange;
+
+
+            public static void AddResourceProduced(BigNumber resourceToAdd)
+            {
+                if (_stats == null || resourceToAdd == null) return;
+                _stats.Produced = Calculator.AddBigNumbers(_stats.Produced, resourceToAdd);
+                OnProducedStatChange?.Invoke(_stats.Produced);
+                Save();
+
+            }
+            public static void AddResourcesConsumed(BigNumber energyToAdd)
+            {
+                if (_stats == null || energyToAdd == null) return;
+                _stats.Consumed = Calculator.AddBigNumbers(_stats.Consumed, energyToAdd);
+                OnConsumedStatChange?.Invoke(_stats.Consumed);
+                Save();
+            }
+        
+
+            private static void Save()
+            {
+                Instance._saving.SetTemporalSave(SavingKeys.Cash.Stats, JToken.FromObject(_stats));
+            }
+
+            public static void Load()
+            {
+                var stats = Instance._saving.GetSavingValue(SavingKeys.Cash.Stats);
+                if (stats != null)
+                {
+                    _stats = stats.ToObject<StatData>();
+                }
+                else
+                {
+                    _stats = new StatData();
+                }
+            }
+
+            private class StatData
+            {
+                public BigNumber Produced = new(0, 0);
+                public BigNumber Consumed = new(0, 0);
+            }
+        
+        
+        
+        }
+        
+        public static class MilestoneStat
+        {
+            private static StatData _stats;
+
+            public static event Action<int> OnProducedStatChange;
+            public static event Action<int> OnConsumedStatChange;
+
+
+            public static void AddResourceProduced(int resourceToAdd)
+            {
+                if (_stats == null ) return;
+                _stats.Produced += resourceToAdd;
+                OnProducedStatChange?.Invoke(_stats.Produced);
+                Save();
+
+            }
+            public static void AddResourcesConsumed(int resourceToAdd)
+            {
+                if (_stats == null) return;
+                _stats.Consumed += resourceToAdd;
+                OnConsumedStatChange?.Invoke(_stats.Consumed);
+                Save();
+            }
+        
+
+            private static void Save()
+            {
+                Instance._saving.SetTemporalSave(SavingKeys.Milestone.Stats, JToken.FromObject(_stats));
+            }
+
+            public static void Load()
+            {
+                var stats = Instance._saving.GetSavingValue(SavingKeys.Milestone.Stats);
+                if (stats != null)
+                {
+                    _stats = stats.ToObject<StatData>();
+                }
+                else
+                {
+                    _stats = new StatData();
+                }
+            }
+
+            private class StatData
+            {
+                public int Produced = 0;
+                public int Consumed = 0;
             }
         
         
