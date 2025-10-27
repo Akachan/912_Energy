@@ -12,15 +12,16 @@ namespace Energy
         [Header("Referencias")]
         [SerializeField] private GameObject infoPanelPrefab;
         
+        private EnergySourceData _data;
+        
         private EnergyManager _energy;
-        private EnergySourceSo _energySource;
         private EnergySourceUI _ui;
         private EnergySourcesSpawner _spawner;
         private KnowledgeManager _knowledgeManager;
+        private EnergySourceSo _sourceSo;
         
-        private int _currentLevel = 1;
+        
         private float _currentTime;
-        private bool _isLocked = true;
         private bool _isLastLevel = false;
        
         
@@ -54,140 +55,135 @@ namespace Energy
             _currentTime = 0f;
         }
         
-        public void SetEnergySource(EnergySourceSo sourceSo)
+        public void SetEnergySource(EnergySourceData data, EnergySourceSo sourceSo)
         {
-            _energySource = sourceSo;
+            _data = data;
+            _sourceSo = sourceSo;
             
-            if (_energySource == null) return;
+            if (_sourceSo == null) return;
             
-            _ui.SetLockedEnergySourceData(_energySource.GetCost(_currentLevel), _energySource.CostToUnlock);
-
-            PlayerPrefs.SetInt($"{_energySource.SourceName}IsLocked", _isLocked == true ? 1 : 0);
-            PlayerPrefs.SetInt($"{_energySource.SourceName}Level", _currentLevel);
+            _ui.SetLockedEnergySourceData(_sourceSo.GetCost(_data.Level), _sourceSo.CostToUnlock);
+            
         }
         
         public void UnlockEnergySource(bool isFirst = false)
         {
             if (!isFirst)
             {
-                if (!_knowledgeManager.RemoveResources(_energySource.CostToUnlock)) return;
+                if (!_knowledgeManager.RemoveResources(_sourceSo.CostToUnlock)) return;
             }
             
-            _isLocked = false;
-            PlayerPrefs.SetInt($"{_energySource.SourceName}IsLocked", _isLocked == true ? 1 : 0);
-            PlayerPrefs.SetInt($"{_energySource.SourceName}Level", _currentLevel);
+            _data.IsLocked = false;
+            _spawner.UpdateEnergySource(_data);
             
             _energy.OnEnergySourceChange += UpdateRatio;
             _spawner.CreateNewEnergySource();
             
-            _energy.UpdateSource(_energySource.SourceName, _energySource.GetRps(_currentLevel));;
+            _energy.UpdateSource(_sourceSo.SourceName, _sourceSo.GetRps(_data.Level));;
         
-            var difference = _energySource.GetDifferenceRps(_currentLevel);
-            _ui.SetUnlockedEnergySourceData(_energySource.SourceName, 
-                _currentLevel,
-                _energySource.GetRps(_currentLevel),
+            var difference = _sourceSo.GetDifferenceRps(_data.Level);
+            _ui.SetUnlockedEnergySourceData(_sourceSo.SourceName, 
+                _data.Level,
+                _sourceSo.GetRps(_data.Level),
                 difference,
-                _energySource.GetCost(_currentLevel),
-                _energySource.Illustration);
+                _sourceSo.GetCost(_data.Level),
+                _sourceSo.Illustration);
             
             var instance = Instantiate(infoPanelPrefab, _energy.transform);
-            instance.GetComponent<SetInfoPanel>().SetInfo(_energySource.SourceName, _energySource.Illustration,_energySource.Description);
+            instance.GetComponent<SetInfoPanel>().SetInfo(_sourceSo.SourceName, _sourceSo.Illustration,
+                _sourceSo.Description);
             
         }
         
         public void BuyUpgrade(int levelsToBuy = 1)
         {
-            var nextLevel = _currentLevel + levelsToBuy;
+            var nextLevel = _data.Level + levelsToBuy;
 
-            if (nextLevel > _energySource.MaxLevel)
+            if (nextLevel > _sourceSo.MaxLevel)
             {
-                Debug.LogError($"No se puede subir de nivel ya que supera el máximo de {_energySource.MaxLevel}");
+                Debug.LogError($"No se puede subir de nivel ya que supera el máximo de {_sourceSo.MaxLevel}");
                 return;
             }
             
-            if (!_energy.RemoveResources(_energySource.GetCost(_currentLevel, levelsToBuy))) return;
+            if (!_energy.RemoveResources(_sourceSo.GetCost(_data.Level, levelsToBuy))) return;
             Debug.Log("Buy Upgrade");
             
-            _currentLevel = nextLevel;
-            var rps = _energySource.GetRps(_currentLevel);
+            _data.Level = nextLevel;
+            var rps = _sourceSo.GetRps(_data.Level);
             
-            if (_currentLevel < _energySource.MaxLevel)
+            if (_data.Level < _sourceSo.MaxLevel)
             {
-                _energy.UpdateSource(_energySource.SourceName, rps);
-                _ui.UpdateEnergySourceData( _currentLevel,
+                _energy.UpdateSource(_sourceSo.SourceName, rps);
+                _ui.UpdateEnergySourceData( _data.Level,
                                         rps,
-                                _energySource.GetDifferenceRps(_currentLevel),
-                                            _energySource.GetCost(_currentLevel));
+                                        _sourceSo.GetDifferenceRps(_data.Level),
+                                        _sourceSo.GetCost(_data.Level));
                 UpdateUpgradeButton();
             }
-            else if (_currentLevel == _energySource.MaxLevel)
+            else if (_data.Level == _sourceSo.MaxLevel)
             {
-                _energy.UpdateSource(_energySource.SourceName, rps);
-                _ui.UpdateLastLevelEnergySourceData( _currentLevel, rps);
+                _energy.UpdateSource(_sourceSo.SourceName, rps);
+                _ui.UpdateLastLevelEnergySourceData( _data.Level, rps);
                 _isLastLevel = true;
             }
             
-            PlayerPrefs.SetInt($"{_energySource.SourceName}Level", _currentLevel);
+            PlayerPrefs.SetInt($"{_sourceSo.SourceName}Level", _data.Level);
 
         }
         
         private void UpdateRatio( BigNumber totalEps)
         {
-            var ratio =Calculator.DivideBigNumbers(_energySource.GetRps(_currentLevel), _energy.Eps);
+            var ratio =Calculator.DivideBigNumbers(_sourceSo.GetRps(_data.Level), _energy.Eps);
             _ui.UpdateRatioText(ratio);
         }
-        public void RestoreEnergySource(EnergySourceSo energySo)
+        public void RestoreEnergySource(EnergySourceData data, EnergySourceSo sourceSo)
         {
-            _energySource = energySo;
-            _isLocked = PlayerPrefs.GetInt($"{_energySource.SourceName}IsLocked") == 1;
-
-            if (PlayerPrefs.HasKey($"{_energySource.SourceName}Level"))
-            {
-                _currentLevel = PlayerPrefs.GetInt($"{_energySource.SourceName}Level");
-            }
+            _data = data;
+            _sourceSo = sourceSo;
             
-            if (_isLocked)
+            if (_data.IsLocked)
             {
-                _ui.SetLockedEnergySourceData(_energySource.GetRps(_currentLevel), _energySource.CostToUnlock);
+                _ui.SetLockedEnergySourceData(_sourceSo.GetRps(_data.Level), _sourceSo.CostToUnlock);
             }
             else
             {
                 _energy.OnEnergySourceChange += UpdateRatio;
                
-                _energy.UpdateSource(_energySource.SourceName, _energySource.GetRps(_currentLevel));
+                _energy.UpdateSource(_sourceSo.SourceName, _sourceSo.GetRps(_data.Level));
 
-                if (_currentLevel < _energySource.MaxLevel)
+                if (_data.Level < _sourceSo.MaxLevel)
                 {
-                    var difference = _energySource.GetDifferenceRps(_currentLevel);
-                    _ui.SetUnlockedEnergySourceData(_energySource.SourceName,
-                        _currentLevel,
-                        _energySource.GetRps(_currentLevel),
+                    var difference = _sourceSo.GetDifferenceRps(_data.Level);
+                    _ui.SetUnlockedEnergySourceData(_sourceSo.SourceName,
+                        _data.Level,
+                        _sourceSo.GetRps(_data.Level),
                         difference,
-                        _energySource.GetCost(_currentLevel),
-                        _energySource.Illustration);
+                        _sourceSo.GetCost(_data.Level),
+                        _sourceSo.Illustration);
                 }
                 else
                 {
-                    _ui.UpdateLastLevelEnergySourceData(_energySource.SourceName, _energySource.Illustration,_currentLevel, _energySource.GetRps(_currentLevel));
+                    _ui.UpdateLastLevelEnergySourceData(_sourceSo.SourceName, _sourceSo.Illustration,_data.Level, 
+                        _sourceSo.GetRps(_data.Level));
                 }
             }
         }
         
         private void UpdateUnlockButton()
         {
-            if (!_isLocked) return;
+            if (!_data.IsLocked) return;
             Calculator.CompareBigNumbers(   _knowledgeManager.GetResources(), 
-                                            _energySource.CostToUnlock, 
+                _sourceSo.CostToUnlock, 
                                             out var result);
             _ui.SetUnlockButtonState(result is ComparisonResult.Bigger or ComparisonResult.Equal);
         }
 
         private void UpdateUpgradeButton()
         {
-            if (_isLocked) return;  
-            if (_isLastLevel) return;
+            if (_data.IsLocked) return;  
+            if (_data.Level == _sourceSo.MaxLevel ) return;
             Calculator.CompareBigNumbers(_energy.GetResources(),
-                                        _energySource.GetCost(_currentLevel), 
+                _sourceSo.GetCost(_data.Level), 
                                         out var result);
 
             _ui.SetUpgradeButtonState(result is ComparisonResult.Bigger or ComparisonResult.Equal);

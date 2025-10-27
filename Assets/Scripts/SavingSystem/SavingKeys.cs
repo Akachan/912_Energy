@@ -8,6 +8,7 @@ namespace SavingSystem
             public const string Rps = "EPS";
             public const string Current = "CurrentEnergy";
             public const string Stats = "EnergyStats";
+            public const string Sources = "EnergySources";
 
         }
         

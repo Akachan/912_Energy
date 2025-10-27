@@ -1,65 +1,132 @@
+using System;
+using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
+using SavingSystem;
 using UnityEngine;
+using Utilities;
 
 namespace Energy
 {
     public class EnergySourcesSpawner : MonoBehaviour
     {
-        [SerializeField] private EnergySourceSo[] energySources;
+        [SerializeField] private EnergySourceSo[] energySourcesSo;
 
         [Header("References")] 
         [SerializeField]  private GameObject energySourcePrefab;
 
         [SerializeField] private Transform energySourceParent;
+        
+        private Dictionary<int, EnergySourceData> _energySources;
     
-        private int _energySourceIndex = 0;
-    
+        private SavingWrapper _saving;
 
 
-
-  
-        // Crear prefab de energySource y colococar
-        // Asignar SO a nuevo energy source
+        private void Awake()
+        {
+            _saving = FindFirstObjectByType<SavingWrapper>();
+            Load();
+        }
+        
 
         private void Start()
         {
-            if(!PlayerPrefs.HasKey("EnergySourceIndex"))
+            if (_energySources == null)
             {
+                print("no hay sources guardadas");
                 InitializeFirstEnergySource();
                 return;
             }
-            _energySourceIndex = PlayerPrefs.GetInt("EnergySourceIndex");
             RestoreEnergySources();
-
+            
         }
 
-        private void RestoreEnergySources()
-        {
-            for (int i = 0; i < _energySourceIndex; i++) 
-            {
-                var instance = Instantiate(energySourcePrefab, energySourceParent).GetComponent<EnergySource>(); 
-                instance.RestoreEnergySource(energySources[i]);
-            }
-        }
+    
 
         private void InitializeFirstEnergySource()
         {
-            var instance = Instantiate(energySourcePrefab, energySourceParent).GetComponent<EnergySource>(); 
-            instance.SetEnergySource(energySources[_energySourceIndex]);
-            Debug.Log($"Se spawneo: {energySources[_energySourceIndex]}");
-            _energySourceIndex++;
-            instance.UnlockEnergySource(true);  //El primero está siempre desbloqueado
+            var data = new EnergySourceData(0);
             
+            var instance = Instantiate(energySourcePrefab, energySourceParent).GetComponent<EnergySource>(); 
+            instance.SetEnergySource(data, energySourcesSo[data.SoIndex]);
+            
+            _energySources = new Dictionary<int, EnergySourceData>();
+            _energySources[data.SoIndex] = data;
+            Save(); 
+            
+            Debug.Log($"Se spawneo: {energySourcesSo[data.SoIndex].SourceName}");
+           
+            instance.UnlockEnergySource(true);  
+            
+        }
+        private void RestoreEnergySources()
+        {
+            foreach (var data in _energySources)
+            {
+                var instance = Instantiate(energySourcePrefab, energySourceParent).GetComponent<EnergySource>();
+                
+                var source = energySourcesSo[data.Value.SoIndex];
+                
+                instance.RestoreEnergySource(data.Value, source);
+                
+            }
         }
 
         public void CreateNewEnergySource()
         {
-            if(_energySourceIndex >= energySources.Length) return;
+            if(_energySources.Count >= energySourcesSo.Length) return;
+            
+            var data = new EnergySourceData(_energySources.Count);
+            
             var instance = Instantiate(energySourcePrefab, energySourceParent).GetComponent<EnergySource>(); 
-            instance.SetEnergySource(energySources[_energySourceIndex]);
-            Debug.Log($"Se spawneo: {energySources[_energySourceIndex]}");
-            _energySourceIndex++;
-            PlayerPrefs.SetInt("EnergySourceIndex", _energySourceIndex);
+            instance.SetEnergySource(data, energySourcesSo[data.SoIndex]);
+            
+            _energySources[data.SoIndex] = data;
+            Save(); 
+            
+            Debug.Log($"Se spawneo: {energySourcesSo[data.SoIndex].SourceName}");
+            
         }
-  
+
+        public void UpdateEnergySource(EnergySourceData data)
+        {
+            _energySources[data.SoIndex] = data;
+            TemporalSave();
+            
+        }
+
+        private void Save()
+        {
+            _saving.SaveInFile(SavingKeys.Energy.Sources, JToken.FromObject(_energySources));
+        }
+        private void TemporalSave()
+        {
+            _saving.SetTemporalSave(SavingKeys.Energy.Sources, JToken.FromObject(_energySources));
+        }
+        private void Load()
+        {
+            print("Loading sources...");
+            var sources = _saving.GetSavingValue(SavingKeys.Energy.Sources);
+            if (sources != null)
+            {
+                print("hay registro de sources guardados, NO  se crea un nuevo diccionario");
+                _energySources = sources.ToObject<Dictionary<int, EnergySourceData>>();
+            }
+        }
+
+    }
+    
+    public class EnergySourceData
+    {
+        public readonly int SoIndex;
+        public bool IsLocked;
+        public int Level;
+
+        public EnergySourceData(int soIndex)
+        {
+            SoIndex = soIndex;
+            IsLocked = true;
+            Level = 1;
+            
+        }
     }
 }
