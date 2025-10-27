@@ -1,6 +1,8 @@
 using System;
 using Cash;
 using Energy;
+using Stats;
+using Unity.VisualScripting;
 using UnityEngine;
 using Utilities;
 
@@ -41,6 +43,7 @@ namespace Requests
                 
                 var calculateGoldToGet = CalculateGoldToGet();
                 FindFirstObjectByType<CashManager>().AddResources(calculateGoldToGet);
+                EventStatBus.Instance.OnFulFillRequestEvent(_energyToRequest);
                 
                 OnFulFillRequest?.Invoke(calculateGoldToGet); //para pasarle el texto para despues mostrarlo en el UI
                 

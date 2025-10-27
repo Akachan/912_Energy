@@ -75,12 +75,20 @@ namespace Stats
 
         private StatsManager() { }
 
-
+        public void LoadStats()
+        {
+            EnergyStat.Load();
+            KnowledgeStat.Load();
+            CashStat.Load();
+            MilestoneStat.Load();
+        }
     
         public static class EnergyStat
         {
             private static StatData _statsData;
-        
+            public static BigNumber Produced => _statsData.Produced;
+            public static BigNumber Consumed => _statsData.Consumed;
+            public static BigNumber Trade => _statsData.Trade;
 
             public static event Action<BigNumber> OnProducedStatChange;
             public static event Action<BigNumber> OnEnergyConsumedStatChange;
@@ -105,6 +113,8 @@ namespace Stats
             }
             public static void AddEnergyTrade(BigNumber energyToAdd)
             {
+                
+                print("se tradeó energia");
                 _statsData.Trade = Calculator.AddBigNumbers(_statsData.Trade, energyToAdd);
                 OnEnergyTradeStatChange?.Invoke(_statsData.Trade);
                 Save();
@@ -133,6 +143,8 @@ namespace Stats
                 public BigNumber Produced = new(0, 0);
                 public BigNumber Consumed = new(0, 0);
                 public BigNumber Trade = new(0, 0);
+                
+                
             }
         
         

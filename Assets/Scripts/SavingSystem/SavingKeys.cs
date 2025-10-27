@@ -27,13 +27,14 @@ namespace SavingSystem
 
         public static class Request
         {
-            public const string Current = "CurrentRequest";
+            public const string Current = "CurrentEnergyRequest";
         }
 
         public static class Milestone
         {
             public const string Current = "CurrentMilestone";
             public const string Stats = "MilestoneStats";
+            public const string Goals = "MilestoneGoals";
         }
         
         

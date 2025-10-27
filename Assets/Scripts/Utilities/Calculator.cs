@@ -235,6 +235,27 @@ public abstract class Calculator
         return new BigNumber(newBase, num.Exponent);
         
     }
+
+    public static float GetFloatRatio(BigNumber ratio)
+    {
+        if (ratio == null)
+        {
+            return 0f;
+        }
+
+        switch (ratio.Exponent)
+        {
+            case > 0:
+                Debug.LogError("El ratio es Mayor a 1");
+                return 1f;
+            case < -4:
+                return 0f;
+        }
+
+        var newRatio = ratio.Base * Mathf.Pow(10, ratio.Exponent);
+        return (float)newRatio;
+
+    } 
     //Cosas que probablemente no use
     
         public static BigNumber TranformToBigNumber(string value)

@@ -27,6 +27,11 @@ namespace Cash
             
         }
 
+        private void OnDisable()
+        {
+            _cashManager.OnCashChange -= SetCashValue;
+        }
+
         public void SetCashValue(BigNumber value)
         {
             cashValue.text = BigNumberFormatter.SetSuffixFormat(value);

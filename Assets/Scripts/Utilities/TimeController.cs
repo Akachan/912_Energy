@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Energy;
 using Knowledge;
 using SavingSystem;
+using Stats;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -24,6 +25,7 @@ namespace Utilities
 
         private void Awake()
         {
+            StatsManager.Instance.LoadStats();
             _energyManager = FindFirstObjectByType<EnergyManager>();
             _knowledgeManager = FindFirstObjectByType<KnowledgeManager>();
         }
