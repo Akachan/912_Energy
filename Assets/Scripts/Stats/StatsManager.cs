@@ -215,6 +215,7 @@ namespace Stats
 
             public static event Action<BigNumber> OnProducedStatChange;
             public static event Action<BigNumber> OnConsumedStatChange;
+            public static event Action<BigNumber> OnChange;
 
 
             public static void AddResourceProduced(BigNumber resourceToAdd)
@@ -222,6 +223,7 @@ namespace Stats
                 if (_stats == null || resourceToAdd == null) return;
                 _stats.Produced = Calculator.AddBigNumbers(_stats.Produced, resourceToAdd);
                 OnProducedStatChange?.Invoke(_stats.Produced);
+                OnChange?.Invoke(_stats.Produced);
                 Save();
 
             }
@@ -230,6 +232,8 @@ namespace Stats
                 if (_stats == null || energyToAdd == null) return;
                 _stats.Consumed = Calculator.AddBigNumbers(_stats.Consumed, energyToAdd);
                 OnConsumedStatChange?.Invoke(_stats.Consumed);
+                OnChange?.Invoke(_stats.Consumed);
+                
                 Save();
             }
         
@@ -268,6 +272,7 @@ namespace Stats
 
             public static event Action<int> OnProducedStatChange;
             public static event Action<int> OnConsumedStatChange;
+            
 
 
             public static void AddResourceProduced(int resourceToAdd)
@@ -278,6 +283,7 @@ namespace Stats
                 _stats.Produced += resourceToAdd;
                 print($"Se produjeron {resourceToAdd}");
                 OnProducedStatChange?.Invoke(_stats.Produced);
+                
                 Save();
 
             }

@@ -20,7 +20,7 @@ namespace Milestones
 
         private void Start()
         {
-            UpdateUI();
+            
             Load();
         }
         
@@ -52,8 +52,9 @@ namespace Milestones
             if (cm != null)
             {
                 CurrentResources = cm.ToObject<int>();
-                UpdateUI();
+                
             }
+            UpdateUI();
         }
 
     }

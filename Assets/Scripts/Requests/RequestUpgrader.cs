@@ -58,6 +58,7 @@ namespace Requests
             if (_milestoneManager.RemoveResources(populationProgression[_populationLevel].cost))
             {
                 _populationLevel++;
+                Save();
                 _energyRequestManager.SetTimeToSpawn(populationProgression[_populationLevel].spawnTime);
                 OnUpgradePopulation?.Invoke();
             }
@@ -73,6 +74,7 @@ namespace Requests
             if (_milestoneManager.RemoveResources(industriesProgression[_industriesLevel].cost))
             {
                 _industriesLevel++;
+                Save();
                 _energyRequestManager.SetEnergyToRequest(industriesProgression[_industriesLevel].energy);
                 OnUpgradeIndustries?.Invoke();
             }
@@ -89,6 +91,7 @@ namespace Requests
             {
 
                 _commerceLevel++;
+                Save();
                 _energyRequestManager.SetCashRatio(commerceProgression[_commerceLevel].ratio);
                 OnUpgradeCommerce?.Invoke();
             }
@@ -114,9 +117,9 @@ namespace Requests
             return populationProgression[level];       
         }
 
-        public Industries? GetIndustries()
+        public Industries GetIndustries()
         {
-            return GetIndustries(_industriesLevel);
+            return industriesProgression[_industriesLevel];
         }
         public Industries? GetIndustries(int level)
         {
@@ -126,9 +129,9 @@ namespace Requests
             }
             return industriesProgression[level];       
         }
-        public Commerce? GetCommerce()
+        public Commerce GetCommerce()
         {
-            return GetCommerce(_commerceLevel);       
+            return commerceProgression[_commerceLevel];      
         }
         public Commerce? GetCommerce(int level)
         {
@@ -188,6 +191,12 @@ namespace Requests
             {
                 _commerceLevel = commerce.ToObject<int>();
             }
+            
+            OnUpgradePopulation?.Invoke();
+            OnUpgradeIndustries?.Invoke();
+            OnUpgradeCommerce?.Invoke();
+            
+            print($"Population: {_populationLevel} Industries: {_industriesLevel} Commerce: {_commerceLevel}");
         }
     }
 }

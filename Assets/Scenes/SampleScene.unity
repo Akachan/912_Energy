@@ -1036,7 +1036,7 @@ GameObject:
   - component: {fileID: 429688009}
   - component: {fileID: 429688008}
   m_Layer: 5
-  m_Name: Variable (2)
+  m_Name: Commerce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2445,9 +2445,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: 06e1a63fc3c34bd44a51507f6bf58615, type: 3}
     m_PressedSprite: {fileID: 21300000, guid: baf61d6085f3a9d43ae845e877f03d8a, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: baf61d6085f3a9d43ae845e877f03d8a, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 06e1a63fc3c34bd44a51507f6bf58615, type: 3}
     m_DisabledSprite: {fileID: 21300000, guid: 45d97e2352aeecf4fa40623a800dce97, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -2459,7 +2459,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1191456083}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1233523823}
+        m_TargetAssemblyTypeName: Requests.RequestUpgrader, Assembly-CSharp
+        m_MethodName: OnUpgradeIndustriesButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1191456083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2794,6 +2806,8 @@ GameObject:
   - component: {fileID: 1233523821}
   - component: {fileID: 1233523820}
   - component: {fileID: 1233523819}
+  - component: {fileID: 1233523823}
+  - component: {fileID: 1233523824}
   m_Layer: 5
   m_Name: HUB
   m_TagString: Untagged
@@ -3027,6 +3041,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c22f12071748459e8413425ddabaf13f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Milestones.MilestoneManager
+--- !u!114 &1233523823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233523804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a167a908c3e4694a8e0b5838ce83501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Requests.RequestUpgrader
+  populationProgression:
+  - cost: 1
+    spawnTime: 9.5
+  - cost: 2
+    spawnTime: 8.5
+  - cost: 4
+    spawnTime: 7
+  industriesProgression:
+  - cost: 1
+    energy:
+      Base: 1
+      Exponent: 1
+  - cost: 2
+    energy:
+      Base: 1
+      Exponent: 3
+  - cost: 4
+    energy:
+      Base: 1
+      Exponent: 6
+  commerceProgression:
+  - cost: 1
+    ratio: 0.8
+  - cost: 2
+    ratio: 1
+  - cost: 4
+    ratio: 1.5
+--- !u!114 &1233523824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233523804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7716855d69561ac4e8b0966057e78096, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  populationText: {fileID: 1221063134}
+  populationButton: {fileID: 1860638111}
+  populationButtonText: {fileID: 226904439}
+  industriesText: {fileID: 809133833}
+  industriesButton: {fileID: 1191456082}
+  industriesButtonText: {fileID: 267723778}
+  commerceText: {fileID: 1181866257}
+  commerceButton: {fileID: 1717437499}
+  commerceButtonText: {fileID: 1984389210}
 --- !u!1 &1245597126
 GameObject:
   m_ObjectHideFlags: 0
@@ -4573,9 +4647,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: 06e1a63fc3c34bd44a51507f6bf58615, type: 3}
     m_PressedSprite: {fileID: 21300000, guid: baf61d6085f3a9d43ae845e877f03d8a, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: baf61d6085f3a9d43ae845e877f03d8a, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 06e1a63fc3c34bd44a51507f6bf58615, type: 3}
     m_DisabledSprite: {fileID: 21300000, guid: 45d97e2352aeecf4fa40623a800dce97, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -4587,7 +4661,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1717437500}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1233523823}
+        m_TargetAssemblyTypeName: Requests.RequestUpgrader, Assembly-CSharp
+        m_MethodName: OnUpgradeCommerceButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1717437500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4953,7 +5039,7 @@ GameObject:
   - component: {fileID: 1746641054}
   - component: {fileID: 1746641053}
   m_Layer: 5
-  m_Name: Variable
+  m_Name: Population
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5232,7 +5318,7 @@ GameObject:
   - component: {fileID: 1796118508}
   - component: {fileID: 1796118507}
   m_Layer: 5
-  m_Name: Variable (1)
+  m_Name: Industries
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5441,9 +5527,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: 06e1a63fc3c34bd44a51507f6bf58615, type: 3}
     m_PressedSprite: {fileID: 21300000, guid: baf61d6085f3a9d43ae845e877f03d8a, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: baf61d6085f3a9d43ae845e877f03d8a, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 06e1a63fc3c34bd44a51507f6bf58615, type: 3}
     m_DisabledSprite: {fileID: 21300000, guid: 45d97e2352aeecf4fa40623a800dce97, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -5455,7 +5541,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1860638112}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1233523823}
+        m_TargetAssemblyTypeName: Requests.RequestUpgrader, Assembly-CSharp
+        m_MethodName: OnUpgradePopulationButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1860638112
 MonoBehaviour:
   m_ObjectHideFlags: 0

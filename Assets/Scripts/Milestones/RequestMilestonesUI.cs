@@ -55,6 +55,8 @@ namespace Milestones
             
          
             requestMilestoneText.text = $"{BigNumberFormatter.SetSuffixFormat(tradedEnergy)} / {BigNumberFormatter.SetSuffixFormat(data.energyGoal)} => Reward: {data.milestoneReward}";
+            
+            if(sprite == null)return;
             sprite.fillAmount = fRatio;
             
         }

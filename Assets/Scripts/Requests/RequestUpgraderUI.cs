@@ -4,6 +4,7 @@ using Stats;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Utilities;
 
 
 namespace Requests
@@ -38,35 +39,35 @@ namespace Requests
 
         private void Start()
         {
-            UpdateButtons(_milestoneManager.GetResources());
-            StatsManager.MilestoneStat.OnProducedStatChange += UpdateButtons;
-            StatsManager.MilestoneStat.OnConsumedStatChange += UpdateButtons;
+            //UpdateButtons(_milestoneManager.GetResources());
+            
+            _milestoneManager.OnMilestoneChange += UpdateButtons;
             _requestUpgrader.OnUpgradePopulation += UpdatePopulation;
             _requestUpgrader.OnUpgradeIndustries += UpdateIndustries;
             _requestUpgrader.OnUpgradeCommerce += UpdateCommerce;
+            UpdatePopulation();
+            UpdateIndustries();
+            UpdateCommerce();   
         }
 
         private void OnDisable()
         {
-            StatsManager.MilestoneStat.OnProducedStatChange -= UpdateButtons;
-            StatsManager.MilestoneStat.OnConsumedStatChange -= UpdateButtons;
+           _milestoneManager.OnMilestoneChange -= UpdateButtons;
+           _requestUpgrader.OnUpgradePopulation -= UpdatePopulation;
+           _requestUpgrader.OnUpgradeIndustries -= UpdateIndustries;
+           _requestUpgrader.OnUpgradeCommerce -= UpdateCommerce;
         }
 
         private void UpdateButtons(int resource)
         {
-            print("se actualizo los botones");
-            var milestone = _milestoneManager.GetResources();
-
-            var popCost = _requestUpgrader.GetPopulation().cost;
-            populationButton.interactable = milestone >= _requestUpgrader.GetPopulation().cost;
-
-
-
+           
+            populationButton.interactable = resource >= _requestUpgrader.GetPopulation().cost;
+            industriesButton.interactable = resource >= _requestUpgrader.GetIndustries().cost;
+            commerceButton.interactable = resource >= _requestUpgrader.GetCommerce().cost;
+            
         }
         
-
-
-
+        
         private void UpdatePopulation()
         {
 
@@ -90,14 +91,11 @@ namespace Requests
             var currentLevelData = _requestUpgrader.GetIndustries();
             var nextLevelData = _requestUpgrader.GetIndustries(lvl + 1);
 
-            if (currentLevelData == null) return;
-
-            var nextLevelText = nextLevelData == null ? "Max Level" : $"NextLevel: {nextLevelData.Value.energy}";
-            var text = $"Level: {lvl} \n EnergyRequest: {currentLevelData.Value.energy}s \n {nextLevelText}";
-
-
+            var nextLevelText = nextLevelData == null ? "Max Level" : $"NextLevel: {BigNumberFormatter.SetSuffixFormat(nextLevelData.Value.energy)}";
+            var text = $"Level: {lvl} \n EnergyRequest: {BigNumberFormatter.SetSuffixFormat(currentLevelData.energy)} \n {nextLevelText}";
+            
             industriesText.text = text;
-            industriesButtonText.text = currentLevelData.Value.cost.ToString();
+            industriesButtonText.text = currentLevelData.cost.ToString();
             
             UpdateButtons(_milestoneManager.GetResources());
         }
@@ -108,14 +106,11 @@ namespace Requests
             var currentLevelData = _requestUpgrader.GetCommerce();
             var nextLevelData = _requestUpgrader.GetCommerce(lvl + 1);
             
-            if (currentLevelData ==null) return;
-            
             var nextLevelText = nextLevelData == null ? "Max Level" : $"NextLevel: {nextLevelData.Value.ratio}cash/energy";
-            var text = $"Level: {lvl} \n cash/energy: {currentLevelData.Value.ratio}s \n {nextLevelText}";
-
-
+            var text = $"Level: {lvl} \n cash/energy: {currentLevelData.ratio}s \n {nextLevelText}";
+            
             commerceText.text = text;
-            commerceButtonText.text = currentLevelData.Value.cost.ToString();
+            commerceButtonText.text = currentLevelData.cost.ToString();
             
             UpdateButtons(_milestoneManager.GetResources());
         }
