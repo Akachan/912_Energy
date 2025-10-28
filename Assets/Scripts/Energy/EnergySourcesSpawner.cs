@@ -104,11 +104,9 @@ namespace Energy
         }
         private void Load()
         {
-            print("Loading sources...");
             var sources = _saving.GetSavingValue(SavingKeys.Energy.Sources);
             if (sources != null)
             {
-                print("hay registro de sources guardados, NO  se crea un nuevo diccionario");
                 _energySources = sources.ToObject<Dictionary<int, EnergySourceData>>();
             }
         }

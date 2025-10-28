@@ -25,7 +25,7 @@ namespace SavingSystem
 
             if (!(_timeSinceLastSave >= timeBetweenSaves)) return;
             _savingWrapper.SaveInFile();
-            Debug.Log("Periodic Saving");
+            //Debug.Log("Periodic Saving");
             _timeSinceLastSave = 0f;
         }
     }

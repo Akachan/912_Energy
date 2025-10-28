@@ -23,11 +23,13 @@ public abstract class SmallResourceManager : MonoBehaviour, IResource<int>, ISav
         {
             Debug.LogError($"No hay suficientes recursos. \n" +
                            $"CurrentResources {CurrentResources}, ResourceToRemove {resource}");
+            return false;       
             
         }
         CurrentResources -= resource;
         UpdateResourcesConsumedStats(resource);
         Save();
+        UpdateUI();
         return true;
     }
 

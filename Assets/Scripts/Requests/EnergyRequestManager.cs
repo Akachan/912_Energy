@@ -110,8 +110,7 @@ namespace Requests
 
         public void SetEnergyToRequest(BigNumber energyToRequest)
         {
-            _energyToRequest = Calculator.MultiplyBigNumbers(energyToRequestBase,
-                                1 + energyToRequestMultiplier * industriesPurchased); 
+            _energyToRequest = energyToRequest; 
         }
 
         public void SetTimeToSpawn(float timeToSpawn)
@@ -121,7 +120,7 @@ namespace Requests
 
         public void SetCashRatio(float ratio)
         {
-            _cashRatio = cashRatioBase * (1 + cashRatioMultiplier * commercesPurchased);
+            _cashRatio = ratio;
         }
 
         public void NewRequestsOnDisconnection(int seconds)

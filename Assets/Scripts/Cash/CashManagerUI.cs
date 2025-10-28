@@ -22,9 +22,6 @@ namespace Cash
         private void Start()
         {
             _cashManager.OnCashChange += SetCashValue;
-            print("Se agregó SetCashValue en  OnCashChange");
-            
-            
         }
 
         private void OnDisable()

@@ -46,6 +46,10 @@ namespace Stats
         
             //Resquest
             EventStatBus.Instance.OnFulFillRequest += EnergyStat.AddEnergyTrade;
+            
+            //Milestones
+            EventStatBus.Instance.OnMilestoneProduced += MilestoneStat.AddResourceProduced;
+            EventStatBus.Instance.OnMilestoneConsumed += MilestoneStat.AddResourcesConsumed;
         }
         private void OnDisable()
         {
@@ -59,6 +63,9 @@ namespace Stats
             EventStatBus.Instance.OnCashConsumed -= CashStat.AddResourcesConsumed;
         
             EventStatBus.Instance.OnFulFillRequest -= EnergyStat.AddEnergyTrade;
+            
+            EventStatBus.Instance.OnMilestoneProduced -= MilestoneStat.AddResourceProduced;
+            EventStatBus.Instance.OnMilestoneConsumed -= MilestoneStat.AddResourcesConsumed;
         
         }
         private void InitializeSingleton()
@@ -113,8 +120,6 @@ namespace Stats
             }
             public static void AddEnergyTrade(BigNumber energyToAdd)
             {
-                
-                print("se tradeó energia");
                 _statsData.Trade = Calculator.AddBigNumbers(_statsData.Trade, energyToAdd);
                 OnEnergyTradeStatChange?.Invoke(_statsData.Trade);
                 Save();
@@ -267,8 +272,11 @@ namespace Stats
 
             public static void AddResourceProduced(int resourceToAdd)
             {
+                
+                
                 if (_stats == null ) return;
                 _stats.Produced += resourceToAdd;
+                print($"Se produjeron {resourceToAdd}");
                 OnProducedStatChange?.Invoke(_stats.Produced);
                 Save();
 

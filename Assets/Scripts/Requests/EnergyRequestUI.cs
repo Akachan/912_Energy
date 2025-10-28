@@ -67,7 +67,6 @@ namespace Requests
 
         private void DestroyRequestUi(BigNumber gold)
         {
-            print($"cumpliste el request {BigNumberFormatter.SetSuffixFormat(gold)} ");
             Destroy(gameObject);
         }
 
